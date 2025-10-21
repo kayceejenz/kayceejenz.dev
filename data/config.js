@@ -151,6 +151,15 @@ export default {
 			github: '#',
 		},
 		{
+			name: 'Membership Portal',
+			period: 'Feb 2024 | Present',
+			description:
+				'Institutional membership management platform designed to handle member registrations, renewals, and multiple membership types with integrated forensic verification and reporting tools. Streamlined for accuracy, security, and administrative efficiency.',
+			stack: ['ASP.NET MVC', 'C#', 'Bootstrap', 'MSSQL'],
+			link: 'https://membershipdemo.bluetag-it.com',
+			github: '#',
+		},
+		{
 			name: 'School Portal',
 			period: 'MVP delivered 2020',
 			description:
