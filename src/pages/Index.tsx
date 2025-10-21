@@ -114,7 +114,7 @@ export default function Index() {
 								<div className='ml-4 text-muted-foreground'>
 									made by:{' '}
 									<span className='text-foreground'>
-										"kayceejenz.dev"
+										"kayceejenz"
 									</span>{' '}
 								</div>
 								<div className='text-primary'>
