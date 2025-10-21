@@ -165,11 +165,11 @@ export default {
 			description:
 				'AI-powered personal finance tracker that categorizes transactions, predicts expenses, and provides savings insights using natural language summaries and analytics.',
 			stack: [
-				'ASP.NET Core',
-				'Python',
-				'FastAPI',
-				'OpenAI API',
-				'MSSQL',
+				'Next.js',
+				'OpenRouter API',
+				'Clerk',
+				'Superbase',
+				'TypeScript',
 			],
 			link: 'https://expense-tracker.project.kayceejenz.dev',
 			github: 'https://github.com/kayceejenz/expense-tracker',
