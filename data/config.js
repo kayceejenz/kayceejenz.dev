@@ -23,11 +23,12 @@ export default {
 	},
 
 	about: {
-		summary: 'Backend Engineer with 6+ years of experience designing and implementing enterprise-grade and startup-scale systems. Skilled in C#, ASP.NET Core, Node.js, NestJS, and blockchain integrations. Known for translating product ideas into scalable architectures and leading engineering teams across fintech, marketplaces, and AI-focused platforms.',
+		summary: 'Backend Engineer with 6+ years of experience designing and implementing enterprise-grade and startup-scale systems. Skilled in C#, ASP.NET Core, Node.js, NestJS, and blockchain integrations. Known for translating product ideas into scalable architectures and leading engineering teams across fintech, marketplaces, and AI-focused platforms. Currently exploring the world of AI and its intersection with backend automation and intelligent systems.',
 		highlights: [
 			'Senior Software Engineer (Lead) at BlueTag Technologies — driving backend architecture and mentoring junior developers.',
 			'CTO at Flipeet Marketplace — led development of NFT marketplace backend and Flipeet Pay (stablecoin on/off-ramp infrastructure).',
 			'Built wallet systems for BTC, USDC, and tokens across Solana and Base networks.',
+			'Passionate about building the future of intelligent backend systems — blending AI, automation, and scalable engineering.',
 		],
 	},
 
