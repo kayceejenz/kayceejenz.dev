@@ -1,7 +1,7 @@
 // data/config.js
 export default {
 	site: {
-		title: 'Jenz — Backend Engineer',
+		title: 'Precious Kosisochukwu — Backend Engineer',
 		description:
 			'Backend Engineer crafting scalable APIs, blockchain integrations, and payment systems. Over 6 years of experience in .NET, Node.js, and distributed systems.',
 		url: 'https://kayceejenz.dev',
@@ -115,7 +115,7 @@ export default {
 			name: 'Flipeet Pay',
 			period: 'Jan 2025 – Present',
 			description:
-				'Blockchain payment infrastructure providing seamless stablecoin on/off-ramps, merchant APIs, and real-time transaction monitoring across Solana and Base networks.',
+				'Stablecoin on/off-ramp infrastructure with merchant APIs and real-time transaction monitoring across Solana and Base.',
 			stack: [
 				'NestJS',
 				'USDC',
@@ -131,61 +131,69 @@ export default {
 			name: 'Flipeet Raise',
 			period: 'Mar 2024 – Present',
 			description:
-				'Crowdfunding and startup investment platform powered by crypto payments — enabling global fundraising using stablecoins and wallet-based authentication.',
-			stack: [
-				'NestJS',
-				'MongoDB',
-				'Solana',
-				'Payment Gateway',
-				'TypeScript',
-			],
+				'Crypto-powered crowdfunding platform enabling global fundraising via wallet-based authentication and Solana Pay.',
+			stack: ['NestJS', 'MongoDB', 'Solana', 'TypeScript'],
 			link: 'https://raise.flipeet.io',
+			github: '#',
+		},
+		{
+			name: 'Streaming Platform Backend',
+			period: '2024',
+			description:
+				'Real-time content distribution platform with artist/fan collaboration, influencer gigs, and DSP integrations.',
+			stack: [
+				'Node.js',
+				'NestJS',
+				'Revelator API',
+				'Vibrate API',
+				'MongoDB',
+			],
+			link: '#',
 			github: '#',
 		},
 		{
 			name: 'Syncboard Solutions',
 			period: 'Dec 2021 – Present',
 			description:
-				'Enterprise digital trading platform with wallet systems, automated trading bots, staking, and P2P exchange. Built with modular architecture for scalability and performance.',
+				'Digital trading platform with wallet systems, staking, and automated trading bots built in C#.',
 			stack: ['C#', 'ASP.NET Core', 'MSSQL', 'JavaScript'],
 			link: 'https://sandbox.syncboardsolutions.com',
 			github: '#',
 		},
 		{
 			name: 'Membership Portal',
-			period: 'Feb 2024 | Present',
+			period: 'Feb 2024 – Present',
 			description:
-				'Institutional membership management platform designed to handle member registrations, renewals, and multiple membership types with integrated forensic verification and reporting tools. Streamlined for accuracy, security, and administrative efficiency.',
+				'Institutional membership system with forensic verification, renewals, and reporting tools.',
 			stack: ['ASP.NET MVC', 'C#', 'Bootstrap', 'MSSQL'],
 			link: 'https://membershipdemo.bluetag-it.com',
 			github: '#',
 		},
 		{
 			name: 'School Portal',
-			period: 'MVP delivered 2020',
+			period: '2020',
 			description:
-				'Comprehensive school management platform integrating admissions, result processing, LMS, and SMS notifications. Delivered MVP within 6 months for pilot institutions.',
+				'Comprehensive school management platform with LMS, result processing, and SMS notifications.',
 			stack: ['ASP.NET MVC', 'C#', 'Bootstrap', 'MSSQL'],
 			link: 'https://staging.schoolport.ng',
 			github: '#',
 		},
 		{
 			name: 'Expense Tracker AI',
-			period: 'MVP delivered 2025',
+			period: '2025',
 			description:
-				'AI-powered personal finance tracker that categorizes transactions, predicts expenses, and provides savings insights using natural language summaries and analytics.',
+				'AI-powered personal finance tracker using NLP to summarize expenses and predict savings.',
 			stack: [
 				'Next.js',
 				'OpenRouter API',
 				'Clerk',
-				'Superbase',
+				'Supabase',
 				'TypeScript',
 			],
 			link: 'https://expense-tracker.project.kayceejenz.dev',
 			github: 'https://github.com/kayceejenz/expense-tracker',
 		},
 	],
-
 	contact: {
 		email: 'kayceejenz@gmail.com',
 		location: 'Enugu State, Nigeria',
