@@ -112,8 +112,23 @@ export default {
 
 	projects: [
 		{
+			name: 'Expense Tracker AI',
+			period: '2025',
+			description:
+				'AI-powered personal finance tracker using NLP to summarize expenses and predict savings.',
+			stack: [
+				'Next.js',
+				'OpenRouter API',
+				'Clerk',
+				'Supabase',
+				'TypeScript',
+			],
+			link: 'https://expense-tracker.project.kayceejenz.dev',
+			github: 'https://github.com/kayceejenz/expense-tracker',
+		},
+		{
 			name: 'Flipeet Pay',
-			period: 'Jan 2025 – Present',
+			period: '2025',
 			description:
 				'Stablecoin on/off-ramp infrastructure with merchant APIs and real-time transaction monitoring across Solana and Base.',
 			stack: [
@@ -129,7 +144,7 @@ export default {
 		},
 		{
 			name: 'Flipeet Raise',
-			period: 'Mar 2024 – Present',
+			period: '2024',
 			description:
 				'Crypto-powered crowdfunding platform enabling global fundraising via wallet-based authentication and Solana Pay.',
 			stack: ['NestJS', 'MongoDB', 'Solana', 'TypeScript'],
@@ -137,23 +152,8 @@ export default {
 			github: '#',
 		},
 		{
-			name: 'Streaming Platform Backend',
-			period: '2024',
-			description:
-				'Real-time content distribution platform with artist/fan collaboration, influencer gigs, and DSP integrations.',
-			stack: [
-				'Node.js',
-				'NestJS',
-				'Revelator API',
-				'Vibrate API',
-				'MongoDB',
-			],
-			link: '#',
-			github: '#',
-		},
-		{
 			name: 'Syncboard Solutions',
-			period: 'Dec 2021 – Present',
+			period: '2024',
 			description:
 				'Digital trading platform with wallet systems, staking, and automated trading bots built in C#.',
 			stack: ['C#', 'ASP.NET Core', 'MSSQL', 'JavaScript'],
@@ -162,7 +162,7 @@ export default {
 		},
 		{
 			name: 'Membership Portal',
-			period: 'Feb 2024 – Present',
+			period: '2024',
 			description:
 				'Institutional membership system with forensic verification, renewals, and reporting tools.',
 			stack: ['ASP.NET MVC', 'C#', 'Bootstrap', 'MSSQL'],
@@ -177,21 +177,6 @@ export default {
 			stack: ['ASP.NET MVC', 'C#', 'Bootstrap', 'MSSQL'],
 			link: 'https://staging.schoolport.ng',
 			github: '#',
-		},
-		{
-			name: 'Expense Tracker AI',
-			period: '2025',
-			description:
-				'AI-powered personal finance tracker using NLP to summarize expenses and predict savings.',
-			stack: [
-				'Next.js',
-				'OpenRouter API',
-				'Clerk',
-				'Supabase',
-				'TypeScript',
-			],
-			link: 'https://expense-tracker.project.kayceejenz.dev',
-			github: 'https://github.com/kayceejenz/expense-tracker',
 		},
 	],
 	contact: {
