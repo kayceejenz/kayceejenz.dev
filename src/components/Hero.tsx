@@ -131,7 +131,7 @@ export function Hero() {
 								</span>
 								,
 							</div>
-							<div className='ml-4 text-muted-foreground'>
+							{/* <div className='ml-4 text-muted-foreground'>
 								description:{' '}
 								<span className='text-primary'>
 									"
@@ -143,7 +143,7 @@ export function Hero() {
 									</span>
 									"
 								</span>
-							</div>
+							</div> */}
 							<div className='text-primary'>
 								{'}'}
 							</div>
