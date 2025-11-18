@@ -181,7 +181,7 @@ export default {
 	],
 	contact: {
 		email: 'kayceejenz@gmail.com',
-		location: 'Enugu State, Nigeria',
+		location: 'Liverpool, United Kingdom',
 		links: {
 			linkedin: 'https://www.linkedin.com/in/kayceejenz/',
 			github: 'https://github.com/kayceejenz',
