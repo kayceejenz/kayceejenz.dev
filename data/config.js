@@ -168,21 +168,21 @@ export default {
 			github: '#',
 		},
 		{
-			name: 'Syncboard Solutions',
-			period: '2024',
-			description:
-				'Digital trading platform supporting wallet systems, staking, and automated trading bots. Integrated with Binance, Coinbase, and Bybit APIs to enable SPOT and FUTURES trading, providing users with secure portfolio management tools.',
-			stack: ['C#', 'ASP.NET Core', 'MSSQL', 'JavaScript'],
-			link: 'https://sandbox.syncboardsolutions.com',
-			github: '#',
-		},
-		{
 			name: 'Membership Portal',
 			period: '2024',
 			description:
 				'Institutional membership management system with forensic verification, renewals, and reporting. Streamlined administrative workflows and enhanced security for member data and compliance tracking.',
 			stack: ['ASP.NET MVC', 'C#', 'Bootstrap', 'MSSQL'],
 			link: 'https://membershipdemo.bluetag-it.com',
+			github: '#',
+		},
+		{
+			name: 'Syncboard Solutions',
+			period: '2022',
+			description:
+				'Digital trading platform supporting wallet systems, staking, and automated trading bots. Integrated with Binance, Coinbase, and Bybit APIs to enable SPOT and FUTURES trading, providing users with secure portfolio management tools.',
+			stack: ['C#', 'ASP.NET Core', 'MSSQL', 'JavaScript'],
+			link: 'https://sandbox.syncboardsolutions.com',
 			github: '#',
 		},
 		{
