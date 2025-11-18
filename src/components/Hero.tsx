@@ -8,8 +8,7 @@ export function Hero() {
 	const [displayText, setDisplayText] = useState('');
 	const [currentIndex, setCurrentIndex] = useState(0);
 
-	const fullText =
-		'Backend Engineer who builds APIs and blockchain systems';
+	const fullText = 'Backend Engineer | AI · APIs · Blockchain · Fintech';
 
 	useEffect(() => {
 		if (currentIndex < fullText.length) {
@@ -112,7 +111,7 @@ export function Hero() {
 									"
 									{
 										hero.headline.split(
-											' — '
+											' | '
 										)[0]
 									}
 									"
@@ -125,7 +124,7 @@ export function Hero() {
 									["
 									{
 										hero.headline.split(
-											' — '
+											' | '
 										)[1]
 									}
 									"]
