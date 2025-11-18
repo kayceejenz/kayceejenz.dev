@@ -43,21 +43,21 @@ export function Contact() {
 
 	const socialLinks = [
 		{
-			// name: 'GitHub',
+			name: 'GitHub',
 			url: contact.links.github,
 			icon: Github,
 			color: 'hover:text-gray-300',
 			handle: '@kayceejenz',
 		},
 		{
-			// name: 'LinkedIn',
+			name: 'LinkedIn',
 			url: contact.links.linkedin,
 			icon: Linkedin,
 			color: 'hover:text-blue-400',
 			handle: '/kayceejenz',
 		},
 		{
-			// name: 'X (Formerly Twitter)',
+			name: 'X (Twitter)',
 			url: contact.links.twitter,
 			icon: Twitter,
 			color: 'hover:text-blue-400',
