@@ -80,7 +80,7 @@ export default {
 
 	experience: [
 		{
-			company: 'BlueTag Technologies',
+			company: 'BlueTag Technologies Ltd',
 			title: 'Senior Software Engineer (Lead)',
 			location: 'Remote · Enugu State, Nigeria',
 			period: '2019 - Present',
@@ -106,7 +106,6 @@ export default {
 			bullets: [
 				'Architected backend infrastructure powering media, dating, and crypto platforms, designed for high concurrency and real-time engagement.',
 				'Built wallet infrastructure supporting BTC, USDC, and tokenized assets across Solana and Base networks, enabling secure multi-chain asset management.',
-				'Integrated KYC providers and fiat–crypto gateways for seamless on/off-ramp operations, strengthening compliance and user trust.',
 				'Collaborated cross-functionally with product and frontend teams to deliver scalable APIs and event-driven systems.',
 			],
 			tech: ['NestJS', 'Socket.IO', 'MongoDB', 'Blockchain'],
