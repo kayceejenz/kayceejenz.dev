@@ -23,7 +23,7 @@ export default {
 	},
 
 	about: {
-		summary: 'Backend Software Engineer & CTO with 6+ years of experience architecting scalable systems across fintech, blockchain, healthtech, edtech, and entertainment. I specialize in transforming product ideas into resilient architectures, leading engineering teams, and building platforms that handle complex integrations, high transaction volumes, and diverse user needs.',
+		summary: 'Backend Software Engineer & CTO with 5+ years of experience architecting scalable systems across fintech, blockchain, healthtech, edtech, and entertainment. I specialize in transforming product ideas into resilient architectures, leading engineering teams, and building platforms that handle complex integrations, high transaction volumes, and diverse user needs.',
 		highlights: [
 			'Flipeet → Flipeet Pay & Flipeet Raise → Scaled stablecoin payments globally and enabled crypto + fiat crowdfunding for nonprofits → Gained expertise in multi-chain integrations, payment infrastructure, and technical leadership.',
 			'TradeHouse → Digital trading platform → Enabled wallet funding, P2P orders, crypto loans, staking, and bot-driven SPOT/FUTURES trading across Binance, Coinbase, and Bybit → Deepened knowledge of trading APIs, risk management, and secure financial systems.',
