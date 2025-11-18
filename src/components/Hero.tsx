@@ -8,7 +8,8 @@ export function Hero() {
 	const [displayText, setDisplayText] = useState('');
 	const [currentIndex, setCurrentIndex] = useState(0);
 
-	const fullText = 'Backend Engineer | AI · APIs · Blockchain · Fintech';
+	const fullText =
+		'Experienced Backend Engineer with 5+ years in building scalable systems.';
 
 	useEffect(() => {
 		if (currentIndex < fullText.length) {
@@ -131,7 +132,7 @@ export function Hero() {
 								</span>
 								,
 							</div>
-							{/* <div className='ml-4 text-muted-foreground'>
+							<div className='ml-4 text-muted-foreground'>
 								description:{' '}
 								<span className='text-primary'>
 									"
@@ -143,7 +144,7 @@ export function Hero() {
 									</span>
 									"
 								</span>
-							</div> */}
+							</div>
 							<div className='text-primary'>
 								{'}'}
 							</div>
