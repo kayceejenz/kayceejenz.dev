@@ -9,19 +9,22 @@ export function About() {
 	return (
 		<section id='about' className='py-20 px-6 bg-background'>
 			<div className='max-w-6xl mx-auto'>
+				{/* Header */}
 				<div className='text-center mb-16'>
 					<h2 className='text-4xl md:text-5xl font-bold text-foreground mb-4 font-mono'>
 						{'{ About Me }'}
 					</h2>
 					<div className='w-24 h-1 bg-primary mx-auto neon-glow'></div>
 					<p className='text-muted-foreground font-mono mt-4'>
-						// Get to know the developer
-						behind the code
+						// Get to know the engineer
+						behind the systems
 					</p>
 				</div>
 
 				<div className='grid lg:grid-cols-2 gap-12 items-center'>
+					{/* Left Column */}
 					<div className='space-y-6'>
+						{/* Terminal-style block */}
 						<div className='terminal-window'>
 							<div className='terminal-header'>
 								<div className='terminal-dot red'></div>
@@ -40,7 +43,7 @@ export function About() {
 								<div className='ml-4 text-muted-foreground'>
 									experience:{' '}
 									<span className='text-foreground'>
-										"6+
+										"5+
 										years"
 									</span>
 									,
@@ -49,7 +52,9 @@ export function About() {
 									focus:{' '}
 									<span className='text-foreground'>
 										"Backend
-										Systems"
+										Systems
+										&
+										Blockchain"
 									</span>
 									,
 								</div>
@@ -69,12 +74,15 @@ export function About() {
 								<div className='ml-8 text-foreground'>
 									"C#",
 									"Python",
-									"Javascript",
-									"Typescript",
+									"JavaScript",
+									"TypeScript",{' '}
 									<br />
-									"ASP.NET",
+									"ASP.NET
+									Core",
 									"Node.js",
 									"NestJS",
+									"FastAPI",{' '}
+									<br />
 									"Blockchain",
 									"APIs"
 								</div>
@@ -87,6 +95,7 @@ export function About() {
 							</div>
 						</div>
 
+						{/* Summary */}
 						<p className='text-lg text-muted-foreground leading-relaxed'>
 							<span className='font-mono text-primary'>
 								//{' '}
@@ -94,6 +103,7 @@ export function About() {
 							{about.summary}
 						</p>
 
+						{/* Highlights */}
 						<div className='space-y-4'>
 							{about.highlights.map(
 								(
@@ -119,6 +129,7 @@ export function About() {
 							)}
 						</div>
 
+						{/* Resume Button */}
 						<Button
 							asChild
 							size='lg'
@@ -137,7 +148,9 @@ export function About() {
 						</Button>
 					</div>
 
+					{/* Right Column */}
 					<div className='space-y-6'>
+						{/* Stats Card */}
 						<Card className='bg-card/50 backdrop-blur border-primary/20 hover-glow'>
 							<CardContent className='p-8'>
 								<div className='space-y-6'>
@@ -153,25 +166,27 @@ export function About() {
 									<div className='grid grid-cols-2 gap-6'>
 										<div className='text-center'>
 											<div className='text-3xl font-bold text-primary font-mono neon-text'>
-												6+
+												5+
 											</div>
 											<div className='text-sm text-muted-foreground font-mono'>
 												//
 												years
+												experience
 											</div>
 										</div>
 										<div className='text-center'>
 											<div className='text-3xl font-bold text-primary font-mono neon-text'>
-												20+
+												10+
 											</div>
 											<div className='text-sm text-muted-foreground font-mono'>
 												//
 												projects
+												shipped
 											</div>
 										</div>
 										<div className='text-center'>
 											<div className='text-3xl font-bold text-primary font-mono neon-text'>
-												4
+												3
 											</div>
 											<div className='text-sm text-muted-foreground font-mono'>
 												//
@@ -184,6 +199,7 @@ export function About() {
 											</div>
 											<div className='text-sm text-muted-foreground font-mono'>
 												//
+												continuous
 												learning
 											</div>
 										</div>
@@ -192,6 +208,7 @@ export function About() {
 							</CardContent>
 						</Card>
 
+						{/* Focus Areas */}
 						<div className='code-block'>
 							<div className='font-mono text-sm space-y-2'>
 								<div className='text-primary'>
@@ -209,17 +226,17 @@ export function About() {
 								</div>
 								<div className='ml-4 text-foreground'>
 									"AI
-									Engineering",
+									Engineering",{' '}
 									<br />
 									"Backend
-									Architecture",
+									Architecture",{' '}
 									<br />
 									"Blockchain
-									Integration",
+									Integration",{' '}
 									<br />
 									"API
 									Design &
-									Security",
+									Security",{' '}
 									<br />
 									"Team
 									Leadership"

@@ -83,7 +83,7 @@ export default {
 			company: 'BlueTag Technologies',
 			title: 'Senior Software Engineer (Lead)',
 			location: 'Remote · Enugu State, Nigeria',
-			period: 'May 2019 – Present',
+			period: '2019 - Present',
 			bullets: [
 				'Led backend architecture and development for enterprise-grade applications, ensuring scalability, security, and performance across diverse client solutions.',
 				'Translated complex business requirements into modular service designs, reducing development time and improving maintainability.',
@@ -100,9 +100,9 @@ export default {
 		},
 		{
 			company: 'Eastside Ventures',
-			title: 'Senior Backend Engineer (Lead)',
-			location: 'Remote',
-			period: 'Aug 2023 – Present (Part-time)',
+			title: 'Senior Backend Engineer',
+			location: 'Remote · Enugu State, Nigeria',
+			period: '2023 – 2025 (Part-time)',
 			bullets: [
 				'Architected backend infrastructure powering media, dating, and crypto platforms, designed for high concurrency and real-time engagement.',
 				'Built wallet infrastructure supporting BTC, USDC, and tokenized assets across Solana and Base networks, enabling secure multi-chain asset management.',
@@ -115,7 +115,7 @@ export default {
 			company: 'Flipeet Labs',
 			title: 'Chief Technology Officer (CTO)',
 			location: 'Remote',
-			period: 'Mar 2022 – Present',
+			period: '2022 – Present',
 			bullets: [
 				'Directed technology strategy and product roadmap, advancing Flipeet’s position in blockchain-powered fintech solutions.',
 				'Designed and launched the NFT marketplace backend, including wallet connections, multi-chain asset sync, smart contract integrations, and decentralized storage with IPFS.',
