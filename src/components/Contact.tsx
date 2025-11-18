@@ -3,14 +3,13 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { Mail, MapPin, Terminal } from 'lucide-react';
 import {
-	Mail,
-	MapPin,
-	Github,
-	Linkedin,
-	Twitter,
-	Terminal,
-} from 'lucide-react';
+	FaHackerrank,
+	FaGithub,
+	FaTwitter,
+	FaLinkedinIn,
+} from 'react-icons/fa';
 import config from '../../data/config.js';
 
 export function Contact() {
@@ -45,21 +44,28 @@ export function Contact() {
 		{
 			name: 'GitHub',
 			url: contact.links.github,
-			icon: Github,
+			icon: FaGithub,
 			color: 'hover:text-gray-300',
 			handle: '@kayceejenz',
 		},
 		{
+			name: 'Hackerrank',
+			url: contact.links.hackerrank,
+			icon: FaHackerrank,
+			color: 'hover:text-blue-400',
+			handle: '/kayceejenz',
+		},
+		{
 			name: 'LinkedIn',
 			url: contact.links.linkedin,
-			icon: Linkedin,
+			icon: FaLinkedinIn,
 			color: 'hover:text-blue-400',
 			handle: '/kayceejenz',
 		},
 		{
 			name: 'X (Twitter)',
 			url: contact.links.twitter,
-			icon: Twitter,
+			icon: FaTwitter,
 			color: 'hover:text-blue-400',
 			handle: '@kayceejenz',
 		},

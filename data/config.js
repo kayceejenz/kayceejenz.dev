@@ -204,6 +204,7 @@ export default {
 			linkedin: 'https://www.linkedin.com/in/kayceejenz/',
 			github: 'https://github.com/kayceejenz',
 			twitter: 'https://twitter.com/kayceejenz',
+			hackerrank: 'https://hackerrank.com/kayceejenz',
 		},
 	},
 };
