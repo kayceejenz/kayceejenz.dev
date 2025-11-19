@@ -253,10 +253,22 @@ export default {
 
 	certifications: [
 		{
+			name: 'The AI Engineer Course 2025: Complete AI Engineer Bootcamp',
+			issuer: 'Udemy',
+			date: 'Nov 2025',
+			credentialId: 'UC-7d8e4b36-2be9-4792-9e3e-4a60e53b1145',
+			skills: ['Artificial Intelligence (AI)'],
+			achievements: [
+				'Completed linear algebra foundations for ML and Data Science',
+			],
+			link: 'https://www.udemy.com/certificate/UC-7d8e4b36-2be9-4792-9e3e-4a60e53b1145/',
+			logo: 'Udemy',
+		},
+		{
 			name: 'Linear Algebra for Data Science and Machine Learning',
 			issuer: 'Udemy',
 			date: 'Sep 2025',
-			credentialId: null,
+			credentialId: 'UC-49ebbe90-8130-4899-841f-10f8c734e907',
 			skills: ['Artificial Intelligence (AI)'],
 			achievements: [
 				'Completed linear algebra foundations for ML and Data Science',
@@ -418,22 +430,6 @@ export default {
 			],
 			link: 'https://coursera.org/verify/MDRF34BPET26',
 			logo: 'Coursera',
-		},
-		{
-			name: 'Website Design and Development (Backend)',
-			issuer: 'Side Hustle',
-			date: 'Aug 2021',
-			credentialId: null,
-			skills: [
-				'Backend Development',
-				'API Development',
-				'NestJS',
-			],
-			achievements: [
-				'Completed backend development internship program',
-			],
-			link: 'https://onedrive.live.com/?redeem=aHR0cHM6Ly8xZHJ2Lm1zL3UvcyFBcnc5SC1aS3BvSXNncTUwb29QTk9NaXFwODJWQ2c%5FZT1jTkdrd0g&cid=2C82A64AE61F3DBC&id=2C82A64AE61F3DBC%2138772&parId=2C82A64AE61F3DBC%2138771&o=OneUp',
-			logo: 'SideHustle',
 		},
 		{
 			name: 'Jobberman Soft-Skills Training',
