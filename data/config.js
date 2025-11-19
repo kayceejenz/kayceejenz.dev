@@ -261,7 +261,7 @@ export default {
 			achievements: [
 				'Completed linear algebra foundations for ML and Data Science',
 			],
-			link: 'https://www.udemy.com/certificate/UC-08017e60-01b0-4f67-abf2-d4aaa9f7be5f/',
+			link: 'https://www.udemy.com/certificate/UC-49ebbe90-8130-4899-841f-10f8c734e907/',
 			logo: 'Udemy',
 		},
 		{
