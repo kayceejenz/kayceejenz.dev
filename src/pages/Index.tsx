@@ -9,6 +9,8 @@ import { Contact } from '@/components/Contact';
 import { Button } from '@/components/ui/button';
 import { ArrowUp, Terminal } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import Certifications from '@/components/Certification';
+import Education from '@/components/Education';
 
 export default function Index() {
 	const [showScrollTop, setShowScrollTop] = useState(false);
@@ -76,6 +78,8 @@ export default function Index() {
 				<About />
 				<Skills />
 				<Experience />
+				<Education />
+				<Certifications />
 				<Projects />
 				<Contact />
 			</main>
