@@ -253,28 +253,48 @@ export default {
 
 	certifications: [
 		{
+			name: 'Exploring Artificial Intelligence Use Cases and Applications',
+			issuer: 'AWS Training & Certification',
+			date: 'Nov 2025',
+			credentialId: '59a64bc6-83b1-4e8a-b9ee-4d3bc171682e',
+			skills: ['Artificial Intelligence (AI)'],
+			link: 'https://1drv.ms/b/c/2c82a64ae61f3dbc/ESPhBvx1OBxBps6yjka2iwwBagOm7CEORUGAUNnS21AE_A?e=atVLWK',
+			logo: 'AWS',
+			category: 'AI/ML',
+			type: 'Training',
+		},
+		{
+			name: 'Fundamentals of Machine Learning and Artificial Intelligence',
+			issuer: 'AWS Training & Certification',
+			date: 'Nov 2025',
+			credentialId: '19b1c41b-dab1-417e-9d8d-24bc4123458b',
+			skills: ['Artificial Intelligence (AI)'],
+			link: 'https://1drv.ms/b/c/2c82a64ae61f3dbc/Ed3SMnDI_SZOug4mQal4524BrS7FHz9rLm7d5ouKy1O9UQ?e=3IuZ58',
+			logo: 'AWS',
+			category: 'AI/ML',
+			type: 'Training',
+		},
+		{
 			name: 'The AI Engineer Course 2025: Complete AI Engineer Bootcamp',
 			issuer: 'Udemy',
 			date: 'Nov 2025',
 			credentialId: 'UC-7d8e4b36-2be9-4792-9e3e-4a60e53b1145',
 			skills: ['Artificial Intelligence (AI)'],
-			achievements: [
-				'Completed linear algebra foundations for ML and Data Science',
-			],
 			link: 'https://www.udemy.com/certificate/UC-7d8e4b36-2be9-4792-9e3e-4a60e53b1145/',
 			logo: 'Udemy',
+			category: 'AI/ML',
+			type: 'Training',
 		},
 		{
 			name: 'Linear Algebra for Data Science and Machine Learning',
 			issuer: 'Udemy',
 			date: 'Sep 2025',
 			credentialId: 'UC-49ebbe90-8130-4899-841f-10f8c734e907',
-			skills: ['Artificial Intelligence (AI)'],
-			achievements: [
-				'Completed linear algebra foundations for ML and Data Science',
-			],
+			skills: ['AI/ML', 'Data Science'],
 			link: 'https://www.udemy.com/certificate/UC-49ebbe90-8130-4899-841f-10f8c734e907/',
 			logo: 'Udemy',
+			category: 'AI/ML',
+			type: 'Training',
 		},
 		{
 			name: 'Software Engineer Certificate',
@@ -282,23 +302,21 @@ export default {
 			date: 'Nov 2023',
 			credentialId: '7c605c872fc3',
 			skills: ['ASP.NET Core', 'NestJS'],
-			achievements: [
-				'Passed HackerRank software engineering assessments',
-			],
 			link: 'https://www.hackerrank.com/certificates/7c605c872fc3',
 			logo: 'HackerRank',
+			category: 'Software Development',
+			type: 'Professional Certification',
 		},
 		{
 			name: 'SQL (Advanced) Certificate',
 			issuer: 'HackerRank',
 			date: 'May 2023',
 			credentialId: '2e1f667dc216',
-			skills: ['SQL', 'Database Query Optimization'],
-			achievements: [
-				'Demonstrated advanced SQL querying and analytics skills',
-			],
+			skills: ['SQL', 'Database Optimization'],
 			link: 'https://www.hackerrank.com/certificates/2e1f667dc216',
 			logo: 'HackerRank',
+			category: 'Database Management',
+			type: 'Professional Certification',
 		},
 		{
 			name: 'Problem Solving (Basic) Certificate',
@@ -306,11 +324,10 @@ export default {
 			date: 'Mar 2023',
 			credentialId: '1e338eb6d3b0',
 			skills: ['Logical Reasoning', 'Algorithms'],
-			achievements: [
-				'Completed foundational problem-solving challenges',
-			],
 			link: 'https://www.hackerrank.com/certificates/1e338eb6d3b0',
 			logo: 'HackerRank',
+			category: 'Problem Solving',
+			type: 'Professional Certification',
 		},
 		{
 			name: 'Problem Solving (Intermediate) Certificate',
@@ -318,11 +335,10 @@ export default {
 			date: 'Mar 2023',
 			credentialId: 'a42592d1f289',
 			skills: ['Algorithms', 'Data Structures'],
-			achievements: [
-				'Solved intermediate-level algorithmic problems',
-			],
 			link: 'https://www.hackerrank.com/certificates/a42592d1f289',
 			logo: 'HackerRank',
+			category: 'Problem Solving',
+			type: 'Professional Certification',
 		},
 		{
 			name: 'REST API (Intermediate) Certificate',
@@ -333,12 +349,12 @@ export default {
 				'REST API Development',
 				'ASP.NET Core',
 				'NestJS',
-			],
-			achievements: [
-				'Built and optimized API endpoints in challenges',
+				'FastAPI',
 			],
 			link: 'https://www.hackerrank.com/certificates/36990c1b5f95',
 			logo: 'HackerRank',
+			category: 'API Development',
+			type: 'Professional Certification',
 		},
 		{
 			name: 'SQL (Basic) Certificate',
@@ -346,11 +362,10 @@ export default {
 			date: 'Mar 2023',
 			credentialId: '57329ad5e38b',
 			skills: ['SQL'],
-			achievements: [
-				'Completed basic SQL operations and queries',
-			],
 			link: 'https://www.hackerrank.com/certificates/57329ad5e38b',
 			logo: 'HackerRank',
+			category: 'Database Management',
+			type: 'Professional Certification',
 		},
 		{
 			name: 'SQL (Intermediate) Certificate',
@@ -358,9 +373,10 @@ export default {
 			date: 'Mar 2023',
 			credentialId: 'a3701a66f8f1',
 			skills: ['SQL', 'Database Joins & Aggregation'],
-			achievements: ['Completed intermediate SQL challenges'],
 			link: 'https://www.hackerrank.com/certificates/a3701a66f8f1',
 			logo: 'HackerRank',
+			category: 'Database Management',
+			type: 'Professional Certification',
 		},
 		{
 			name: "Ethereum and Solidity: The Complete Developer's Guide",
@@ -374,11 +390,10 @@ export default {
 				'Web3',
 				'Blockchain',
 			],
-			achievements: [
-				'Built full-stack dApps and deployed smart contracts',
-			],
 			link: 'https://www.udemy.com/certificate/UC-08017e60-01b0-4f67-abf2-d4aaa9f7be5f/',
 			logo: 'Udemy',
+			category: 'Blockchain Development',
+			type: 'Training',
 		},
 		{
 			name: 'JavaScript (Basic) Certificate',
@@ -386,11 +401,10 @@ export default {
 			date: 'Nov 2022',
 			credentialId: 'E318F3565002',
 			skills: ['JavaScript', 'API Development', 'NestJS'],
-			achievements: [
-				'Completed fundamental JavaScript challenges',
-			],
 			link: 'https://www.hackerrank.com/certificates/E318F3565002',
 			logo: 'HackerRank',
+			category: 'Software Development',
+			type: 'Professional Certification',
 		},
 		{
 			name: 'JavaScript (Intermediate) Certificate',
@@ -398,11 +412,10 @@ export default {
 			date: 'Nov 2022',
 			credentialId: 'D54ADA727140',
 			skills: ['JavaScript', 'API Development', 'NestJS'],
-			achievements: [
-				'Solved intermediate JavaScript problems',
-			],
 			link: 'https://www.hackerrank.com/certificates/d54ada727140',
 			logo: 'HackerRank',
+			category: 'Software Development',
+			type: 'Professional Certification',
 		},
 		{
 			name: 'Node.js (Basic) Certificate',
@@ -410,11 +423,10 @@ export default {
 			date: 'Nov 2022',
 			credentialId: 'FC9761816854',
 			skills: ['Node.js', 'API Development', 'NestJS'],
-			achievements: [
-				'Completed basic server-side programming challenges',
-			],
 			link: 'https://www.hackerrank.com/certificates/FC9761816854',
 			logo: 'HackerRank',
+			category: 'Software Development',
+			type: 'Professional Certification',
 		},
 		{
 			name: 'Cloud Computing Basics (Cloud 101)',
@@ -425,11 +437,10 @@ export default {
 				'Cloud Computing Fundamentals',
 				'Networking Basics',
 			],
-			achievements: [
-				'Completed foundational cloud computing training',
-			],
 			link: 'https://coursera.org/verify/MDRF34BPET26',
 			logo: 'Coursera',
+			category: 'Cloud Computing',
+			type: 'Training',
 		},
 		{
 			name: 'Jobberman Soft-Skills Training',
@@ -441,11 +452,10 @@ export default {
 				'Teamwork',
 				'Professional Skills',
 			],
-			achievements: [
-				'Completed Jobberman employability training',
-			],
 			link: 'https://onedrive.live.com/?redeem=aHR0cHM6Ly8xZHJ2Lm1zL2IvcyFBcnc5SC1aS3BvSXNncTVVOGZlT1MwcFQxb20xblE%5FZT1YeFZPZFM&cid=2C82A64AE61F3DBC&id=2C82A64AE61F3DBC%2138740&parId=2C82A64AE61F3DBC%2138739&o=OneUp',
 			logo: 'Jobberman',
+			category: 'Professional Development',
+			type: 'Training',
 		},
 	],
 };
