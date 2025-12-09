@@ -10,6 +10,12 @@ import {
 	BookOpen,
 	Eye,
 	EyeOff,
+	Trophy,
+	Star,
+	TrendingUp,
+	Target,
+	Users,
+	Brain,
 } from 'lucide-react';
 import config from '../../data/config.js';
 
@@ -86,100 +92,138 @@ export default function Education() {
 													</span>
 												</div>
 
-												<CardHeader className='bg-card/30'>
-													<div className='flex items-start gap-3'>
-														<div className='p-2 bg-primary/10 rounded-lg border border-primary/30 neon-glow'>
-															<GraduationCap className='h-5 w-5 text-primary' />
+												<CardHeader className='bg-card/30 relative'>
+													{/* Achievement Badge */}
+													{edu.status ===
+														'Graduated' && (
+														<div className='absolute -top-3 -right-3 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-mono font-bold shadow-lg flex items-center gap-1'>
+															<Trophy className='h-3 w-3' />
+															Completed
+														</div>
+													)}
+													{edu.status ===
+														'In Progress' && (
+														<div className='absolute -top-3 -right-3 bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-mono font-bold shadow-lg flex items-center gap-1'>
+															<TrendingUp className='h-3 w-3' />
+															Active
+														</div>
+													)}
+
+													<div className='flex items-start gap-4'>
+														<div className='p-3 bg-primary/10 rounded-xl border border-primary/30 neon-glow'>
+															<GraduationCap className='h-6 w-6 text-primary' />
 														</div>
 														<div className='flex-1'>
-															<CardTitle className='text-lg text-foreground font-mono leading-tight mb-1'>
-																{
-																	edu.degree
-																}
+															<CardTitle className='text-xl text-foreground font-mono leading-tight mb-2'>
+																<span className='text-primary'>
+																	const
+																</span>{' '}
+																degree
+																=
+																"
+																<span className='text-green-400'>
+																	{
+																		edu.degree
+																	}
+																</span>
+																"
 															</CardTitle>
-															<p className='text-sm text-muted-foreground font-mono'>
-																{
-																	edu.field
-																}
-															</p>
+															<div className='flex items-center gap-2 mb-2'>
+																<Brain className='h-4 w-4 text-primary' />
+																<p className='text-base text-muted-foreground font-mono'>
+																	{
+																		edu.field
+																	}
+																</p>
+															</div>
+															<div className='flex items-center gap-2'>
+																<Users className='h-4 w-4 text-primary' />
+																<p className='text-sm text-primary font-mono font-semibold'>
+																	{
+																		edu.institution
+																	}
+																</p>
+															</div>
 														</div>
 													</div>
 												</CardHeader>
 
-												<CardContent className='space-y-4 p-6'>
-													{/* Institution info */}
+												<CardContent className='space-y-6 p-6'>
+													{/* Academic Details */}
 													<div className='code-block'>
-														<div className='font-mono text-xs space-y-1'>
-															<div className='text-primary'>
-																const
-																education
-																={' '}
-																{
-																	'{'
-																}
-															</div>
-															<div className='ml-2 text-muted-foreground'>
-																institution:{' '}
-																<span className='text-foreground'>
-																	"
+														<div className='font-mono text-sm space-y-2'>
+															<div className='text-primary flex items-center gap-2'>
+																<span>
+																	const
+																	academicRecord
+																	={' '}
 																	{
-																		edu.institution
+																		'{'
 																	}
-
-																	"
 																</span>
-
-																,
-															</div>
-															<div className='ml-2 text-muted-foreground'>
-																location:{' '}
-																<span className='text-foreground'>
-																	"
-																	{
-																		edu.location
-																	}
-
-																	"
-																</span>
-
-																,
-															</div>
-															<div className='ml-2 text-muted-foreground'>
-																period:{' '}
-																<span className='text-primary'>
-																	"
-																	{
-																		edu.period
-																	}
-
-																	"
-																</span>
-
-																,
-															</div>
-															<div className='ml-2 text-muted-foreground'>
-																grade:{' '}
-																<span className='text-green-400'>
-																	"
-																	{
-																		edu.grade
-																	}
-
-																	"
-																</span>
-
-																,
-															</div>
-															<div className='ml-2 text-muted-foreground'>
-																status:{' '}
-																<span className='text-green-400'>
-																	"
+																<Badge
+																	variant='outline'
+																	className='text-xs'>
 																	{
 																		edu.status
 																	}
-
-																	"
-																</span>
+																</Badge>
+															</div>
+															<div className='ml-4 text-muted-foreground space-y-1'>
+																<div>
+																	institution:{' '}
+																	<span className='text-yellow-500'>
+																		"
+																		{
+																			edu.institution
+																		}
+																		"
+																	</span>
+																	,
+																</div>
+																<div>
+																	location:{' '}
+																	<span className='text-blue-400'>
+																		"
+																		{
+																			edu.location
+																		}
+																		"
+																	</span>
+																	,
+																</div>
+																<div>
+																	period:{' '}
+																	<span className='text-purple-400'>
+																		"
+																		{
+																			edu.period
+																		}
+																		"
+																	</span>
+																	,
+																</div>
+																<div>
+																	grade:{' '}
+																	<span className='text-green-400'>
+																		"
+																		{
+																			edu.grade
+																		}
+																		"
+																	</span>
+																	,
+																</div>
+																<div>
+																	coursesCompleted:{' '}
+																	<span className='text-orange-400'>
+																		{
+																			edu
+																				.courses
+																				.length
+																		}
+																	</span>
+																</div>
 															</div>
 															<div className='text-primary'>
 																{
@@ -189,62 +233,122 @@ export default function Education() {
 														</div>
 													</div>
 
-													{/* Meta info badges */}
-													<div className='flex flex-wrap gap-3 text-xs font-mono'>
-														<div className='flex items-center gap-1.5 text-muted-foreground'>
-															<Calendar className='h-3 w-3 text-primary' />
-															<span>
-																{
-																	edu.period
-																}
-															</span>
+													{/* Enhanced Meta Info */}
+													<div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
+														<div className='flex items-center gap-2 p-3 bg-primary/5 rounded-lg border border-primary/20'>
+															<Calendar className='h-4 w-4 text-primary' />
+															<div>
+																<div className='text-xs text-muted-foreground font-mono'>
+																	Duration
+																</div>
+																<div className='text-sm font-mono font-semibold'>
+																	{
+																		edu.period
+																	}
+																</div>
+															</div>
 														</div>
-														<div className='flex items-center gap-1.5 text-muted-foreground'>
-															<MapPin className='h-3 w-3 text-primary' />
-															<span>
-																{
-																	edu.location
-																}
-															</span>
+														<div className='flex items-center gap-2 p-3 bg-green-500/5 rounded-lg border border-green-500/20'>
+															<Award className='h-4 w-4 text-green-500' />
+															<div>
+																<div className='text-xs text-muted-foreground font-mono'>
+																	Achievement
+																</div>
+																<div className='text-sm font-mono font-semibold text-green-500'>
+																	{
+																		edu.grade
+																	}
+																</div>
+															</div>
 														</div>
-														<div className='flex items-center gap-1.5 text-muted-foreground'>
-															<Award className='h-3 w-3 text-primary' />
-															<span>
-																{
-																	edu.grade
-																}
-															</span>
+														<div className='flex items-center gap-2 p-3 bg-blue-500/5 rounded-lg border border-blue-500/20'>
+															<MapPin className='h-4 w-4 text-blue-500' />
+															<div>
+																<div className='text-xs text-muted-foreground font-mono'>
+																	Location
+																</div>
+																<div className='text-sm font-mono font-semibold text-blue-500'>
+																	{
+																		edu.location
+																	}
+																</div>
+															</div>
 														</div>
 													</div>
 
-													{/* Key courses */}
+													{/* Key Courses with Enhanced Display */}
 													<div>
-														<div className='font-mono text-xs text-primary mb-2 flex items-center gap-2'>
-															<BookOpen className='h-3 w-3' />
-															//
-															Key
-															Courses
+														<div className='flex items-center justify-between mb-3'>
+															<div className='font-mono text-sm text-primary flex items-center gap-2'>
+																<BookOpen className='h-4 w-4' />
+																//
+																Core
+																Curriculum
+															</div>
+															<Badge
+																variant='secondary'
+																className='text-xs font-mono'>
+																{
+																	edu
+																		.courses
+																		.length
+																}{' '}
+																courses
+															</Badge>
 														</div>
-														<div className='flex flex-wrap gap-2'>
+														<div className='grid grid-cols-1 md:grid-cols-2 gap-2'>
 															{edu.courses.map(
 																(
 																	course,
 																	courseIndex
 																) => (
-																	<Badge
+																	<div
 																		key={
 																			courseIndex
 																		}
-																		variant='outline'
-																		className='bg-primary/10 text-primary border-primary/30 hover:border-primary hover:neon-glow font-mono text-xs transition-all duration-300'>
-																		{
-																			course
-																		}
-																	</Badge>
+																		className='flex items-center gap-2 p-2 bg-card/30 rounded-md border border-primary/10 hover:border-primary/30 transition-colors'>
+																		<Target className='h-3 w-3 text-primary' />
+																		<span className='text-sm font-mono text-muted-foreground'>
+																			{
+																				course
+																			}
+																		</span>
+																	</div>
 																)
 															)}
 														</div>
 													</div>
+
+													{/* Educational Impact */}
+													{edu.status ===
+														'Graduated' && (
+														<div className='pt-4 border-t border-primary/20'>
+															<div className='flex items-center justify-center gap-2 text-green-500 font-mono text-sm'>
+																<Trophy className='h-4 w-4' />
+																<span>
+																	//
+																	Successfully
+																	completed
+																	academic
+																	program
+																</span>
+															</div>
+														</div>
+													)}
+													{edu.status ===
+														'In Progress' && (
+														<div className='pt-4 border-t border-primary/20'>
+															<div className='flex items-center justify-center gap-2 text-blue-500 font-mono text-sm'>
+																<TrendingUp className='h-4 w-4' />
+																<span>
+																	//
+																	Currently
+																	pursuing
+																	degree
+																</span>
+															</div>
+														</div>
+													)}
 												</CardContent>
 											</div>
 										</Card>

@@ -1,6 +1,17 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Server, Coins, Cloud, Code, Database } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import {
+	Server,
+	Coins,
+	Cloud,
+	Code,
+	Database,
+	TrendingUp,
+	Award,
+	Star,
+	Zap,
+} from 'lucide-react';
 import { useState } from 'react';
 import config from '../../data/config.js';
 
@@ -58,9 +69,10 @@ export function Skills() {
 						{'{ Technical Skills }'}
 					</h2>
 					<div className='w-24 h-1 bg-primary mx-auto neon-glow'></div>
-					<p className='text-lg text-muted-foreground mt-6 max-w-2xl mx-auto font-mono'>
-						// Expertise across the full
-						backend development stack
+					<p className='text-lg text-muted-foreground mt-6 max-w-3xl mx-auto font-mono leading-relaxed'>
+						// Comprehensive tech stack
+						mastery across backend,
+						blockchain, and cloud
 					</p>
 				</div>
 

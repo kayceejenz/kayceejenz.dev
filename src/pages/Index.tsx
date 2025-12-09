@@ -7,10 +7,22 @@ import { Experience } from '@/components/Experience';
 import { Projects } from '@/components/Projects';
 import { Contact } from '@/components/Contact';
 import { Button } from '@/components/ui/button';
-import { ArrowUp, Terminal } from 'lucide-react';
+import {
+	ArrowUp,
+	Terminal,
+	Mail,
+	Github,
+	Linkedin,
+	Heart,
+	Code2,
+	Zap,
+	Award,
+	Calendar,
+} from 'lucide-react';
 import { useEffect, useState } from 'react';
 import Certifications from '@/components/Certification';
 import Education from '@/components/Education';
+import { Blog } from '@/components/Blog';
 
 export default function Index() {
 	const [showScrollTop, setShowScrollTop] = useState(false);
@@ -45,7 +57,9 @@ export default function Index() {
 								'about',
 								'skills',
 								'experience',
+								'certifications',
 								'projects',
+								'blog',
 								'contact',
 							].map(item => (
 								<a
@@ -81,48 +95,242 @@ export default function Index() {
 				<Education />
 				<Certifications />
 				<Projects />
+				<Blog />
 				<Contact />
 			</main>
 
-			{/* Footer */}
-			<footer className='bg-card/50 backdrop-blur border-t border-primary/20 text-foreground py-8 px-6'>
-				<div className='max-w-6xl mx-auto'>
-					<div className='terminal-window'>
-						<div className='terminal-header'>
-							<div className='terminal-dot red'></div>
-							<div className='terminal-dot yellow'></div>
-							<div className='terminal-dot green'></div>
-							<span className='font-mono text-xs text-muted-foreground ml-2'>
-								~/footer.js
-							</span>
+			{/* Enhanced Footer */}
+			<footer className='bg-card/50 backdrop-blur border-t border-primary/20 text-foreground py-12 px-6'>
+				<div className='max-w-7xl mx-auto'>
+					<div className='grid lg:grid-cols-4 gap-8 mb-8'>
+						{/* Main Info */}
+						<div className='lg:col-span-2 space-y-6'>
+							<div className='terminal-window'>
+								<div className='terminal-header'>
+									<div className='terminal-dot red'></div>
+									<div className='terminal-dot yellow'></div>
+									<div className='terminal-dot green'></div>
+									<span className='font-mono text-xs text-muted-foreground ml-2'>
+										~/developer_info.js
+									</span>
+								</div>
+								<div className='p-6'>
+									<div className='font-mono text-sm space-y-3'>
+										<div className='text-primary'>
+											const
+											developer
+											={' '}
+											{
+												'{'
+											}
+										</div>
+										<div className='ml-4 space-y-2 text-muted-foreground'>
+											<div>
+												name:{' '}
+												<span className='text-foreground'>
+													"Precious
+													Kosisochukwu
+													(Okolo)"
+												</span>
+
+												,
+											</div>
+											<div>
+												role:{' '}
+												<span className='text-green-400'>
+													"Backend
+													Software
+													Engineer
+												</span>
+
+												,
+											</div>
+											<div>
+												motto:{' '}
+												<span className='text-yellow-400'>
+													"Be
+													somebody,
+													stay
+													Legendary"
+												</span>
+
+												,
+											</div>
+
+											<div>
+												status:{' '}
+												<span className='text-green-400'>
+													"Available
+													for
+													opportunities"
+												</span>
+											</div>
+										</div>
+										<div className='text-primary'>
+											{
+												'}'
+											}
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
-						<div className='p-6 text-center'>
-							<div className='font-mono text-sm space-y-2'>
-								<div className='text-primary'>
-									const
-									footer ={' '}
-									{'{'}
+
+						{/* Quick Links */}
+						<div className='space-y-6'>
+							<h3 className='font-mono text-lg text-primary'>
+								// Quick Links
+							</h3>
+							<div className='space-y-3'>
+								{[
+									'About',
+									'Skills',
+									'Experience',
+									'Projects',
+									'Blog',
+									'Contact',
+								].map(item => (
+									<a
+										key={
+											item
+										}
+										href={`#${item.toLowerCase()}`}
+										className='block font-mono text-sm text-muted-foreground hover:text-primary transition-colors hover:neon-glow'>
+										{'> ' +
+											item.toLowerCase() +
+											'()'}
+									</a>
+								))}
+							</div>
+						</div>
+
+						{/* Professional Stats */}
+						<div className='space-y-6'>
+							<h3 className='font-mono text-lg text-primary'>
+								// Portfolio
+								Stats
+							</h3>
+							<div className='space-y-4'>
+								<div className='flex items-center gap-2'>
+									<Code2 className='h-4 w-4 text-primary' />
+									<span className='font-mono text-sm text-muted-foreground'>
+										6+
+										years
+										coding
+									</span>
 								</div>
 
-								<div className='ml-4 text-muted-foreground'>
-									catch
-									phrase:{' '}
-									<span className='text-foreground'>
-										"Be
-										somebody,
-										stay
-										Legendary"
+								<div className='flex items-center gap-2'>
+									<Award className='h-4 w-4 text-green-500' />
+									<span className='font-mono text-sm text-muted-foreground'>
+										48+
+										Azure
+										badges
 									</span>
-									,
 								</div>
-								<div className='ml-4 text-muted-foreground'>
-									made by:{' '}
-									<span className='text-foreground'>
-										"kayceejenz"
-									</span>{' '}
+								<div className='flex items-center gap-2'>
+									<Calendar className='h-4 w-4 text-blue-500' />
+									<span className='font-mono text-sm text-muted-foreground'>
+										Last
+										updated{' '}
+										{new Date().getFullYear()}
+									</span>
 								</div>
-								<div className='text-primary'>
-									{'}'}
+							</div>
+						</div>
+					</div>
+
+					{/* Footer Bottom */}
+					<div className='border-t border-primary/20 pt-8'>
+						<div className='flex flex-col md:flex-row justify-between items-center gap-6'>
+							{/* Copyright */}
+							<div className='font-mono text-sm text-muted-foreground'>
+								<span>
+									©{' '}
+									{new Date().getFullYear()}{' '}
+									kayceejenz.dev{' '}
+									{''}
+								</span>
+								<span>
+									Built
+									with{' '}
+								</span>
+								<Heart className='inline h-3 w-3 text-red-500 mx-1' />
+								<span>
+									{' '}
+									and lots
+									of ☕
+								</span>
+							</div>
+
+							{/* Social Links */}
+							<div className='flex items-center gap-4'>
+								<Button
+									variant='outline'
+									size='sm'
+									className='border-primary/30 hover:border-primary hover:neon-glow font-mono'
+									onClick={() =>
+										(window.location.href =
+											'mailto:kayceejenz@gmail.com')
+									}>
+									<Mail className='h-3 w-3 mr-2' />
+									Email
+								</Button>
+								<Button
+									variant='outline'
+									size='sm'
+									className='border-primary/30 hover:border-primary hover:neon-glow font-mono'
+									onClick={() =>
+										window.open(
+											'https://github.com/kayceejenz',
+											'_blank'
+										)
+									}>
+									<Github className='h-3 w-3 mr-2' />
+									GitHub
+								</Button>
+								<Button
+									variant='outline'
+									size='sm'
+									className='border-primary/30 hover:border-primary hover:neon-glow font-mono'
+									onClick={() =>
+										window.open(
+											'https://linkedin.com/in/kayceejenz',
+											'_blank'
+										)
+									}>
+									<Linkedin className='h-3 w-3 mr-2' />
+									LinkedIn
+								</Button>
+							</div>
+						</div>
+
+						{/* Final Developer Note */}
+						<div className='mt-6 text-center'>
+							<div className='code-block inline-block p-4'>
+								<div className='font-mono text-xs text-center space-y-1'>
+									<div className='text-primary'>
+										//
+										Thanks
+										for
+										visiting!
+									</div>
+									<div className='text-muted-foreground'>
+										If
+										you
+										made
+										it
+										this
+										far,
+										you're
+										awesome.
+										Let's
+										build
+										something
+										amazing
+										together!
+										🚀
+									</div>
 								</div>
 							</div>
 						</div>

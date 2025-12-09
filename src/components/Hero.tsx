@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
-import { Download, Mail, Terminal } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Download, Mail, Terminal, Code2, Zap, Award, TrendingUp, Users, Star } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import config from '../../data/config.js';
 

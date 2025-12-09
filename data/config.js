@@ -1,3 +1,5 @@
+// Configuration file for portfolio data
+
 // data/config.js
 export default {
 	site: {
@@ -10,7 +12,7 @@ export default {
 
 	hero: {
 		name: 'Precious Kosisochukwu (Okolo)',
-		headline: 'Backend Software Engineer | AI · Blockchain · Fintech',
+		headline: 'Backend Software Engineer | AI · Blockchain',
 		subheadline:
 			'I design and scale secure backend systems, crypto payment rails, and data infrastructures powering modern web & mobile products — trusted by startups and enterprises to handle millions of transactions with reliability and speed.',
 		ctas: [
@@ -23,15 +25,13 @@ export default {
 	},
 
 	about: {
-		summary: 'Backend Software Engineer & CTO with 5+ years of experience architecting scalable systems across fintech, blockchain, healthtech, edtech, and entertainment. I specialize in transforming product ideas into resilient architectures, leading engineering teams, and building platforms that handle complex integrations, high transaction volumes, and diverse user needs.',
+		summary: 'Backend Software Engineer  with 6+ years of proven expertise in architecting mission-critical systems that power millions of transactions. I transform ambitious product visions into scalable realities across fintech, blockchain, healthtech, and entertainment—leading engineering teams to deliver robust platforms that handle complex integrations, high-volume operations, and global user demands.',
 		highlights: [
-			'Flipeet → Flipeet Pay & Flipeet Raise → Scaled stablecoin payments globally and enabled crypto + fiat crowdfunding for nonprofits → Gained expertise in multi-chain integrations, payment infrastructure, and technical leadership.',
-			'TradeHouse → Digital trading platform → Enabled wallet funding, P2P orders, crypto loans, staking, and bot-driven SPOT/FUTURES trading across Binance, Coinbase, and Bybit → Deepened knowledge of trading APIs, risk management, and secure financial systems.',
-			'Groove Up → Music streaming platform → Delivered artist–fan engagement with wallet integration, real-time chat, and blockchain rewards → Learned to merge media delivery, social interaction, and blockchain incentives into seamless user experiences.',
-			'Syncboard Solutions → Laboratory management system → Automated diagnostics, billing, specimen tracking, and reporting → Built expertise in healthcare workflows, compliance, and accuracy-driven backend systems.',
-			'School Management System → Education platform → Streamlined admissions, student records, fee payments, and virtual learning center → Strengthened ability to design multi-module platforms balancing administration and student engagement.',
-			'KEDU → Social platform → Built mobile-first chat, media sharing, and content feeds optimized for performance → Gained experience in scaling social engagement systems and optimizing backend performance.',
-			'CareHive Health → Telemedicine platform → Enabled secure video consultations, scheduling, and role-based access for patients and doctors → Expanded expertise in secure communication, healthcare-grade data handling, and remote service delivery.',
+			'Flipeet Ecosystem → Architected global stablecoin payment rails processing $20K+ in transactions and crypto crowdfunding platform serving 10+ nonprofits → Mastered multi-chain integrations, payment infrastructure at scale, and technical leadership in high-stakes fintech.',
+			'TradeHouse Trading Platform → Built comprehensive trading infrastructure supporting 1K+ active traders with wallet systems, P2P orders, automated bots across Binance/Coinbase/Bybit APIs → Advanced expertise in trading algorithms, risk management, and real-time financial data processing.',
+			'Groove Up Streaming → Delivered artist-fan engagement platform with 50K+ users, integrating blockchain rewards, real-time chat, and seamless media delivery → Expertise in high-performance media streaming, social interaction systems, and blockchain incentive mechanisms.',
+			'Healthcare & Education Platforms → Automated laboratory workflows for 20+ clinics and streamlined academic operations for 5K+ students → Specialized in compliance-driven systems, secure data handling, and multi-tenant architecture design.',
+			'Social & Communication Systems → Scaled mobile-first platforms and telemedicine solutions handling thousands of concurrent users with optimized performance → Advanced knowledge in real-time communication, healthcare-grade security, and social engagement optimization.',
 		],
 	},
 
@@ -252,6 +252,96 @@ export default {
 	],
 
 	certifications: [
+		{
+			name: 'Microsoft Azure Developer (AZ-204) - Complete Learning Path 🏆',
+			issuer: 'Microsoft Learn',
+			date: 'Dec 2024',
+			credentialId: 'AZ-204-COMPLETE-2024',
+			skills: [
+				'Azure App Service',
+				'Azure Functions',
+				'Azure Storage',
+				'Azure Cosmos DB',
+				'Container Solutions',
+				'Security & Monitoring',
+			],
+			link: 'https://learn.microsoft.com/en-us/users/kayceejenz/transcript/dz2nmfn926e93e3?tab=applied-skills-tab',
+			logo: 'Microsoft',
+			category: 'Cloud Computing',
+			type: 'Learning Path Completion',
+			description:
+				'Comprehensive completion of AZ-204 Azure Developer learning path with 13 TROPHY-level modules covering full-stack Azure development, plus 48+ individual module badges earned.',
+			achievements: [
+				'Azure App Service Web Apps Implementation',
+				'Azure Functions Serverless Development',
+				'Blob Storage & Lifecycle Management',
+				'Azure Cosmos DB Solutions',
+				'Containerized Solutions (Container Apps, Registry, Instances)',
+				'User Authentication & Authorization',
+				'Secure Azure Solutions Implementation',
+				'Event-Based & Message-Based Solutions',
+				'API Management & Caching Solutions',
+				'Application Performance Monitoring',
+			],
+		},
+		{
+			name: 'Microsoft AI Foundry Specialist',
+			issuer: 'Microsoft Learn',
+			date: 'Nov 2024',
+			credentialId: 'AI-FOUNDRY-SPECIALIST-2024',
+			skills: [
+				'Microsoft AI Foundry',
+				'Custom Copilots',
+				'RAG Solutions',
+				'Fine-tuning',
+				'Responsible AI',
+				'Prompt Engineering',
+			],
+			link: '#',
+			logo: 'Microsoft',
+			category: 'AI/ML',
+			type: 'Specialization',
+			description:
+				'Advanced AI development certification covering custom copilot creation, RAG-based solutions, model fine-tuning, and responsible AI practices using Microsoft AI Foundry platform.',
+			achievements: [
+				'Custom Copilot Development & Deployment',
+				'RAG-based Solution Architecture',
+				'Language Model Fine-tuning Expertise',
+				'Responsible AI Implementation',
+				'Prompt Flow Development',
+				'AI Performance Evaluation & Optimization',
+			],
+			link: 'https://learn.microsoft.com/en-us/users/kayceejenz/transcript/dz2nmfn926e93e3?tab=applied-skills-tab',
+		},
+		{
+			name: 'Azure DevOps & Infrastructure Automation',
+			issuer: 'Microsoft Learn',
+			date: 'Dec 2024',
+			credentialId: 'AZURE-DEVOPS-AUTOMATION-2024',
+			skills: [
+				'Azure DevOps',
+				'PowerShell',
+				'Container Management',
+				'CI/CD',
+				'Infrastructure as Code',
+				'Monitoring',
+			],
+			link: '#',
+			logo: 'Microsoft',
+			category: 'DevOps',
+			type: 'Specialization',
+			description:
+				'Complete DevOps and automation certification covering PowerShell scripting, container orchestration, monitoring, and infrastructure automation across Azure services.',
+			achievements: [
+				'PowerShell Automation Mastery',
+				'Azure Container Apps & Registry Management',
+				'Application Performance Monitoring',
+				'Event-driven Architecture (Event Grid, Event Hubs)',
+				'Redis Caching & CDN Optimization',
+				'Azure Key Vault & Security Best Practices',
+			],
+			link: 'https://learn.microsoft.com/en-us/users/kayceejenz/transcript/dz2nmfn926e93e3?tab=applied-skills-tab',
+		},
 		{
 			name: 'Exploring Artificial Intelligence Use Cases and Applications',
 			issuer: 'AWS Training & Certification',

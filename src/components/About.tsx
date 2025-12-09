@@ -1,6 +1,18 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Download, CheckCircle, Code2 } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import {
+	Download,
+	CheckCircle,
+	Code2,
+	Zap,
+	Users,
+	Award,
+	TrendingUp,
+	Target,
+	Star,
+	Rocket,
+} from 'lucide-react';
 import config from '../../data/config.js';
 
 export function About() {
@@ -9,92 +21,26 @@ export function About() {
 	return (
 		<section id='about' className='py-20 px-6 bg-background'>
 			<div className='max-w-6xl mx-auto'>
-				{/* Header */}
-				<div className='text-center mb-16'>
+				{/* Enhanced Header */}
+				<div className='text-center mb-20'>
 					<h2 className='text-4xl md:text-5xl font-bold text-foreground mb-4 font-mono'>
 						{'{ About Me }'}
 					</h2>
-					<div className='w-24 h-1 bg-primary mx-auto neon-glow'></div>
-					<p className='text-muted-foreground font-mono mt-4'>
-						// Get to know the engineer
-						behind the systems
+					<div className='w-24 h-1 bg-primary mx-auto neon-glow mb-6'></div>
+					<p className='text-lg text-muted-foreground max-w-3xl mx-auto font-mono leading-relaxed'>
+						// Backend Software Engineer
+						with 6+ years building scalable
+						systems
+						<br />
+						// Transforming fintech,
+						blockchain, and AI visions into
+						production reality
 					</p>
 				</div>
 
 				<div className='grid lg:grid-cols-2 gap-12 items-center'>
 					{/* Left Column */}
 					<div className='space-y-6'>
-						{/* Terminal-style block */}
-						<div className='terminal-window'>
-							<div className='terminal-header'>
-								<div className='terminal-dot red'></div>
-								<div className='terminal-dot yellow'></div>
-								<div className='terminal-dot green'></div>
-								<span className='font-mono text-xs text-muted-foreground ml-2'>
-									~/about.js
-								</span>
-							</div>
-							<div className='p-6 font-mono text-sm'>
-								<div className='text-primary'>
-									const
-									aboutMe
-									= {'{'}
-								</div>
-								<div className='ml-4 text-muted-foreground'>
-									experience:{' '}
-									<span className='text-foreground'>
-										"5+
-										years"
-									</span>
-									,
-								</div>
-								<div className='ml-4 text-muted-foreground'>
-									focus:{' '}
-									<span className='text-foreground'>
-										"Backend
-										Systems
-										&
-										Blockchain"
-									</span>
-									,
-								</div>
-								<div className='ml-4 text-muted-foreground'>
-									leadership:{' '}
-									<span className='text-foreground'>
-										true
-									</span>
-									,
-								</div>
-								<div className='ml-4 text-muted-foreground'>
-									stack:{' '}
-									<span className='text-primary'>
-										[
-									</span>
-								</div>
-								<div className='ml-8 text-foreground'>
-									"C#",
-									"Python",
-									"JavaScript",
-									"TypeScript",{' '}
-									<br />
-									"ASP.NET
-									Core",
-									"Node.js",
-									"NestJS",
-									"FastAPI",{' '}
-									<br />
-									"Blockchain",
-									"APIs"
-								</div>
-								<div className='ml-4 text-primary'>
-									]
-								</div>
-								<div className='text-primary'>
-									{'}'}
-								</div>
-							</div>
-						</div>
-
 						{/* Summary */}
 						<p className='text-lg text-muted-foreground leading-relaxed'>
 							<span className='font-mono text-primary'>
@@ -103,8 +49,12 @@ export function About() {
 							{about.summary}
 						</p>
 
-						{/* Highlights */}
+						{/* Enhanced Professional Achievements */}
 						<div className='space-y-4'>
+							<h3 className='font-mono text-lg text-primary mb-4'>
+								// Key
+								Achievements
+							</h3>
 							{about.highlights.map(
 								(
 									highlight,
@@ -114,93 +64,60 @@ export function About() {
 										key={
 											index
 										}
-										className='flex items-start gap-3 group'>
-										<CheckCircle className='h-5 w-5 text-primary mt-0.5 flex-shrink-0 group-hover:neon-glow transition-all duration-300' />
-										<p className='text-muted-foreground'>
-											<span className='font-mono text-primary'>
-												✓{' '}
-											</span>
-											{
-												highlight
-											}
-										</p>
+										className='group p-4 rounded-lg bg-card/30 border border-primary/20 hover:border-primary/40 transition-all duration-300'>
+										<div className='flex items-start gap-3'>
+											<div className='p-1 bg-primary/10 rounded-full'>
+												<CheckCircle className='h-4 w-4 text-primary group-hover:neon-glow transition-all duration-300' />
+											</div>
+											<div className='flex-1'>
+												<p className='text-muted-foreground leading-relaxed'>
+													<span className='font-mono text-primary font-semibold'>
+														✓{' '}
+													</span>
+													{
+														highlight
+													}
+												</p>
+											</div>
+										</div>
 									</div>
 								)
 							)}
 						</div>
-
-						{/* Resume Button */}
-						<Button
-							asChild
-							size='lg'
-							className='bg-primary hover:bg-primary/90 text-primary-foreground font-mono hover-glow group'>
-							<a
-								href={
-									site.resume
-								}
-								target='_blank'
-								rel='noopener noreferrer'>
-								<Download className='mr-2 h-4 w-4 group-hover:animate-bounce' />
-								{
-									'> download_resume --format=pdf'
-								}
-							</a>
-						</Button>
 					</div>
 
-					{/* Right Column */}
+					{/* Enhanced Right Column */}
 					<div className='space-y-6'>
-						{/* Stats Card */}
+						{/* Professional Impact Stats */}
 						<Card className='bg-card/50 backdrop-blur border-primary/20 hover-glow'>
 							<CardContent className='p-8'>
 								<div className='space-y-6'>
-									<div className='flex items-center gap-3 mb-4'>
+									<div className='flex items-center gap-3 mb-6'>
 										<Code2 className='h-6 w-6 text-primary' />
 										<h3 className='text-xl font-bold text-foreground font-mono'>
 											{
-												'{ stats }'
+												'{ Professional Impact }'
 											}
 										</h3>
 									</div>
 
 									<div className='grid grid-cols-2 gap-6'>
-										<div className='text-center'>
-											<div className='text-3xl font-bold text-primary font-mono neon-text'>
-												5+
+										<div className='text-center p-4 bg-primary/5 rounded-lg border border-primary/20'>
+											<div className='text-3xl font-bold text-primary font-mono neon-text mb-2'>
+												6+
 											</div>
 											<div className='text-sm text-muted-foreground font-mono'>
-												//
-												years
-												experience
+												Years
+												Experience
 											</div>
 										</div>
-										<div className='text-center'>
-											<div className='text-3xl font-bold text-primary font-mono neon-text'>
-												10+
-											</div>
-											<div className='text-sm text-muted-foreground font-mono'>
-												//
-												projects
-												shipped
-											</div>
-										</div>
-										<div className='text-center'>
-											<div className='text-3xl font-bold text-primary font-mono neon-text'>
+
+										<div className='text-center p-4 bg-blue-500/5 rounded-lg border border-blue-500/20'>
+											<div className='text-3xl font-bold text-blue-500 font-mono mb-2'>
 												3
 											</div>
 											<div className='text-sm text-muted-foreground font-mono'>
-												//
-												companies
-											</div>
-										</div>
-										<div className='text-center'>
-											<div className='text-3xl font-bold text-primary font-mono neon-text'>
-												∞
-											</div>
-											<div className='text-sm text-muted-foreground font-mono'>
-												//
-												continuous
-												learning
+												Companies
 											</div>
 										</div>
 									</div>
@@ -208,44 +125,127 @@ export function About() {
 							</CardContent>
 						</Card>
 
-						{/* Focus Areas */}
+						{/* Expertise Areas */}
 						<div className='code-block'>
-							<div className='font-mono text-sm space-y-2'>
-								<div className='text-primary'>
-									//
-									Current
-									focus
-									areas
+							<div className='font-mono text-sm space-y-3'>
+								<div className='text-primary flex items-center gap-2'>
+									<Star className='h-4 w-4' />
+									// Core
+									Expertise
+									Areas
 								</div>
 								<div className='text-muted-foreground'>
 									<span className='text-primary'>
 										const
 									</span>{' '}
-									expertise
+									specializations
 									= [
 								</div>
-								<div className='ml-4 text-foreground'>
-									"AI
-									Engineering",{' '}
-									<br />
-									"Backend
-									Architecture",{' '}
-									<br />
-									"Blockchain
-									Integration",{' '}
-									<br />
-									"API
-									Design &
-									Security",{' '}
-									<br />
-									"Team
-									Leadership"
+								<div className='ml-4 space-y-2'>
+									<div className='flex items-center gap-2'>
+										<Rocket className='h-3 w-3 text-yellow-500' />
+										<span className='text-yellow-500'>
+											"AI
+											&
+											Machine
+											Learning
+											Engineering"
+										</span>
+
+										,
+									</div>
+									<div className='flex items-center gap-2'>
+										<Code2 className='h-3 w-3 text-green-500' />
+										<span className='text-green-500'>
+											"Backend
+											Architecture
+											&
+											APIs"
+										</span>
+
+										,
+									</div>
+									<div className='flex items-center gap-2'>
+										<Zap className='h-3 w-3 text-purple-500' />
+										<span className='text-purple-500'>
+											"Blockchain
+											&
+											Web3
+											Integration"
+										</span>
+
+										,
+									</div>
+									<div className='flex items-center gap-2'>
+										<Award className='h-3 w-3 text-blue-500' />
+										<span className='text-blue-500'>
+											"Azure
+											Cloud
+											Solutions"
+										</span>
+
+										,
+									</div>
+									<div className='flex items-center gap-2'>
+										<Users className='h-3 w-3 text-orange-500' />
+										<span className='text-orange-500'>
+											"Technical
+											Leadership
+											&
+											Team
+											Building"
+										</span>
+									</div>
 								</div>
 								<div className='text-muted-foreground'>
 									];
 								</div>
 							</div>
 						</div>
+
+						{/* Current Focus */}
+						<Card className='bg-gradient-to-r from-primary/10 to-green-500/10 border-primary/30'>
+							<CardContent className='p-6'>
+								<div className='space-y-4'>
+									<h4 className='font-mono text-primary font-semibold flex items-center gap-2'>
+										<Target className='h-4 w-4' />
+										Current
+										Focus
+									</h4>
+									<p className='text-sm text-muted-foreground font-mono leading-relaxed'>
+										Building
+										AI-driven
+										fintech
+										solutions
+										that
+										combine
+										blockchain
+										technology
+										with
+										traditional
+										finance,
+										focusing
+										on
+										scalable
+										payment
+										systems
+										and
+										intelligent
+										user
+										experiences.
+									</p>
+									<div className='flex items-center gap-2 text-green-500'>
+										<div className='w-2 h-2 bg-green-500 rounded-full animate-pulse'></div>
+										<span className='text-xs font-mono'>
+											Available
+											for
+											new
+											opportunities
+										</span>
+									</div>
+								</div>
+							</CardContent>
+						</Card>
 					</div>
 				</div>
 			</div>
