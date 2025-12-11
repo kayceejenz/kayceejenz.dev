@@ -252,6 +252,8 @@ export default {
 	],
 
 	certifications: [
+		// MongoDB - Added by Rovo Dev
+
 		{
 			name: 'Microsoft Azure Developer (AZ-204) - Complete Learning Path 🏆',
 			issuer: 'Microsoft Learn',
@@ -351,6 +353,126 @@ export default {
 			link: 'https://1drv.ms/b/c/2c82a64ae61f3dbc/ERVu74Pr-9RLj6iTloosoXgBPUO8u6tNWipANHg0oJw0vw?e=Tzhv9A',
 			logo: 'AWS',
 			category: 'AI/ML',
+			type: 'Training',
+		},
+		{
+			name: 'Building AI-Powered Search with MongoDB Vector Search',
+			issuer: 'MongoDB University',
+			date: '2025',
+			credentialId:
+				'ti:0d1b605e-efc4-4cf5-8622-de01f207543c-e47cd44b-dca3-4c32-aa0d-1a4f44b3689c',
+			skills: [
+				'Vector Search',
+				'MongoDB Atlas',
+				'Semantic Search',
+			],
+			link: 'https://ti-user-certificates.s3.amazonaws.com/ae62dcd7-abdc-4e90-a570-83eccba49043/0d1b605e-efc4-4cf5-8622-de01f207543c-precious-kosisochukwu-e47cd44b-dca3-4c32-aa0d-1a4f44b3689c-certificate.pdf',
+			logo: 'MongoDB',
+			category: 'MongoDB',
+			type: 'Training',
+		},
+		{
+			name: 'Building AI Agents with MongoDB',
+			issuer: 'MongoDB University',
+			date: '2025',
+			credentialId:
+				'ti:0d1b605e-efc4-4cf5-8622-de01f207543c-ade07d86-4935-4ba5-b2c1-e4a27b94e1e1',
+			skills: [
+				'AI Agents',
+				'Atlas',
+				'Functions',
+				'Vector Stores',
+			],
+			link: 'https://ti-user-certificates.s3.amazonaws.com/ae62dcd7-abdc-4e90-a570-83eccba49043/0d1b605e-efc4-4cf5-8622-de01f207543c-precious-kosisochukwu-ade07d86-4935-4ba5-b2c1-e4a27b94e1e1-certificate.pdf',
+			logo: 'MongoDB',
+			category: 'MongoDB',
+			type: 'Training',
+		},
+		{
+			name: 'Building RAG Apps Using MongoDB',
+			issuer: 'MongoDB University',
+			date: '2025',
+			credentialId:
+				'ti:0d1b605e-efc4-4cf5-8622-de01f207543c-97d365e4-b02e-4c04-9043-95147f94d192',
+			skills: ['RAG', 'Atlas Vector Search', 'Embeddings'],
+			link: 'https://ti-user-certificates.s3.amazonaws.com/ae62dcd7-abdc-4e90-a570-83eccba49043/0d1b605e-efc4-4cf5-8622-de01f207543c-precious-kosisochukwu-97d365e4-b02e-4c04-9043-95147f94d192-certificate.pdf',
+			logo: 'MongoDB',
+			category: 'MongoDB',
+			type: 'Training',
+		},
+		{
+			name: 'MongoDB GenAI Developer',
+			issuer: 'MongoDB University',
+			date: '2025',
+			credentialId:
+				'ti:0d1b605e-efc4-4cf5-8622-de01f207543c-b406c234-0fc5-4de3-9744-2f94200e3697',
+			skills: [
+				'Generative AI',
+				'Vector Search',
+				'RAG',
+				'Atlas',
+			],
+			link: 'https://ti-user-certificates.s3.amazonaws.com/ae62dcd7-abdc-4e90-a570-83eccba49043/0d1b605e-efc4-4cf5-8622-de01f207543c-precious-kosisochukwu-b406c234-0fc5-4de3-9744-2f94200e3697-certificate.pdf',
+			logo: 'MongoDB',
+			category: 'MongoDB',
+			type: 'Learning Path Completion',
+			description:
+				'MongoDB University learning path focused on GenAI development, vector search, and RAG.',
+		},
+		{
+			name: 'Using Atlas Vector Search for RAG Applications',
+			issuer: 'MongoDB University',
+			date: '2025',
+			credentialId:
+				'ti:0d1b605e-efc4-4cf5-8622-de01f207543c-833d2352-1323-4b94-b4e8-dc2b883e1012',
+			skills: ['RAG', 'Atlas Vector Search', 'Indexing'],
+			link: 'https://ti-user-certificates.s3.amazonaws.com/ae62dcd7-abdc-4e90-a570-83eccba49043/0d1b605e-efc4-4cf5-8622-de01f207543c-precious-kosisochukwu-833d2352-1323-4b94-b4e8-dc2b883e1012-certificate.pdf',
+			logo: 'MongoDB',
+			category: 'MongoDB',
+			type: 'Training',
+		},
+		{
+			name: 'Using Vector Search for Semantic Search',
+			issuer: 'MongoDB University',
+			date: '2025',
+			credentialId:
+				'ti:0d1b605e-efc4-4cf5-8622-de01f207543c-3eea154d-bf21-494b-bb29-2e7ad9242e70',
+			skills: [
+				'Semantic Search',
+				'Vector Similarity',
+				'Atlas',
+			],
+			link: 'https://ti-user-certificates.s3.amazonaws.com/ae62dcd7-abdc-4e90-a570-83eccba49043/0d1b605e-efc4-4cf5-8622-de01f207543c-precious-kosisochukwu-3eea154d-bf21-494b-bb29-2e7ad9242e70-certificate.pdf',
+			logo: 'MongoDB',
+			category: 'MongoDB',
+			type: 'Training',
+		},
+		{
+			name: 'Introduction to AI and Vector Search',
+			issuer: 'MongoDB University',
+			date: '2025',
+			credentialId:
+				'ti:0d1b605e-efc4-4cf5-8622-de01f207543c-14f46097-52c5-4f6d-814a-ed31b297ef93',
+			skills: ['AI Fundamentals', 'Vector Search Basics'],
+			link: 'https://ti-user-certificates.s3.amazonaws.com/ae62dcd7-abdc-4e90-a570-83eccba49043/0d1b605e-efc4-4cf5-8622-de01f207543c-precious-kosisochukwu-14f46097-52c5-4f6d-814a-ed31b297ef93-certificate.pdf',
+			logo: 'MongoDB',
+			category: 'MongoDB',
+			type: 'Training',
+		},
+		{
+			name: 'Managing Atlas Vector Search Indexes',
+			issuer: 'MongoDB University',
+			date: '2025',
+			credentialId:
+				'ti:0d1b605e-efc4-4cf5-8622-de01f207543c-e0addf6e-7a3b-42bb-9926-833c3e1436ec',
+			skills: [
+				'Indexing',
+				'Atlas Vector Search',
+				'Operations',
+			],
+			link: 'https://ti-user-certificates.s3.amazonaws.com/ae62dcd7-abdc-4e90-a570-83eccba49043/0d1b605e-efc4-4cf5-8622-de01f207543c-precious-kosisochukwu-e0addf6e-7a3b-42bb-9926-833c3e1436ec-certificate.pdf',
+			logo: 'MongoDB',
+			category: 'MongoDB',
 			type: 'Training',
 		},
 		{
