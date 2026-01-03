@@ -1,5 +1,3 @@
-// Configuration file for portfolio data
-
 // data/config.js
 export default {
 	site: {
@@ -9,7 +7,6 @@ export default {
 		url: 'https://kayceejenz.dev',
 		resume: '/files/Jenz_Resume.pdf',
 	},
-
 	hero: {
 		name: 'Precious Kosisochukwu (Okolo)',
 		headline: 'Backend Software Engineer | AI · Blockchain',
@@ -23,7 +20,6 @@ export default {
 			{ label: 'Get in Touch', href: '#contact' },
 		],
 	},
-
 	about: {
 		summary: 'Backend Software Engineer  with 6+ years of proven expertise in architecting mission-critical systems that power millions of transactions. I transform ambitious product visions into scalable realities across fintech, blockchain, healthtech, and entertainment—leading engineering teams to deliver robust platforms that handle complex integrations, high-volume operations, and global user demands.',
 		highlights: [
@@ -34,7 +30,6 @@ export default {
 			'Social & Communication Systems → Scaled mobile-first platforms and telemedicine solutions handling thousands of concurrent users with optimized performance → Advanced knowledge in real-time communication, healthcare-grade security, and social engagement optimization.',
 		],
 	},
-
 	skills: {
 		backend: [
 			'C#',
@@ -77,7 +72,6 @@ export default {
 			'Sentry',
 		],
 	},
-
 	experience: [
 		{
 			company: 'BlueTag Technologies Ltd',
@@ -125,7 +119,6 @@ export default {
 			tech: ['NestJS', 'Node.js', 'Solana', 'Base', 'Web3'],
 		},
 	],
-
 	projects: [
 		{
 			name: 'Expense Tracker AI',
@@ -206,7 +199,6 @@ export default {
 			hackerrank: 'https://hackerrank.com/kayceejenz',
 		},
 	},
-
 	education: [
 		{
 			degree: 'Master in Artifical Intelligence',
@@ -222,8 +214,8 @@ export default {
 				'Natural Language Processing',
 				'Deep Learning',
 			],
-			status: 'in_process',
-			blur: true,
+			status: 'in_view',
+			blur: false,
 		},
 		{
 			degree: 'Bachelor of Science in Computer Science',
@@ -245,15 +237,16 @@ export default {
 				'Web Development',
 				'Database Design and Optimization',
 				'Computer Networking',
+				'Operating Systems',
+				'Artificial Intelligence',
+				'Computer Architecture',
+				'Compiler Construction',
 			],
 			status: 'completed',
 			blur: false,
 		},
 	],
-
 	certifications: [
-		// MongoDB - Added by Rovo Dev
-
 		{
 			name: 'Microsoft Azure Developer (AZ-204) - Complete Learning Path 🏆',
 			issuer: 'Microsoft Learn',

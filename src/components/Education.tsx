@@ -1,21 +1,16 @@
-import { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
-	GraduationCap,
-	Calendar,
-	MapPin,
 	Award,
 	BookOpen,
-	Eye,
-	EyeOff,
-	Trophy,
-	Star,
-	TrendingUp,
-	Target,
-	Users,
 	Brain,
+	Calendar,
+	GraduationCap,
+	MapPin,
+	Target,
+	TrendingUp,
+	Trophy,
+	Users
 } from 'lucide-react';
 import config from '../../data/config.js';
 
