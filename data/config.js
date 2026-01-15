@@ -136,6 +136,22 @@ export default {
 			github: 'https://github.com/kayceejenz/expense-tracker',
 		},
 		{
+			name: 'Tradehouse Trading Platform',
+			period: '2025',
+			description:
+				'Digital trading platform supporting wallet systems, staking, and automated trading bots. Integrated with Binance, Coinbase, and Bybit APIs to enable SPOT and FUTURES trading, providing users with secure portfolio management tools.',
+			stack: [
+				'Python',
+				'React',
+				'MongoDB',
+				'TypeScript',
+				'NestJS',
+				'FastAPI',
+			],
+			link: 'https://esvcap.com',
+			github: '#',
+		},
+		{
 			name: 'Flipeet Pay',
 			period: '2025',
 			description:
