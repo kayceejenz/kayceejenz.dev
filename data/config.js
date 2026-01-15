@@ -139,7 +139,7 @@ export default {
 			name: 'Tradehouse Trading Platform',
 			period: '2025',
 			description:
-				'Digital trading platform supporting wallet systems, staking, and automated trading bots. Integrated with Binance, Coinbase, and Bybit APIs to enable SPOT and FUTURES trading, providing users with secure portfolio management tools.',
+				'Digital trading platform for automated trading bots. Integrated with Binance, Coinbase, and Bybit APIs to enable SPOT and FUTURES trading, providing users with secure portfolio management tools.',
 			stack: [
 				'Python',
 				'React',
