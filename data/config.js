@@ -167,15 +167,15 @@ export default {
 			link: 'https://pay.flipeet.io',
 			github: '#',
 		},
-		{
-			name: 'Flipeet Raise',
-			period: '2024',
-			description:
-				'Crypto-powered crowdfunding platform for nonprofits and social impact projects. Integrated fiat gateways (Paystack, Flutterwave) and Solana Pay for seamless donations via web and Twitter, enabling borderless fundraising.',
-			stack: ['NestJS', 'MongoDB', 'Solana', 'TypeScript'],
-			link: 'https://raise.flipeet.io',
-			github: '#',
-		},
+		// {
+		// 	name: 'Flipeet Raise',
+		// 	period: '2024',
+		// 	description:
+		// 		'Crypto-powered crowdfunding platform for nonprofits and social impact projects. Integrated fiat gateways (Paystack, Flutterwave) and Solana Pay for seamless donations via web and Twitter, enabling borderless fundraising.',
+		// 	stack: ['NestJS', 'MongoDB', 'Solana', 'TypeScript'],
+		// 	link: 'https://raise.flipeet.io',
+		// 	github: '#',
+		// },
 		{
 			name: 'Membership Portal',
 			period: '2024',
