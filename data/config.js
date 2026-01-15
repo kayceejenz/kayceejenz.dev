@@ -3,7 +3,7 @@ export default {
 	site: {
 		title: 'Precious Kosisochukwu (Okolo) — Backend Software Engineer',
 		description:
-			'Backend Software Engineer with 6+ years of experience designing scalable APIs, blockchain integrations, and secure payment infrastructures. Skilled in .NET, Node.js, and distributed systems, delivering reliable solutions for fintech, AI, and modern web platforms.',
+			'Backend Software Engineer with 5+ years of experience designing scalable APIs, blockchain integrations, and secure payment infrastructures. Skilled in .NET, Node.js, and distributed systems, delivering reliable solutions for fintech, AI, and modern web platforms.',
 		url: 'https://kayceejenz.dev',
 		resume: '/files/Jenz_Resume.pdf',
 	},
@@ -21,7 +21,7 @@ export default {
 		],
 	},
 	about: {
-		summary: 'Backend Software Engineer  with 6+ years of proven expertise in architecting mission-critical systems that power millions of transactions. I transform ambitious product visions into scalable realities across fintech, blockchain, healthtech, and entertainment—leading engineering teams to deliver robust platforms that handle complex integrations, high-volume operations, and global user demands.',
+		summary: 'Backend Software Engineer  with 5+ years of proven expertise in architecting mission-critical systems that power millions of transactions. I transform ambitious product visions into scalable realities across fintech, blockchain, healthtech, and entertainment—leading engineering teams to deliver robust platforms that handle complex integrations, high-volume operations, and global user demands.',
 		highlights: [
 			'Flipeet Ecosystem → Architected global stablecoin payment rails processing $20K+ in transactions and crypto crowdfunding platform serving 10+ nonprofits → Mastered multi-chain integrations, payment infrastructure at scale, and technical leadership in high-stakes fintech.',
 			'TradeHouse Trading Platform → Built comprehensive trading infrastructure supporting 1K+ active traders with wallet systems, P2P orders, automated bots across Binance/Coinbase/Bybit APIs → Advanced expertise in trading algorithms, risk management, and real-time financial data processing.',

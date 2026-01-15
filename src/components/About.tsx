@@ -29,7 +29,7 @@ export function About() {
 					<div className='w-24 h-1 bg-primary mx-auto neon-glow mb-6'></div>
 					<p className='text-lg text-muted-foreground max-w-3xl mx-auto font-mono leading-relaxed'>
 						// Backend Software Engineer
-						with 6+ years building scalable
+						with 5+ years building scalable
 						systems
 						<br />
 						// Transforming fintech,
@@ -104,7 +104,7 @@ export function About() {
 									<div className='grid grid-cols-2 gap-6'>
 										<div className='text-center p-4 bg-primary/5 rounded-lg border border-primary/20'>
 											<div className='text-3xl font-bold text-primary font-mono neon-text mb-2'>
-												6+
+												5+
 											</div>
 											<div className='text-sm text-muted-foreground font-mono'>
 												Years
