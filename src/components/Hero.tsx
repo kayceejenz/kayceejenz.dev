@@ -1,6 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Download, Mail, Terminal, Code2, Zap, Award, TrendingUp, Users, Star } from 'lucide-react';
+import { Mail, Terminal } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import config from '../../data/config.js';
 
@@ -10,13 +9,13 @@ export function Hero() {
 	const [currentIndex, setCurrentIndex] = useState(0);
 
 	const fullText =
-		'Experienced Backend Engineer with 5+ years in building scalable systems.';
+		'Senior Systems Engineer bridging 5+ years of backend expertise with Intelligent AI Systems.';
 
 	useEffect(() => {
 		if (currentIndex < fullText.length) {
 			const timeout = setTimeout(() => {
 				setDisplayText(
-					prev => prev + fullText[currentIndex]
+					prev => prev + fullText[currentIndex],
 				);
 				setCurrentIndex(prev => prev + 1);
 			}, 100);
@@ -64,7 +63,7 @@ export function Hero() {
 							][
 								Math.floor(
 									Math.random() *
-										7
+										7,
 								)
 							]
 						}
@@ -113,7 +112,7 @@ export function Hero() {
 									"
 									{
 										hero.headline.split(
-											' | '
+											' | ',
 										)[0]
 									}
 									"
@@ -126,7 +125,7 @@ export function Hero() {
 									["
 									{
 										hero.headline.split(
-											' | '
+											' | ',
 										)[1]
 									}
 									"]

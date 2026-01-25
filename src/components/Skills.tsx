@@ -2,44 +2,49 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import {
+	BrainCircuit, // New icon for AI
 	Server,
 	Coins,
 	Cloud,
-	Code,
 	Database,
-	TrendingUp,
-	Award,
-	Star,
-	Zap,
+	Code,
 } from 'lucide-react';
 import { useState } from 'react';
 import config from '../../data/config.js';
 
 export function Skills() {
 	const { skills } = config;
-	const [activeTab, setActiveTab] = useState('backend');
+	// Start with 'ai' as the default active tab to signal your new focus
+	const [activeTab, setActiveTab] = useState('ai_ml');
 
 	const skillCategories = [
 		{
-			id: 'backend',
-			title: 'Backend',
-			icon: Server,
-			skills: skills.backend,
+			id: 'ai_ml',
+			title: 'AI & Machine Learning',
+			icon: BrainCircuit,
+			skills: skills.ai_ml,
 			color: 'bg-primary/10 text-primary border-primary/30',
 		},
 		{
-			id: 'blockchain',
-			title: 'Blockchain',
+			id: 'distributed_systems',
+			title: 'Distributed Systems',
+			icon: Server,
+			skills: skills.distributed_systems,
+			color: 'bg-blue-500/10 text-blue-400 border-blue-500/30',
+		},
+		{
+			id: 'blockchain_web3',
+			title: 'Blockchain & Web3',
 			icon: Coins,
-			skills: skills.blockchain,
+			skills: skills.blockchain_web3,
 			color: 'bg-green-500/10 text-green-400 border-green-500/30',
 		},
 		{
-			id: 'devops',
-			title: 'DevOps',
+			id: 'devops_infra',
+			title: 'DevOps & Cloud',
 			icon: Cloud,
-			skills: skills.devops,
-			color: 'bg-blue-500/10 text-blue-400 border-blue-500/30',
+			skills: skills.devops_infra,
+			color: 'bg-orange-500/10 text-orange-400 border-orange-500/30',
 		},
 		{
 			id: 'databases',
@@ -48,17 +53,10 @@ export function Skills() {
 			skills: skills.databases,
 			color: 'bg-purple-500/10 text-purple-400 border-purple-500/30',
 		},
-		{
-			id: 'tools',
-			title: 'Tools',
-			icon: Code,
-			skills: skills.tools,
-			color: 'bg-orange-500/10 text-orange-400 border-orange-500/30',
-		},
 	];
 
 	const activeCategory = skillCategories.find(
-		cat => cat.id === activeTab
+		cat => cat.id === activeTab,
 	);
 
 	return (
@@ -66,13 +64,13 @@ export function Skills() {
 			<div className='max-w-6xl mx-auto'>
 				<div className='text-center mb-16'>
 					<h2 className='text-4xl md:text-5xl font-bold text-foreground mb-4 font-mono'>
-						{'{ Technical Skills }'}
+						{'{ Technical Expertise }'}
 					</h2>
 					<div className='w-24 h-1 bg-primary mx-auto neon-glow'></div>
 					<p className='text-lg text-muted-foreground mt-6 max-w-3xl mx-auto font-mono leading-relaxed'>
-						// Comprehensive tech stack
-						mastery across backend,
-						blockchain, and cloud
+						// Bridging 5+ years of systems
+						engineering with advanced
+						Artifical Intelligence
 					</p>
 				</div>
 
@@ -90,7 +88,7 @@ export function Skills() {
 										}
 										onClick={() =>
 											setActiveTab(
-												category.id
+												category.id,
 											)
 										}
 										className={`flex items-center gap-2 px-4 py-2 rounded-lg font-mono text-sm transition-all duration-300 hover-glow ${
@@ -105,7 +103,7 @@ export function Skills() {
 											' }'}
 									</button>
 								);
-							}
+							},
 						)}
 					</div>
 
@@ -113,11 +111,10 @@ export function Skills() {
 					{activeCategory && (
 						<Card className='bg-card/50 backdrop-blur border-primary/20 hover-glow'>
 							<CardHeader>
-								<CardTitle className='flex items-center gap-3 text-foreground font-mono'>
+								<CardTitle className='flex items-center gap-3 text-foreground font-mono text-xl'>
 									<activeCategory.icon className='h-6 w-6 text-primary' />
 									{'// ' +
-										activeCategory.title +
-										' Technologies'}
+										activeCategory.title}
 								</CardTitle>
 							</CardHeader>
 							<CardContent>
@@ -127,20 +124,24 @@ export function Skills() {
 										<div className='terminal-dot yellow'></div>
 										<div className='terminal-dot green'></div>
 										<span className='font-mono text-xs text-muted-foreground ml-2'>
-											~/
+											~/expertise/
 											{
 												activeCategory.id
 											}
-											.js
+											.ts
 										</span>
 									</div>
 									<div className='p-6 font-mono text-sm'>
 										<div className='text-primary'>
+											export
 											const{' '}
-											{
-												activeCategory.id
-											}
-											Skills
+											{activeCategory.id.replace(
+												'_',
+												'',
+											)}
+											Stack
+											:
+											string[]
 											=
 											[
 										</div>
@@ -148,7 +149,7 @@ export function Skills() {
 											{activeCategory.skills.map(
 												(
 													skill,
-													index
+													index,
 												) => (
 													<div
 														key={
@@ -171,21 +172,11 @@ export function Skills() {
 															? ','
 															: ''}
 													</div>
-												)
+												),
 											)}
 										</div>
 										<div className='text-primary'>
 											];
-										</div>
-										<div className='mt-4 text-muted-foreground'>
-											//{' '}
-											{
-												activeCategory
-													.skills
-													.length
-											}{' '}
-											technologies
-											mastered
 										</div>
 									</div>
 								</div>
@@ -194,83 +185,24 @@ export function Skills() {
 									{activeCategory.skills.map(
 										(
 											skill,
-											index
+											index,
 										) => (
 											<Badge
 												key={
 													index
 												}
 												variant='outline'
-												className={`${activeCategory.color} hover-glow font-mono cursor-default transition-all duration-300`}>
+												className={`${activeCategory.color} hover-glow font-mono px-3 py-1`}>
 												{
 													skill
 												}
 											</Badge>
-										)
+										),
 									)}
 								</div>
 							</CardContent>
 						</Card>
 					)}
-
-					{/* All Skills Grid */}
-					<div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12'>
-						{skillCategories.map(
-							(category, index) => {
-								const IconComponent =
-									category.icon;
-								return (
-									<Card
-										key={
-											index
-										}
-										className='bg-card/30 backdrop-blur border-primary/10 hover-glow group cursor-pointer'
-										onClick={() =>
-											setActiveTab(
-												category.id
-											)
-										}>
-										<CardHeader className='pb-4'>
-											<CardTitle className='flex items-center gap-3 text-foreground font-mono text-sm'>
-												<div className='p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors'>
-													<IconComponent className='h-4 w-4 text-primary' />
-												</div>
-												{'{ ' +
-													category.title +
-													' }'}
-											</CardTitle>
-										</CardHeader>
-										<CardContent>
-											<div className='text-xs font-mono text-muted-foreground'>
-												//{' '}
-												{
-													category
-														.skills
-														.length
-												}{' '}
-												technologies
-											</div>
-											<div className='mt-2 text-sm text-muted-foreground'>
-												{category.skills
-													.slice(
-														0,
-														3
-													)
-													.join(
-														', '
-													)}
-												{category
-													.skills
-													.length >
-													3 &&
-													'...'}
-											</div>
-										</CardContent>
-									</Card>
-								);
-							}
-						)}
-					</div>
 				</div>
 			</div>
 		</section>

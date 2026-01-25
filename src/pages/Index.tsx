@@ -118,7 +118,7 @@ export default function Index() {
 									<div className='font-mono text-sm space-y-3'>
 										<div className='text-primary'>
 											const
-											developer
+											professional
 											={' '}
 											{
 												'{'
@@ -129,18 +129,30 @@ export default function Index() {
 												name:{' '}
 												<span className='text-foreground'>
 													"Precious
-													Kosisochukwu
-													(Okolo)"
+													Okolo"
 												</span>
 
 												,
 											</div>
 											<div>
-												role:{' '}
+												focus:{' '}
 												<span className='text-green-400'>
-													"Backend
-													Software
-													Engineer
+													"Distributed
+													Systems
+													&
+													Applied
+													AI"
+												</span>
+
+												,
+											</div>
+											<div>
+												expertise:{' '}
+												<span className='text-blue-400'>
+													[".NET",
+													"Node.js",
+													"AI-Infra",
+													"Web3"]
 												</span>
 
 												,
@@ -148,21 +160,21 @@ export default function Index() {
 											<div>
 												motto:{' '}
 												<span className='text-yellow-400'>
-													"Be
-													somebody,
-													stay
-													Legendary"
+													"Architecting
+													the
+													Intelligent
+													Backend"
 												</span>
 
 												,
 											</div>
-
 											<div>
 												status:{' '}
 												<span className='text-green-400'>
-													"Available
-													for
-													opportunities"
+													"Open
+													to
+													AI-focused
+													Roles"
 												</span>
 											</div>
 										</div>
@@ -214,9 +226,10 @@ export default function Index() {
 								<div className='flex items-center gap-2'>
 									<Code2 className='h-4 w-4 text-primary' />
 									<span className='font-mono text-sm text-muted-foreground'>
-										6+
+										5+
 										years
-										coding
+										Professional
+										Engineering
 									</span>
 								</div>
 
@@ -283,7 +296,7 @@ export default function Index() {
 									onClick={() =>
 										window.open(
 											'https://github.com/kayceejenz',
-											'_blank'
+											'_blank',
 										)
 									}>
 									<Github className='h-3 w-3 mr-2' />
@@ -296,7 +309,7 @@ export default function Index() {
 									onClick={() =>
 										window.open(
 											'https://linkedin.com/in/kayceejenz',
-											'_blank'
+											'_blank',
 										)
 									}>
 									<Linkedin className='h-3 w-3 mr-2' />
