@@ -1,33 +1,30 @@
 // data/config.js
 export default {
 	site: {
-		title: 'Precious Okolo | Backend & AI Engineer',
-		description:
-			'Senior Engineer with 5+ years of experience in distributed systems, blockchain, and fintech. Currently architecting intelligent systems and high-performance backend infrastructure.',
-		url: 'https://kayceejenz.dev',
-		resume: '/files/Jenz_Resume.pdf',
+    title: 'Precious Okolo | Systems & AI Engineer',
+    description:
+        'Senior Engineer specializing in high-concurrency backends, distributed systems, and AI infrastructure. 5+ years of experience across Fintech, Web3, and Enterprise scaling.',
+    url: 'https://kayceejenz.dev',
+    resume: '/files/Jenz_Resume.pdf',
 	},
 	hero: {
-		name: 'Precious Okolo (kayceejenz)',
-		headline: 'Senior Systems Engineer | AI Infrastructure • Blockchain Architect',
-		subheadline:
-			'I bridge the gap between complex distributed systems and applied intelligence. With 5+ years of experience architecting high-concurrency fintech and Web3 platforms, I am now focused on scaling the next generation of AI-driven backend ecosystems.',
-		ctas: [
-			{
-				label: 'Download Résumé',
-				href: '/files/Jenz_Resume.pdf',
-			},
-			{ label: 'Discuss a Project', href: '#contact' },
-		],
+	    name: 'Precious Okolo',
+	    headline: 'Senior Systems Engineer • AI Infrastructure & Blockchain Architect',
+	    subheadline:
+	        'I build the "engine room" for high-stakes platforms. From scaling stablecoin payment rails to architecting RAG-driven AI ecosystems, I specialize in engineering backend systems that are fast, resilient, and intelligent.',
+	    ctas: [
+	        { label: 'View Résumé', href: '/files/Jenz_Resume.pdf' },
+	        { label: 'Start a Technical Discussion', href: '#contact' },
+	    ],
 	},
 	about: {
-		summary: 'A Senior Systems Engineer with 5+ years of professional mileage in building the "engine room" of high-impact platforms. My expertise lies in high-concurrency architectures—from scaling stablecoin payment rails to engineering autonomous trading logic. Currently pursuing an MSc in Artificial Intelligence to fuse production-grade systems engineering with deep learning and NLP.',
-		highlights: [
-			'Architectural Leadership → As CTO at Flipeet, I led the technical strategy for stablecoin on/off-ramps and multi-chain protocols, managing the full SDLC and AWS infrastructure.',
-			'Algorithmic Execution → Engineered autonomous trading bots and real-time financial data pipelines, processing millions of data points for secure portfolio management.',
-			'Enterprise Scaling → Directed the modernization of legacy .NET systems for 20+ clinics and 200,000+ students, improving system throughput by 40%.',
-			'AI Integration → Currently researching RAG architectures and NLP to optimize backend automation and predictive data modeling.',
-		],
+	    summary: 'With 5+ years of experience in the trenches of Fintech and Web3, I focus on the intersection of production-grade systems engineering and applied AI. Whether it is optimizing high-throughput data pipelines or modernizing legacy infrastructure for 200,000+ users, I prioritize clean architecture and measurable impact. Currently, I am fusing my systems background with an MSc in Artificial Intelligence to build the next generation of LLM-powered backends.',
+	    highlights: [
+	        'Strategic Leadership → As CTO at Flipeet, I architected multi-chain protocols and stablecoin payment infrastructure on AWS, managing the full technical lifecycle.',
+	        'High-Throughput Engineering → Developed autonomous trading logic and real-time financial pipelines capable of processing millions of data points with zero-fault tolerance.',
+	        'Enterprise Transformation → Led the modernization of legacy .NET systems for 20+ clinics, supporting 200k+ students and boosting system performance by 40%.',
+	        'Next-Gen AI → Researching RAG (Retrieval-Augmented Generation) and NLP architectures to transform static backend data into interactive, predictive intelligence.',
+	    ],
 	},
 	skills: {
 		ai_ml: [
@@ -205,65 +202,63 @@ export default {
 			github: '#',
 		},
 	],
-
 	contact: {
 		email: 'kayceejenz@gmail.com',
-		location: 'Liverpool, United Kingdom',
+		location: 'United Kingdom',
 		links: {
-			linkedin: 'https://www.linkedin.com/in/kayceejenz/',
+			linkedin: 'https://linkedin.com/in/kayceejenz/',
 			github: 'https://github.com/kayceejenz',
 			twitter: 'https://twitter.com/kayceejenz',
 			hackerrank: 'https://hackerrank.com/kayceejenz',
 		},
 	},
-	education: [
-		{
-			degree: 'Master in Artifical Intelligence',
-			field: 'Artifical Intelligence',
-			institution: 'University of Salford',
-			location: 'Manchester, United Kingdom',
-			period: '2026 - 2027',
-			grade: 'N/A',
-			achievements: [],
-			courses: [
-				'Machine Learning and Data Mining',
-				'Big Data Tools and Techniques',
-				'Natural Language Processing',
-				'Deep Learning',
-				'Msc Project',
-			],
-			status: 'in_view',
-			blur: false,
-		},
-		{
-			degree: 'Bachelor of Science in Computer Science',
-			field: 'Computer Science',
-			institution:
-				'Enugu State University of Science and Technology',
-			location: 'Enugu, Nigeria',
-			period: '2016 - 2020',
-			grade: 'Second Class Upper',
-			achievements: [
-				'Built campus management system used by 5000+ students',
-				'Won Best Final Year Project award',
-				'President of Computer Science Society',
-			],
-			courses: [
-				'Software Engineering',
-				'Data Structures and Alogrithms',
-				'System Analysis and Design',
-				'Web Development',
-				'Database Design and Optimization',
-				'Computer Networking',
-				'Operating Systems',
-				'Artificial Intelligence',
-				'Computer Architecture',
-				'Compiler Construction',
-				'Bsc Project',
-			],
-			status: 'completed',
-			blur: false,
-		},
+		education: [
+	    {
+	        degree: 'MSc in Artificial Intelligence',
+	        field: 'Artificial Intelligence',
+	        institution: 'University of Salford',
+	        location: 'Manchester, United Kingdom',
+	        period: '2026 - 2027',
+	        grade: 'In Progress',
+	        achievements: [
+	            'Specializing in RAG architectures and scalable LLM deployment'
+	        ],
+	        courses: [
+	            'Machine Learning & Data Mining',
+	            'Big Data Tools & Techniques',
+	            'Natural Language Processing',
+	            'Deep Learning',
+	            'MSc Research Project',
+	        ],
+	        status: 'in_progress',
+	        blur: false,
+	    },
+	    {
+	        degree: 'Bachelor of Science in Computer Science',
+	        field: 'Computer Science',
+	        institution: 'Enugu State University of Science and Technology',
+	        location: 'Enugu, Nigeria',
+	        period: '2016 - 2020',
+	        grade: 'Second Class Upper (2:1)',
+	        achievements: [
+	            'Engineered a campus management system adopted by 5,000+ students',
+	            'Recipient of the Best Final Year Project Award',
+	            'President of the Computer Science Society',
+	        ],
+	        courses: [
+	            'Software Engineering',
+	            'Data Structures & Algorithms',
+	            'Systems Analysis & Design',
+	            'Database Design & Optimization',
+	            'Distributed Systems', 
+	            'Operating Systems',
+	            'Computer Architecture',
+	            'Compiler Construction',
+	            'BSc Thesis Project',
+	        ],
+	        status: 'completed',
+	        blur: false,
+	    },
 	],
 	certifications: [
 		{
