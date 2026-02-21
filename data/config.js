@@ -13,7 +13,7 @@ export default {
 	    subheadline:
 	        'I build the "engine room" for high-stakes platforms. From scaling stablecoin payment rails to architecting RAG-driven AI ecosystems, I specialize in engineering backend systems that are fast, resilient, and intelligent.',
 	    ctas: [
-	        { label: 'View Résumé', href: '/files/Jenz_Resume.pdf' },
+	        // { label: 'View Résumé', href: '/files/Jenz_Resume.pdf' },
 	        { label: 'Start a Technical Discussion', href: '#contact' },
 	    ],
 	},
