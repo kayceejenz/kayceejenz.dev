@@ -1,7 +1,7 @@
 // data/config.js
 export default {
 	site: {
-		title: 'Precious Okolo | Senior Systems & AI Engineer',
+		title: 'Precious Okolo | Backend & AI Engineer',
 		description:
 			'Senior Engineer with 5+ years of experience in distributed systems, blockchain, and fintech. Currently architecting intelligent systems and high-performance backend infrastructure.',
 		url: 'https://kayceejenz.dev',
