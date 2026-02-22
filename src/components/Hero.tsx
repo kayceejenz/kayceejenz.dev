@@ -9,7 +9,7 @@ export function Hero() {
 	const [currentIndex, setCurrentIndex] = useState(0);
 
 	const fullText =
-		'Senior Systems Engineer bridging 5+ years of backend expertise with Intelligent AI Systems.';
+		'Systems Engineer bridging 5+ years of backend expertise with Intelligent AI Systems.';
 
 	useEffect(() => {
 		if (currentIndex < fullText.length) {
@@ -160,23 +160,6 @@ export function Hero() {
 				</div>
 
 				<div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
-				/***	
-					<Button
-						asChild
-						size='lg'
-						className='bg-primary hover:bg-primary/90 text-primary-foreground font-mono hover-glow group'>
-						<a
-							href={hero.ctas[0].href}
-							target='_blank'
-							rel='noopener noreferrer'>
-							<Terminal className='mr-2 h-4 w-4 group-hover:animate-pulse' />
-							{
-								'> download_resume --pdf'
-							}
-						</a>
-					</Button>
-					***/
-
 					<Button
 						variant='outline'
 						size='lg'
