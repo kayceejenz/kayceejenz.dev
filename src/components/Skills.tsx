@@ -70,7 +70,7 @@ export function Skills() {
 					<p className='text-lg text-muted-foreground mt-6 max-w-3xl mx-auto font-mono leading-relaxed'>
 						// Bridging 5+ years of systems
 						engineering with advanced
-						Artifical Intelligence
+						Artificial Intelligence
 					</p>
 				</div>
 
