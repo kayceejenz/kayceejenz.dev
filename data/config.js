@@ -9,7 +9,7 @@ export default {
 	},
 	hero: {
 	    name: 'Precious Okolo',
-	    headline: 'Systems Engineer • AI Infrastructure & Blockchain Architect',
+	    headline: 'Systems Engineer | AI Infrastructure & Blockchain Architect',
 	    subheadline:
 	        'I build the "engine room" for high-stakes platforms. From scaling stablecoin payment rails to architecting RAG-driven AI ecosystems, I specialize in engineering backend systems that are fast, resilient, and intelligent.',
 	    ctas: [
