@@ -160,6 +160,7 @@ export function Hero() {
 				</div>
 
 				<div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
+				/***	
 					<Button
 						asChild
 						size='lg'
@@ -174,6 +175,7 @@ export function Hero() {
 							}
 						</a>
 					</Button>
+					***/
 
 					<Button
 						variant='outline'
