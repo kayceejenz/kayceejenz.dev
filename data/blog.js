@@ -113,4 +113,4 @@ The AZ-204 path isn't just a certification; it is a blueprint for production-gra
 **Next Step:** Integrating these foundations with Azure's AI ecosystem for intelligent payment categorization.`,
 };
 
-export default [securityIncidentPost, azureJourneyPost];
+export default [securityIncidentPost];
