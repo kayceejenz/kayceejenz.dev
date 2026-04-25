@@ -1,39 +1,54 @@
 // data/config.js
 export default {
 	site: {
-    title: 'Precious Okolo | Systems & AI Engineer',
-    description:
-        'Senior Engineer specializing in high-concurrency backends, distributed systems, and AI infrastructure. 5+ years of experience across Fintech, Web3, and Enterprise scaling.',
-    url: 'https://kayceejenz.dev',
-    resume: '/files/Jenz_Resume.pdf',
+		title: 'Precious Okolo | AI Engineer',
+		description:
+			'AI Engineer with 5+ years of backend systems experience. Building LLM-powered applications, RAG pipelines, and the production infrastructure behind them. MSc Artificial Intelligence, University of Salford.',
+		url: 'https://kayceejenz.dev',
+		resume: '/files/Jenz_Resume.pdf',
 	},
 	hero: {
-	    name: 'Precious Okolo',
-	    headline: 'Systems Engineer | AI Infrastructure & Blockchain Architect',
-	    subheadline:
-	        'I build the "engine room" for high-stakes platforms. From scaling stablecoin payment rails to architecting RAG-driven AI ecosystems, I specialize in engineering backend systems that are fast, resilient, and intelligent.',
-	    ctas: [
-	        // { label: 'View Résumé', href: '/files/Jenz_Resume.pdf' },
-	        { label: 'Start a Technical Discussion', href: '#contact' },
-	    ],
+		name: 'Precious Okolo',
+		headline: 'AI Engineer | LLM Systems & Backend Infrastructure',
+		subheadline:
+			'I build production-grade AI systems, from RAG pipelines and LLM-powered applications to the high-concurrency infrastructure that keeps them running. 5+ years of systems engineering, now fully focused on applied intelligence.',
+		ctas: [
+			{
+				label: 'Download Résumé',
+				href: '/files/Jenz_Resume.pdf',
+			},
+			{ label: 'Discuss a Project', href: '#contact' },
+		],
 	},
 	about: {
-	    summary: 'With 5+ years of experience in the trenches of Fintech and Web3, I focus on the intersection of production-grade systems engineering and applied AI. Whether it is optimizing high-throughput data pipelines or modernizing legacy infrastructure for 200,000+ users, I prioritize clean architecture and measurable impact. Currently, I am fusing my systems background with an MSc in Artificial Intelligence to build the next generation of LLM-powered backends.',
-	    highlights: [
-	        'Strategic Leadership → As CTO at Flipeet, I architected multi-chain protocols and stablecoin payment infrastructure on AWS, managing the full technical lifecycle.',
-	        'High-Throughput Engineering → Developed autonomous trading logic and real-time financial pipelines capable of processing millions of data points with zero-fault tolerance.',
-	        'Enterprise Transformation → Led the modernization of legacy .NET systems for 20+ clinics, supporting 200k+ students and boosting system performance by 40%.',
-	        'Next-Gen AI → Researching RAG (Retrieval-Augmented Generation) and NLP architectures to transform static backend data into interactive, predictive intelligence.',
-	    ],
+		summary: 'An AI Engineer and backend specialist with 5+ years building production systems at scale. Currently completing an MSc in Artificial Intelligence at the University of Salford, focused on NLP, deep learning, and RAG architectures. My edge is rare: I can architect the AI pipeline and build the production infrastructure behind it, from LLM orchestration and vector search to distributed systems handling millions of requests.',
+		highlights: [
+			'LLM and RAG Engineering: Built an intelligent finance engine on a full RAG architecture, including an embedding pipeline, vector retrieval via MongoDB Atlas Vector Search, and LLM synthesis through OpenRouter. Currently applying NLP and deep learning research through my MSc at the University of Salford.',
+			'Architectural Leadership: As CTO at Flipeet, I designed and scaled a fintech platform from the ground up, with containerized AWS infrastructure, CI/CD automation, and high-integrity transaction pipelines processing $20k+ in live volume.',
+			'Algorithmic Execution: Engineered autonomous Python trading bots and real-time financial data pipelines integrated with Binance, Bybit, and Coinbase APIs, processing millions of data points for portfolio management.',
+			'Enterprise Scaling: Modernized legacy .NET systems serving 20+ clinics and 200,000+ students, reducing technical debt by 30% and improving throughput by 40%.',
+		],
 	},
 	skills: {
 		ai_ml: [
-			'Python (FastAPI/PyTorch)',
-			'NLP',
+			'Python (PyTorch / TensorFlow / scikit-learn)',
+			'Hugging Face Transformers',
+			'LangChain / LlamaIndex',
 			'RAG Architectures',
-			'Vector Databases',
-			'Big Data Tools',
-			'Data Mining',
+			'Prompt Engineering',
+			'LLM APIs (OpenAI, Anthropic, OpenRouter)',
+			'Embeddings and Semantic Search',
+			'Vector Databases (ChromaDB, MongoDB, Pinecone)',
+			'NLP and Text Processing',
+			'FastAPI (AI Serving)',
+			'RAGAS (Evaluation)',
+			'Fine-tuning and RLHF',
+			'Databricks and MLflow',
+			'MLOps and Experiment Tracking',
+			'Optuna (Hyperparameter Tuning)',
+			'Model Training and Evaluation',
+			'Jupyter Notebook / Google Colab',
+			'Linux Development',
 		],
 		distributed_systems: [
 			'C# (.NET Core)',
@@ -125,12 +140,15 @@ export default {
 			name: 'Expense Tracker AI',
 			period: '2025',
 			description:
-				'An intelligent personal finance engine leveraging Large Language Models (LLMs) via OpenRouter to categorize unstructured transaction data. Features automated spending summaries and predictive savings trends.',
+				'A production RAG pipeline for personal finance. Unstructured transaction data is chunked, embedded, and stored in a Supabase vector store. At query time, semantically similar transactions are retrieved and passed as context to an OpenRouter-hosted LLM, which generates categorized summaries and predictive savings insights. The request flows through Next.js into a FastAPI middleware, then through the embedding model, vector retrieval, LLM synthesis, and back out as a structured JSON response.',
 			stack: [
 				'Next.js',
 				'OpenRouter API',
-				'Supabase',
+				'Supabase Vector',
+				'Embeddings',
+				'RAG Pipeline',
 				'TypeScript',
+				'FastAPI',
 				'TailwindCSS',
 			],
 			link: 'https://expense-tracker.project.kayceejenz.dev',
@@ -140,7 +158,7 @@ export default {
 			name: 'Tradehouse Algorithmic Platform',
 			period: '2025',
 			description:
-				'Automated trading infrastructure supporting SPOT and FUTURES trading. Built with a high-performance Python core for bot logic and a NestJS gateway for secure portfolio management.',
+				'High-performance algorithmic trading system with a Python ML core for signal generation and bot execution logic. Integrates real-time market data feeds from Binance, Bybit, and Coinbase APIs. NestJS API gateway handles secure portfolio management and user orchestration.',
 			stack: [
 				'Python',
 				'FastAPI',
@@ -187,7 +205,7 @@ export default {
 			name: 'Syncboard Solutions',
 			period: '2022',
 			description:
-				'Digital trading platform supporting wallet systems, staking, and automated trading bots. Integrated with Binance, Coinbase, and Bybit APIs to enable SPOT and FUTURES trading, providing users with secure portfolio management tools.',
+				'Syncboard Solutions is a laboratory management platform designed to streamline operations across diagnostics and billing. It supports payment collection, discounts, waivers, installment plans, specimen tracking, and automated test result computation and reporting enabling labs to deliver accurate results efficiently while improving the patient experience',
 			stack: ['C#', 'ASP.NET Core', 'MSSQL', 'JavaScript'],
 			link: 'https://sandbox.syncboardsolutions.com',
 			github: '#',
@@ -204,6 +222,7 @@ export default {
 	],
 	contact: {
 		email: 'kayceejenz@gmail.com',
+		location: 'United Kingdom',
 		location: 'United Kingdom',
 		links: {
 			linkedin: 'https://linkedin.com/in/kayceejenz/',
@@ -262,7 +281,7 @@ export default {
 	],
 	certifications: [
 		{
-			name: 'Microsoft Azure Developer (AZ-204) - Complete Learning Path 🏆',
+			name: 'Microsoft Azure Developer (AZ-204): Complete Learning Path 🏆',
 			issuer: 'Microsoft Learn',
 			date: 'Dec 2024',
 			credentialId: 'AZ-204-COMPLETE-2024',
@@ -276,7 +295,7 @@ export default {
 			],
 			link: 'https://learn.microsoft.com/en-us/users/kayceejenz/transcript/dz2nmfn926e93e3?tab=applied-skills-tab',
 			logo: 'Microsoft',
-			category: 'Cloud Computing',
+			category: 'Cloud & DevOps',
 			type: 'Learning Path Completion',
 			description:
 				'Comprehensive completion of AZ-204 Azure Developer learning path with 13 TROPHY-level modules covering full-stack Azure development, plus 48+ individual module badges earned.',
@@ -308,7 +327,7 @@ export default {
 			],
 			link: '#',
 			logo: 'Microsoft',
-			category: 'AI/ML',
+			category: 'AI & Machine Learning',
 			type: 'Specialization',
 			description:
 				'Advanced AI development certification covering custom copilot creation, RAG-based solutions, model fine-tuning, and responsible AI practices using Microsoft AI Foundry platform.',
@@ -337,7 +356,7 @@ export default {
 			],
 			link: '#',
 			logo: 'Microsoft',
-			category: 'DevOps',
+			category: 'Cloud & DevOps',
 			type: 'Specialization',
 			description:
 				'Complete DevOps and automation certification covering PowerShell scripting, container orchestration, monitoring, and infrastructure automation across Azure services.',
@@ -359,7 +378,7 @@ export default {
 			skills: ['Artificial Intelligence (AI)'],
 			link: 'https://1drv.ms/b/c/2c82a64ae61f3dbc/ERVu74Pr-9RLj6iTloosoXgBPUO8u6tNWipANHg0oJw0vw?e=Tzhv9A',
 			logo: 'AWS',
-			category: 'AI/ML',
+			category: 'AI & Machine Learning',
 			type: 'Training',
 		},
 		{
@@ -375,7 +394,7 @@ export default {
 			],
 			link: 'https://ti-user-certificates.s3.amazonaws.com/ae62dcd7-abdc-4e90-a570-83eccba49043/0d1b605e-efc4-4cf5-8622-de01f207543c-precious-kosisochukwu-e47cd44b-dca3-4c32-aa0d-1a4f44b3689c-certificate.pdf',
 			logo: 'MongoDB',
-			category: 'MongoDB',
+			category: 'AI & Machine Learning',
 			type: 'Training',
 		},
 		{
@@ -392,7 +411,7 @@ export default {
 			],
 			link: 'https://ti-user-certificates.s3.amazonaws.com/ae62dcd7-abdc-4e90-a570-83eccba49043/0d1b605e-efc4-4cf5-8622-de01f207543c-precious-kosisochukwu-ade07d86-4935-4ba5-b2c1-e4a27b94e1e1-certificate.pdf',
 			logo: 'MongoDB',
-			category: 'MongoDB',
+			category: 'AI & Machine Learning',
 			type: 'Training',
 		},
 		{
@@ -404,7 +423,7 @@ export default {
 			skills: ['RAG', 'Atlas Vector Search', 'Embeddings'],
 			link: 'https://ti-user-certificates.s3.amazonaws.com/ae62dcd7-abdc-4e90-a570-83eccba49043/0d1b605e-efc4-4cf5-8622-de01f207543c-precious-kosisochukwu-97d365e4-b02e-4c04-9043-95147f94d192-certificate.pdf',
 			logo: 'MongoDB',
-			category: 'MongoDB',
+			category: 'AI & Machine Learning',
 			type: 'Training',
 		},
 		{
@@ -421,7 +440,7 @@ export default {
 			],
 			link: 'https://ti-user-certificates.s3.amazonaws.com/ae62dcd7-abdc-4e90-a570-83eccba49043/0d1b605e-efc4-4cf5-8622-de01f207543c-precious-kosisochukwu-b406c234-0fc5-4de3-9744-2f94200e3697-certificate.pdf',
 			logo: 'MongoDB',
-			category: 'MongoDB',
+			category: 'AI & Machine Learning',
 			type: 'Learning Path Completion',
 			description:
 				'MongoDB University learning path focused on GenAI development, vector search, and RAG.',
@@ -435,7 +454,7 @@ export default {
 			skills: ['RAG', 'Atlas Vector Search', 'Indexing'],
 			link: 'https://ti-user-certificates.s3.amazonaws.com/ae62dcd7-abdc-4e90-a570-83eccba49043/0d1b605e-efc4-4cf5-8622-de01f207543c-precious-kosisochukwu-833d2352-1323-4b94-b4e8-dc2b883e1012-certificate.pdf',
 			logo: 'MongoDB',
-			category: 'MongoDB',
+			category: 'AI & Machine Learning',
 			type: 'Training',
 		},
 		{
@@ -451,7 +470,7 @@ export default {
 			],
 			link: 'https://ti-user-certificates.s3.amazonaws.com/ae62dcd7-abdc-4e90-a570-83eccba49043/0d1b605e-efc4-4cf5-8622-de01f207543c-precious-kosisochukwu-3eea154d-bf21-494b-bb29-2e7ad9242e70-certificate.pdf',
 			logo: 'MongoDB',
-			category: 'MongoDB',
+			category: 'AI & Machine Learning',
 			type: 'Training',
 		},
 		{
@@ -463,7 +482,7 @@ export default {
 			skills: ['AI Fundamentals', 'Vector Search Basics'],
 			link: 'https://ti-user-certificates.s3.amazonaws.com/ae62dcd7-abdc-4e90-a570-83eccba49043/0d1b605e-efc4-4cf5-8622-de01f207543c-precious-kosisochukwu-14f46097-52c5-4f6d-814a-ed31b297ef93-certificate.pdf',
 			logo: 'MongoDB',
-			category: 'MongoDB',
+			category: 'AI & Machine Learning',
 			type: 'Training',
 		},
 		{
@@ -479,7 +498,7 @@ export default {
 			],
 			link: 'https://ti-user-certificates.s3.amazonaws.com/ae62dcd7-abdc-4e90-a570-83eccba49043/0d1b605e-efc4-4cf5-8622-de01f207543c-precious-kosisochukwu-e0addf6e-7a3b-42bb-9926-833c3e1436ec-certificate.pdf',
 			logo: 'MongoDB',
-			category: 'MongoDB',
+			category: 'AI & Machine Learning',
 			type: 'Training',
 		},
 		{
@@ -490,7 +509,7 @@ export default {
 			skills: ['Artificial Intelligence (AI)'],
 			link: 'https://1drv.ms/b/c/2c82a64ae61f3dbc/Ed3SMnDI_SZOug4mQal4524BrS7FHz9rLm7d5ouKy1O9UQ?e=OYjBUz',
 			logo: 'AWS',
-			category: 'AI/ML',
+			category: 'AI & Machine Learning',
 			type: 'Training',
 		},
 		{
@@ -501,7 +520,7 @@ export default {
 			skills: ['Artificial Intelligence (AI)'],
 			link: 'https://www.udemy.com/certificate/UC-7d8e4b36-2be9-4792-9e3e-4a60e53b1145/',
 			logo: 'Udemy',
-			category: 'AI/ML',
+			category: 'AI & Machine Learning',
 			type: 'Training',
 		},
 		{
@@ -512,7 +531,7 @@ export default {
 			skills: ['AI/ML', 'Data Science'],
 			link: 'https://www.udemy.com/certificate/UC-49ebbe90-8130-4899-841f-10f8c734e907/',
 			logo: 'Udemy',
-			category: 'AI/ML',
+			category: 'AI & Machine Learning',
 			type: 'Training',
 		},
 		{
@@ -523,7 +542,7 @@ export default {
 			skills: ['ASP.NET Core', 'NestJS'],
 			link: 'https://www.hackerrank.com/certificates/7c605c872fc3',
 			logo: 'HackerRank',
-			category: 'Software Development',
+			category: 'Software Engineering',
 			type: 'Professional Certification',
 		},
 		{
@@ -534,7 +553,7 @@ export default {
 			skills: ['SQL', 'Database Optimization'],
 			link: 'https://www.hackerrank.com/certificates/2e1f667dc216',
 			logo: 'HackerRank',
-			category: 'Database Management',
+			category: 'Software Engineering',
 			type: 'Professional Certification',
 		},
 		{
@@ -545,7 +564,7 @@ export default {
 			skills: ['Logical Reasoning', 'Algorithms'],
 			link: 'https://www.hackerrank.com/certificates/1e338eb6d3b0',
 			logo: 'HackerRank',
-			category: 'Problem Solving',
+			category: 'Software Engineering',
 			type: 'Professional Certification',
 		},
 		{
@@ -556,7 +575,7 @@ export default {
 			skills: ['Algorithms', 'Data Structures'],
 			link: 'https://www.hackerrank.com/certificates/a42592d1f289',
 			logo: 'HackerRank',
-			category: 'Problem Solving',
+			category: 'Software Engineering',
 			type: 'Professional Certification',
 		},
 		{
@@ -572,7 +591,7 @@ export default {
 			],
 			link: 'https://www.hackerrank.com/certificates/36990c1b5f95',
 			logo: 'HackerRank',
-			category: 'API Development',
+			category: 'Software Engineering',
 			type: 'Professional Certification',
 		},
 		{
@@ -583,7 +602,7 @@ export default {
 			skills: ['SQL'],
 			link: 'https://www.hackerrank.com/certificates/57329ad5e38b',
 			logo: 'HackerRank',
-			category: 'Database Management',
+			category: 'Software Engineering',
 			type: 'Professional Certification',
 		},
 		{
@@ -594,7 +613,7 @@ export default {
 			skills: ['SQL', 'Database Joins & Aggregation'],
 			link: 'https://www.hackerrank.com/certificates/a3701a66f8f1',
 			logo: 'HackerRank',
-			category: 'Database Management',
+			category: 'Software Engineering',
 			type: 'Professional Certification',
 		},
 		{
@@ -611,7 +630,7 @@ export default {
 			],
 			link: 'https://www.udemy.com/certificate/UC-08017e60-01b0-4f67-abf2-d4aaa9f7be5f/',
 			logo: 'Udemy',
-			category: 'Blockchain Development',
+			category: 'Blockchain',
 			type: 'Training',
 		},
 		{
@@ -622,7 +641,7 @@ export default {
 			skills: ['JavaScript', 'API Development', 'NestJS'],
 			link: 'https://www.hackerrank.com/certificates/E318F3565002',
 			logo: 'HackerRank',
-			category: 'Software Development',
+			category: 'Software Engineering',
 			type: 'Professional Certification',
 		},
 		{
@@ -633,7 +652,7 @@ export default {
 			skills: ['JavaScript', 'API Development', 'NestJS'],
 			link: 'https://www.hackerrank.com/certificates/d54ada727140',
 			logo: 'HackerRank',
-			category: 'Software Development',
+			category: 'Software Engineering',
 			type: 'Professional Certification',
 		},
 		{
@@ -644,7 +663,7 @@ export default {
 			skills: ['Node.js', 'API Development', 'NestJS'],
 			link: 'https://www.hackerrank.com/certificates/FC9761816854',
 			logo: 'HackerRank',
-			category: 'Software Development',
+			category: 'Software Engineering',
 			type: 'Professional Certification',
 		},
 		{
@@ -658,7 +677,7 @@ export default {
 			],
 			link: 'https://coursera.org/verify/MDRF34BPET26',
 			logo: 'Coursera',
-			category: 'Cloud Computing',
+			category: 'Cloud & DevOps',
 			type: 'Training',
 		},
 		{

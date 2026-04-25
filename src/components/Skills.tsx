@@ -30,28 +30,28 @@ export function Skills() {
 			title: 'Distributed Systems',
 			icon: Server,
 			skills: skills.distributed_systems,
-			color: 'bg-blue-500/10 text-blue-400 border-blue-500/30',
+			color: 'bg-primary/10 text-primary border-primary/30',
 		},
 		{
 			id: 'blockchain_web3',
-			title: 'Blockchain & Web3',
+			title: 'Fintech & Web3',
 			icon: Coins,
 			skills: skills.blockchain_web3,
-			color: 'bg-green-500/10 text-green-400 border-green-500/30',
+			color: 'bg-primary/10 text-primary border-primary/30',
 		},
 		{
 			id: 'devops_infra',
 			title: 'DevOps & Cloud',
 			icon: Cloud,
 			skills: skills.devops_infra,
-			color: 'bg-orange-500/10 text-orange-400 border-orange-500/30',
+			color: 'bg-primary/10 text-primary border-primary/30',
 		},
 		{
 			id: 'databases',
 			title: 'Databases',
 			icon: Database,
 			skills: skills.databases,
-			color: 'bg-purple-500/10 text-purple-400 border-purple-500/30',
+			color: 'bg-primary/10 text-primary border-primary/30',
 		},
 	];
 
@@ -63,14 +63,12 @@ export function Skills() {
 		<section id='skills' className='py-20 px-6 bg-muted/30'>
 			<div className='max-w-6xl mx-auto'>
 				<div className='text-center mb-16'>
-					<h2 className='text-4xl md:text-5xl font-bold text-foreground mb-4 font-mono'>
-						{'{ Technical Expertise }'}
+					<h2 className='text-4xl md:text-5xl font-bold text-foreground mb-4'>
+						Technical Expertise
 					</h2>
-					<div className='w-24 h-1 bg-primary mx-auto neon-glow'></div>
-					<p className='text-lg text-muted-foreground mt-6 max-w-3xl mx-auto font-mono leading-relaxed'>
-						// Bridging 5+ years of systems
-						engineering with advanced
-						Artificial Intelligence
+					<div className='w-16 h-0.5 bg-primary/60 mx-auto rounded-full'></div>
+					<p className='text-lg text-muted-foreground mt-6 max-w-3xl mx-auto leading-relaxed'>
+						5+ years of production systems engineering, fully focused on applied AI.
 					</p>
 				</div>
 
@@ -98,9 +96,7 @@ export function Skills() {
 												: 'bg-card border border-border hover:border-primary/50'
 										}`}>
 										<IconComponent className='h-4 w-4' />
-										{'{ ' +
-											category.title +
-											' }'}
+										{category.title}
 									</button>
 								);
 							},
@@ -111,10 +107,9 @@ export function Skills() {
 					{activeCategory && (
 						<Card className='bg-card/50 backdrop-blur border-primary/20 hover-glow'>
 							<CardHeader>
-								<CardTitle className='flex items-center gap-3 text-foreground font-mono text-xl'>
+								<CardTitle className='flex items-center gap-3 text-foreground text-xl'>
 									<activeCategory.icon className='h-6 w-6 text-primary' />
-									{'// ' +
-										activeCategory.title}
+									{activeCategory.title}
 								</CardTitle>
 							</CardHeader>
 							<CardContent>

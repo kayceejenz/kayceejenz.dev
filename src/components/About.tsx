@@ -23,18 +23,12 @@ export function About() {
 			<div className='max-w-6xl mx-auto'>
 				{/* Enhanced Header */}
 				<div className='text-center mb-20'>
-					<h2 className='text-4xl md:text-5xl font-bold text-foreground mb-4 font-mono'>
-						{'{ About Me }'}
+					<h2 className='text-4xl md:text-5xl font-bold text-foreground mb-4'>
+						About Me
 					</h2>
-					<div className='w-24 h-1 bg-primary mx-auto neon-glow mb-6'></div>
-					<p className='text-lg text-muted-foreground max-w-3xl mx-auto font-mono leading-relaxed'>
-						// Backend Software Engineer
-						with 5+ years building scalable
-						systems
-						<br />
-						// Transforming fintech,
-						blockchain, and AI visions into
-						production reality
+					<div className='w-16 h-0.5 bg-primary/60 mx-auto rounded-full mb-6'></div>
+					<p className='text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed'>
+						AI Engineer with 5+ years of production backend experience, building LLM systems, RAG pipelines, and the infrastructure behind them.
 					</p>
 				</div>
 
@@ -51,9 +45,8 @@ export function About() {
 
 						{/* Enhanced Professional Achievements */}
 						<div className='space-y-4'>
-							<h3 className='font-mono text-lg text-primary mb-4'>
-								// Key
-								Achievements
+							<h3 className='text-lg font-semibold text-foreground mb-4'>
+								Key Highlights
 							</h3>
 							{about.highlights.map(
 								(
@@ -94,10 +87,8 @@ export function About() {
 								<div className='space-y-6'>
 									<div className='flex items-center gap-3 mb-6'>
 										<Code2 className='h-6 w-6 text-primary' />
-										<h3 className='text-xl font-bold text-foreground font-mono'>
-											{
-												'{ Professional Impact }'
-											}
+										<h3 className='text-xl font-bold text-foreground'>
+											Professional Impact
 										</h3>
 									</div>
 
@@ -112,8 +103,8 @@ export function About() {
 											</div>
 										</div>
 
-										<div className='text-center p-4 bg-blue-500/5 rounded-lg border border-blue-500/20'>
-											<div className='text-3xl font-bold text-blue-500 font-mono mb-2'>
+										<div className='text-center p-4 bg-primary/5 rounded-lg border border-primary/20'>
+											<div className='text-3xl font-bold text-primary font-mono mb-2'>
 												3
 											</div>
 											<div className='text-sm text-muted-foreground font-mono'>
@@ -126,116 +117,66 @@ export function About() {
 						</Card>
 
 						{/* Expertise Areas */}
-						<div className='code-block'>
-							<div className='font-mono text-sm space-y-3'>
-								<div className='text-primary flex items-center gap-2'>
-									<Star className='h-4 w-4' />
-									// Core
-									Expertise
-									Areas
-								</div>
-								<div className='text-muted-foreground'>
-									<span className='text-primary'>
-										const
-									</span>{' '}
-									specializations
-									= [
-								</div>
-								<div className='ml-4 space-y-2'>
-									<div className='flex items-center gap-2'>
-										<Rocket className='h-3 w-3 text-yellow-500' />
-										<span className='text-yellow-500'>
-											"AI
-											&
-											Machine
-											Learning
-											Engineering"
-										</span>
-
-										,
+						<div className='p-5 rounded-xl bg-card/50 border border-border'>
+							<div className='flex items-center gap-2 mb-4'>
+								<Star className='h-4 w-4 text-primary' />
+								<h4 className='text-sm font-semibold text-foreground'>Core Expertise</h4>
+							</div>
+							<div className='space-y-2.5'>
+								{[
+									{ icon: Rocket, label: 'AI Engineering & LLM Systems' },
+									{ icon: Zap, label: 'RAG Architecture & Vector Search' },
+									{ icon: Code2, label: 'Backend Architecture & APIs' },
+									{ icon: Award, label: 'Azure Cloud & MLOps' },
+									{ icon: Users, label: 'Technical Leadership' },
+								].map(({ icon: Icon, label }) => (
+									<div key={label} className='flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/8'>
+										<Icon className='h-3.5 w-3.5 text-primary flex-shrink-0' />
+										<span className='text-sm font-medium text-primary'>{label}</span>
 									</div>
-									<div className='flex items-center gap-2'>
-										<Code2 className='h-3 w-3 text-green-500' />
-										<span className='text-green-500'>
-											"Backend
-											Architecture
-											&
-											APIs"
-										</span>
-
-										,
-									</div>
-									<div className='flex items-center gap-2'>
-										<Zap className='h-3 w-3 text-purple-500' />
-										<span className='text-purple-500'>
-											"Blockchain
-											&
-											Web3
-											Integration"
-										</span>
-
-										,
-									</div>
-									<div className='flex items-center gap-2'>
-										<Award className='h-3 w-3 text-blue-500' />
-										<span className='text-blue-500'>
-											"Azure
-											Cloud
-											Solutions"
-										</span>
-
-										,
-									</div>
-									<div className='flex items-center gap-2'>
-										<Users className='h-3 w-3 text-orange-500' />
-										<span className='text-orange-500'>
-											"Technical
-											Leadership
-											&
-											Team
-											Building"
-										</span>
-									</div>
-								</div>
-								<div className='text-muted-foreground'>
-									];
-								</div>
+								))}
 							</div>
 						</div>
 
 						{/* Current Focus */}
-						<Card className='bg-gradient-to-r from-primary/10 to-green-500/10 border-primary/30'>
+						<Card className='bg-primary/5 border-primary/30'>
 							<CardContent className='p-6'>
 								<div className='space-y-4'>
-									<h4 className='font-mono text-primary font-semibold flex items-center gap-2'>
-										<Target className='h-4 w-4' />
-										Current
-										Focus
+									<h4 className='text-sm font-semibold text-foreground flex items-center gap-2'>
+										<Target className='h-4 w-4 text-primary' />
+										Current Focus
 									</h4>
 									<p className='text-sm text-muted-foreground font-mono leading-relaxed'>
 										Building
-										AI-driven
-										fintech
-										solutions
-										that
-										combine
-										blockchain
-										technology
-										with
-										traditional
-										finance,
-										focusing
-										on
-										scalable
-										payment
-										systems
+										production-grade
+										AI
+										systems:
+										LLM
+										orchestration,
+										RAG
+										pipelines,
 										and
-										intelligent
-										user
-										experiences.
+										agentic
+										architectures.
+										Focused
+										on
+										applied
+										NLP,
+										real-world
+										model
+										evaluation,
+										and
+										the
+										backend
+										infrastructure
+										that
+										makes
+										AI
+										systems
+										scale.
 									</p>
-									<div className='flex items-center gap-2 text-green-500'>
-										<div className='w-2 h-2 bg-green-500 rounded-full animate-pulse'></div>
+									<div className='flex items-center gap-2 text-primary'>
+										<div className='w-2 h-2 bg-primary rounded-full animate-pulse'></div>
 										<span className='text-xs font-mono'>
 											Available
 											for

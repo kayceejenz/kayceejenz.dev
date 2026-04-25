@@ -550,177 +550,104 @@ export function Blog() {
 		return (
 			<section id='blog' className='py-20 px-6 bg-muted/30'>
 				<div className='max-w-4xl mx-auto'>
-					<div className='flex items-center justify-between mb-6'>
+					{/* Article toolbar */}
+					<div className='flex items-center justify-between mb-8'>
 						<Button
 							variant='outline'
-							onClick={() =>
-								setSelectedPost(
-									null
-								)
-							}
-							className='font-mono border-primary/30 hover:border-primary hover:neon-glow'>
+							onClick={() => setSelectedPost(null)}
+							className='border-border hover:border-primary/50'>
 							<ArrowLeft className='h-4 w-4 mr-2' />
-							back()
+							Back to Blog
 						</Button>
 
 						{speechSupported && (
-							<div className='flex gap-2'>
+							<div className='flex items-center gap-2'>
 								<Button
 									variant='outline'
-									onClick={
-										handleSpeak
-									}
-									className='font-mono border-primary/30 hover:border-primary hover:neon-glow'
-									title={
-										isPaused
-											? 'Resume reading'
-											: isSpeaking
-											? 'Pause reading'
-											: 'Read aloud'
-									}>
+									size='sm'
+									onClick={handleSpeak}
+									className='border-border hover:border-primary/50'
+									title={isPaused ? 'Resume reading' : isSpeaking ? 'Pause reading' : 'Read aloud'}>
 									{isPaused ? (
-										<>
-											<Play className='h-4 w-4 mr-2' />{' '}
-											resume()
-										</>
+										<><Play className='h-4 w-4 mr-1.5' />Resume</>
 									) : isSpeaking ? (
-										<>
-											<Pause className='h-4 w-4 mr-2' />{' '}
-											pause()
-										</>
+										<><Pause className='h-4 w-4 mr-1.5' />Pause</>
 									) : (
-										<>
-											<Volume2 className='h-4 w-4 mr-2' />{' '}
-											speak()
-										</>
+										<><Volume2 className='h-4 w-4 mr-1.5' />Read Aloud</>
 									)}
 								</Button>
-
-								{(isSpeaking ||
-									isPaused) && (
+								{(isSpeaking || isPaused) && (
 									<Button
 										variant='outline'
-										onClick={
-											handleStop
-										}
-										className='font-mono border-red-500/30 hover:border-red-500 text-red-500'
-										title='Stop reading'>
-										<VolumeX className='h-4 w-4 mr-2' />{' '}
-										stop()
+										size='sm'
+										onClick={handleStop}
+										className='border-red-500/30 hover:border-red-500 text-red-500'>
+										<VolumeX className='h-4 w-4 mr-1.5' />Stop
 									</Button>
 								)}
 							</div>
 						)}
 					</div>
 
-					{speechSupported &&
-						(isSpeaking || isPaused) && (
-							<div className='mb-4 p-3 bg-primary/10 border border-primary/30 rounded-lg'>
-								<div className='flex items-center gap-2 text-sm font-mono text-primary'>
-									<Volume2 className='h-4 w-4 animate-pulse' />
-									<span>
-										{isPaused
-											? 'Speech paused'
-											: 'Reading article aloud...'}
-									</span>
-								</div>
-							</div>
-						)}
-
-					<Card className='bg-card/50 backdrop-blur border-primary/20'>
-						<div className='terminal-window'>
-							<div className='terminal-header'>
-								<div className='terminal-dot red'></div>
-								<div className='terminal-dot yellow'></div>
-								<div className='terminal-dot green'></div>
-								<span className='font-mono text-xs text-muted-foreground ml-2'>
-									~/blog/
-									{selectedPost.title
-										.toLowerCase()
-										.replace(
-											/\s+/g,
-											'_'
-										)}
-									.md
-								</span>
-							</div>
-
-							<CardHeader className='bg-card/30'>
-								<CardTitle className='text-2xl text-foreground font-mono mb-4'>
-									{'{ ' +
-										selectedPost.title +
-										' }'}
-								</CardTitle>
-								<div className='flex flex-wrap items-center gap-4 text-sm text-muted-foreground'>
-									<div className='flex items-center gap-2'>
-										<Calendar className='h-4 w-4' />
-										<span className='font-mono'>
-											{
-												selectedPost.date
-											}
-										</span>
-									</div>
-									<div className='flex items-center gap-2'>
-										<Clock className='h-4 w-4' />
-										<span className='font-mono'>
-											{
-												selectedPost.readTime
-											}{' '}
-											read
-										</span>
-									</div>
-								</div>
-							</CardHeader>
-
-							<CardContent className='p-6'>
-								<div className='flex flex-wrap gap-2 mb-6'>
-									{selectedPost.tags.map(
-										(
-											tag,
-											index
-										) => (
-											<Badge
-												key={
-													index
-												}
-												variant='outline'
-												className='bg-primary/10 text-primary border-primary/30 font-mono text-xs'>
-												{
-													tag
-												}
-											</Badge>
-										)
-									)}
-								</div>
-
-								<div className='prose prose-lg max-w-none'>
-									<div
-										className='
-											[&_.code-block-container]:my-8
-											[&_.code-header]:bg-primary/5
-											[&_.code-content]:bg-card/30
-											[&_.inline-code]:bg-primary/15
-											[&_.inline-code]:text-primary
-											[&_h1]:text-foreground 
-											[&_h2]:text-foreground 
-											[&_h3]:text-foreground 
-											[&_strong]:text-foreground
-											[&_em]:text-foreground/90
-											[&_blockquote]:bg-primary/5
-											[&_blockquote]:border-primary/30
-											[&_li]:text-muted-foreground
-											[&_p]:text-muted-foreground
-											[&_p]:leading-8
-										'
-										dangerouslySetInnerHTML={{
-											__html: renderMarkdown(
-												selectedPost.content
-											),
-										}}
-									/>
-								</div>
-							</CardContent>
+					{/* Reading indicator */}
+					{speechSupported && (isSpeaking || isPaused) && (
+						<div className='mb-6 p-3 bg-primary/8 border border-primary/20 rounded-lg flex items-center gap-2 text-sm text-primary'>
+							<Volume2 className='h-4 w-4 animate-pulse' />
+							{isPaused ? 'Reading paused' : 'Reading article aloud…'}
 						</div>
+					)}
+
+					{/* Article card */}
+					<Card className='bg-card/50 backdrop-blur border-border'>
+						<CardHeader className='border-b border-border pb-6'>
+							<div className='flex flex-wrap gap-2 mb-4'>
+								{selectedPost.tags.map((tag, i) => (
+									<Badge key={i} variant='outline' className='bg-primary/10 text-primary border-primary/30 text-xs'>
+										{tag}
+									</Badge>
+								))}
+							</div>
+							<h1 className='text-2xl md:text-3xl font-bold text-foreground leading-tight mb-4'>
+								{selectedPost.title}
+							</h1>
+							<div className='flex flex-wrap items-center gap-5 text-sm text-muted-foreground'>
+								<div className='flex items-center gap-1.5'>
+									<Calendar className='h-4 w-4' />
+									{selectedPost.date}
+								</div>
+								<div className='flex items-center gap-1.5'>
+									<Clock className='h-4 w-4' />
+									{selectedPost.readTime} read
+								</div>
+							</div>
+						</CardHeader>
+
+						<CardContent className='p-6 md:p-8'>
+							<div className='prose prose-lg max-w-none'>
+								<div
+									className='
+										[&_.code-block-container]:my-8
+										[&_.code-header]:bg-primary/5
+										[&_.code-content]:bg-card/30
+										[&_.inline-code]:bg-primary/15
+										[&_.inline-code]:text-primary
+										[&_h1]:text-foreground
+										[&_h2]:text-foreground
+										[&_h3]:text-foreground
+										[&_strong]:text-foreground
+										[&_em]:text-foreground/90
+										[&_blockquote]:bg-primary/5
+										[&_blockquote]:border-primary/30
+										[&_li]:text-muted-foreground
+										[&_p]:text-muted-foreground
+										[&_p]:leading-8
+									'
+									dangerouslySetInnerHTML={{
+										__html: renderMarkdown(selectedPost.content),
+									}}
+								/>
+							</div>
+						</CardContent>
 					</Card>
 				</div>
 			</section>
@@ -731,17 +658,12 @@ export function Blog() {
 		<section id='blog' className='py-20 px-6 bg-muted/30'>
 			<div className='max-w-7xl mx-auto'>
 				<div className='text-center mb-20'>
-					<h2 className='text-4xl md:text-5xl font-bold text-foreground mb-4 font-mono'>
-						{'{ Technical Blog }'}
+					<h2 className='text-4xl md:text-5xl font-bold text-foreground mb-4'>
+						Technical Blog
 					</h2>
-					<div className='w-24 h-1 bg-primary mx-auto neon-glow mb-6'></div>
-					<p className='text-lg text-muted-foreground max-w-3xl mx-auto font-mono leading-relaxed'>
-						// Deep dives into Azure, AI,
-						and fintech development
-						<br />
-						// Real-world solutions and
-						architectural insights from
-						production systems
+					<div className='w-16 h-0.5 bg-primary/60 mx-auto rounded-full mb-6'></div>
+					<p className='text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed'>
+						Deep dives into AI engineering, backend architecture, and real-world production insights.
 					</p>
 				</div>
 
@@ -749,216 +671,57 @@ export function Blog() {
 					{blogPosts.map((post, index) => (
 						<Card
 							key={index}
-							className='bg-card/50 backdrop-blur border-primary/20 hover-glow group hover:-translate-y-2 transition-all duration-300 cursor-pointer'
-							onClick={() =>
-								setSelectedPost(
-									post
-								)
-							}>
-							<div className='terminal-window'>
-								<div className='terminal-header'>
-									<div className='terminal-dot red'></div>
-									<div className='terminal-dot yellow'></div>
-									<div className='terminal-dot green'></div>
-									<span className='font-mono text-xs text-muted-foreground ml-2'>
-										~/blog/
-										{post.title
-											.toLowerCase()
-											.replace(
-												/\s+/g,
-												'_'
-											)}
-										.md
+							className='bg-card/50 backdrop-blur border-border hover-glow group flex flex-col cursor-pointer transition-all duration-300'
+							onClick={() => setSelectedPost(post)}>
+							<CardHeader className='pb-4'>
+								<div className='flex items-start justify-between gap-3 mb-3'>
+									<span className='inline-block px-2.5 py-1 bg-primary/10 text-primary text-xs font-medium rounded-md border border-primary/20'>
+										{post.category || 'Technical'}
 									</span>
+									<div className='flex items-center gap-1 text-xs text-muted-foreground shrink-0'>
+										<Clock className='h-3 w-3' />
+										<span>{post.readTime}</span>
+									</div>
+								</div>
+								<CardTitle className='text-lg font-semibold text-foreground leading-snug group-hover:text-primary transition-colors'>
+									{post.title}
+								</CardTitle>
+								<div className='flex items-center gap-1 text-xs text-muted-foreground mt-1'>
+									<Calendar className='h-3 w-3' />
+									<span>{post.date}</span>
+								</div>
+							</CardHeader>
+
+							<CardContent className='flex flex-col flex-1 gap-4 pt-0'>
+								<p className='text-sm text-muted-foreground leading-relaxed line-clamp-3'>
+									{post.excerpt}
+								</p>
+
+								<div className='flex flex-wrap gap-1.5'>
+									{post.tags.map((tag, tagIndex) => (
+										<Badge
+											key={tagIndex}
+											variant='outline'
+											className='bg-muted/50 text-muted-foreground border-border text-xs'>
+											{tag}
+										</Badge>
+									))}
 								</div>
 
-								<CardHeader className='bg-card/30 relative'>
-									{/* Category Badge */}
-									<div className='absolute -top-3 -right-3 bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-mono font-bold shadow-lg'>
-										{post.category ||
-											'Technical'}
-									</div>
-
-									<CardTitle className='text-xl text-foreground font-mono leading-tight mb-3'>
-										<span className='text-primary'>
-											const
-										</span>{' '}
-										article
-										=
-										"
-										<span className='text-green-400'>
-											{
-												post.title
-											}
-										</span>
-
-										"
-									</CardTitle>
-
-									<div className='flex items-center justify-between text-xs text-muted-foreground'>
-										<div className='flex items-center gap-4'>
-											<div className='flex items-center gap-1'>
-												<Calendar className='h-3 w-3 text-primary' />
-												<span className='font-mono'>
-													{
-														post.date
-													}
-												</span>
-											</div>
-											<div className='flex items-center gap-1'>
-												<Clock className='h-3 w-3 text-primary' />
-												<span className='font-mono'>
-													{
-														post.readTime
-													}
-												</span>
-											</div>
-										</div>
-										<div className='text-xs font-mono text-muted-foreground'>
-											#
-											{blogPosts.indexOf(
-												post
-											) +
-												1}
-										</div>
-									</div>
-								</CardHeader>
-
-								<CardContent className='space-y-6 p-6'>
-									{/* Article Preview */}
-									<div className='code-block'>
-										<div className='font-mono text-sm space-y-2'>
-											<div className='text-primary flex items-center gap-2'>
-												<span>
-													const
-													articlePreview
-													={' '}
-													{
-														'{'
-													}
-												</span>
-											</div>
-											<div className='ml-4 text-muted-foreground space-y-1'>
-												<div>
-													summary:{' '}
-													<span className='text-yellow-500'>
-														"
-														{
-															post.excerpt
-														}
-
-														"
-													</span>
-
-													,
-												</div>
-												<div>
-													readingTime:{' '}
-													<span className='text-blue-400'>
-														"
-														{
-															post.readTime
-														}
-
-														"
-													</span>
-
-													,
-												</div>
-												<div>
-													tags:{' '}
-													<span className='text-green-400'>
-														[
-														{
-															post
-																.tags
-																.length
-														}{' '}
-														topics]
-													</span>
-												</div>
-											</div>
-											<div className='text-primary'>
-												{
-													'}'
-												}
-											</div>
-										</div>
-									</div>
-
-									{/* Tags with Enhanced Display */}
-									<div>
-										<div className='flex items-center justify-between mb-3'>
-											<div className='font-mono text-sm text-primary'>
-												//
-												Article
-												Topics
-											</div>
-											<div className='text-xs font-mono text-muted-foreground'>
-												{
-													post
-														.tags
-														.length
-												}{' '}
-												tags
-											</div>
-										</div>
-										<div className='flex flex-wrap gap-2'>
-											{post.tags.map(
-												(
-													tag,
-													tagIndex
-												) => (
-													<Badge
-														key={
-															tagIndex
-														}
-														variant='outline'
-														className='bg-primary/10 text-primary border-primary/30 hover:border-primary hover:neon-glow font-mono text-xs transition-all duration-300 hover:scale-105'>
-														<Tag className='h-3 w-3 mr-1' />
-														{
-															tag
-														}
-													</Badge>
-												)
-											)}
-										</div>
-									</div>
-
-									{/* Enhanced Read More Button */}
-									<div className='pt-2'>
-										<Button
-											variant='outline'
-											size='sm'
-											className='w-full font-mono border-primary/30 hover:border-primary hover:neon-glow transition-all duration-300 group'
-											onClick={() =>
-												setSelectedPost(
-													post
-												)
-											}>
-											<ExternalLink className='h-3 w-3 mr-2 group-hover:translate-x-0.5 transition-transform' />
-											read()
-										</Button>
-									</div>
-
-									{/* Article Footer */}
-									<div className='pt-4 border-t border-primary/20'>
-										<div className='flex items-center justify-center gap-2 text-primary font-mono text-xs'>
-											<span>
-												//
-												Click
-												to
-												dive
-												deeper
-												into{' '}
-												{post.category ||
-													'technical'}{' '}
-												insights
-											</span>
-										</div>
-									</div>
-								</CardContent>
-							</div>
+								<div className='mt-auto pt-2'>
+									<Button
+										variant='ghost'
+										size='sm'
+										className='w-full border border-border hover:border-primary/40 hover:bg-muted text-sm transition-all duration-200 group/btn'
+										onClick={e => {
+											e.stopPropagation();
+											setSelectedPost(post);
+										}}>
+										<ExternalLink className='h-3.5 w-3.5 mr-2 group-hover/btn:translate-x-0.5 transition-transform' />
+										Read Article
+									</Button>
+								</div>
+							</CardContent>
 						</Card>
 					))}
 				</div>

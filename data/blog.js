@@ -1,116 +1,144 @@
-// Configuration file for blog data
-// Standards: Google Technical Writing (Active Voice), Harvard Scannability, Big Tech Post-Mortem Structure
-
+// Security Incident Story Post
 const securityIncidentPost = {
-	title: 'Incident Report: Anatomy of a Secret Leak and the Path to Hardened Production',
+	title: 'The Night a Hacker Taught Me More Than Any Tutorial Ever Could',
 	slug: 'night-a-hacker-taught-me',
 	date: '2025-12-11',
 	readTime: '10 min',
 	author: 'Precious Okolo',
-	excerpt: 'A critical vulnerability in our Docker registry exposed production secrets. Here is the post-mortem on how we overhauled our container hygiene, email authentication, and clickjacking protections.',
-	tags: ['Security', 'DevOps', 'Docker', 'Email Security', 'CSP', 'Post-Mortem'],
+	excerpt: 'A late-night incident exposed our secrets and forced us to fix Docker image hygiene, email authentication, and clickjacking protections—fast. Here’s what happened and exactly how we solved it.',
+	tags: [
+		'Security',
+		'DevOps',
+		'Docker',
+		'Email Security',
+		'CSP',
+		'SPF/DKIM/DMARC',
+	],
 	featured: true,
 	category: 'Security',
-	content: `### SITUATION
-During a routine log review, I identified suspicious traffic hitting non-public internal endpoints. The investigation revealed a critical vulnerability: a Docker image containing production environment variables had been set to "Public" on Docker Hub.
+	content: `# The Night a Hacker Taught Me More Than Any Tutorial Ever Could
 
-### COMPLICATION
-A simple \`docker inspect\` revealed our entire secret stack. We hadn't just left the door open; we had baked the keys into the building's foundation. This exposure necessitated an immediate shutdown, rotation, and re-architecture of our deployment pipeline.
+Some engineering stories start with a brilliant idea. Mine started with a hacker… and a very public Docker image.
+
+It was late — the kind of late where your brain is running on caffeine fumes and stubbornness. I was casually reviewing logs when something felt off. A weird request here, a suspicious IP there. Nothing dramatic, but enough to make me squint at the screen.
+
+Then I saw it: a request hitting an internal endpoint that shouldn't be guessable. My stomach dropped.
 
 ---
 
-## Resolution: A 4-Step Hardening Strategy
+## The Docker Image That Betrayed Us
 
-### 1. Container Hygiene & Runtime Injection
-We transitioned to a private registry and decoupled secrets from the build process. 
+I pulled up our Docker Hub page, and there it was — our image, sitting proudly in the public section like a billboard saying: “Hey hackers, free goodies inside!”
 
-* **Action:** Removed environment variables from the Dockerfile entirely. 
-* **Implementation:** Injected secrets at **runtime** via Azure Key Vault/Secret Manager, ensuring sensitive data never exists in the image layers.
-* **Validation:** Integrated **Trivy** into our CI/CD pipeline to scan for secrets before images are pushed.
+I did the same thing any attacker would do:
 
-### 2. DNS & Email Integrity (SPF/DKIM/DMARC)
-To prevent brand impersonation discovered during the audit, we enforced a strict DNS trifecta:
-* **SPF:** Explicitly defined authorized senders.
-* **DKIM:** Added cryptographic signatures to all outbound mail.
-* **DMARC:** Set policy to \`p=reject\` to block unauthorized mail.
+\`\`\`
+ docker pull our-image
+ docker inspect our-image
+\`\`\`
 
-### 3. Preventing Clickjacking via Security Headers
-We identified that our dashboard was vulnerable to UI redressing. We implemented strict security headers to prevent our app from being rendered in malicious iframes.
+And there it was.
 
-\`\`\`http
-/* Security Header Implementation */
+Our environment variables. Our secrets. Our keys. Just sitting there.
+
+A hacker didn’t need to break in. We had left the door wide open and taped the keys to the frame.
+
+---
+
+## Fix #1 — Locking Down the Image
+
+Immediate actions:
+
+- Make the image private
+- Rotate every exposed secret
+- Update the pipeline to authenticate properly
+- Remove environment variables from the image entirely (inject at runtime)
+
+It felt like cleaning up a crime scene — except the criminal was us.
+
+---
+
+## Fix #2 — The Pipeline That Needed Therapy
+
+Once the image went private, the pipeline threw a tantrum. Build failed. Deploy failed. Everything failed.
+
+So we rewired the pipeline:
+
+- Added secure registry authentication (least-privilege tokens)
+- Updated build steps and removed legacy credentials
+- Injected secrets at runtime via the platform (not baked into layers)
+- Validated with a clean, reproducible build
+
+Finally, the pipeline turned green again.
+
+---
+
+## Fix #3 — The Email Impersonation Saga
+
+Users were getting emails that looked like they came from us… but didn’t. Classic impersonation.
+
+We tightened email authentication (DNS):
+
+- SPF: define who can send mail
+- DKIM: cryptographic signatures on outbound mail
+- DMARC: policy to quarantine/reject failures
+
+Result: our emails were trusted again; the fakes got blocked.
+
+---
+
+## Fix #4 — The Iframe Trapdoor (Clickjacking)
+
+We discovered our app could be embedded in an iframe — a clickjacking risk. Not tonight.
+
+We slammed the door with headers:
+
+\`\`\`
 X-Frame-Options: DENY
 Content-Security-Policy: frame-ancestors 'none';
 \`\`\`
 
----
-
-## Engineering Lessons Learned
-1.  **Private by Default:** Assume all artifacts are public until proven otherwise.
-2.  **Runtime over Build-time:** If a secret is in your \`Dockerfile\`, your architecture is compromised. Use \`docker history\` to audit legacy layers.
-3.  **Defense in Depth:** Security headers (CSP, XFO) are low-effort, high-impact safeguards that every production app requires.
-
-### Hardening Checklist (Copy/Paste)
-- [ ] **Container registry:** Private access with scoped, least-privilege tokens.
-- [ ] **CI secrets:** Masked, rotated, and never baked into image layers.
-- [ ] **Email Auth:** SPF/DKIM/DMARC enforced and monitored.
-- [ ] **Security headers:** XFO DENY and CSP frame-ancestors 'none' implemented.`,
-};
-
-const azureJourneyPost = {
-	title: 'Scaling Fintech: Lessons from Migrating Flipeet to Azure (AZ-204)',
-	slug: 'azure-journey-az204',
-	date: '2024-12-15',
-	readTime: '12 min',
-	author: 'Precious Okolo',
-	excerpt: 'How completing the Azure Developer Associate certification transformed our infrastructure from server-bound maintenance to an automated, cloud-native powerhouse.',
-	tags: ['Azure', 'Cloud Computing', 'AZ-204', 'Fintech'],
-	featured: true,
-	category: 'Cloud Computing',
-	content: `### THE CHALLENGE
-At Flipeet, our payment systems processed millions in transactions, but our infrastructure had become a bottleneck. We were trapped in "maintenance mode"—managing servers instead of shipping features. To solve this, I leveraged the **AZ-204 (Azure Developer Associate)** framework to transition to a cloud-native architecture.
+Bonus: we reviewed CSP generally to reduce XSS blast radius.
 
 ---
 
-## 1. Event-Driven Efficiency with Azure Functions
-**The Problem:** Our crypto payment webhooks (Solana Pay) required 24/7 dedicated servers, leading to high idle costs and manual scaling during volatility.
-**The Solution:** We migrated to a serverless architecture using Azure Functions.
+## What We Shipped Before Sunrise
 
-\`\`\`javascript
-// Optimized Logic: Azure Function for Solana Pay Integration
-module.exports = async function (context, req) {
-    const { transactionHash, amount, publicKey } = req.body;
-    
-    // Scale-on-demand: Logic executes only upon webhook trigger
-    const verification = await verifySolanaTransaction(transactionHash);
-    
-    if (verification.success) {
-        await updatePaymentStatus(publicKey, amount, 'confirmed');
-        return { status: 200, body: { verified: true } };
-    }
-};
-\`\`\`
+- Closed a Docker leak that exposed env configuration
+- Rebuilt a broken pipeline with proper secret handling
+- Stopped email impersonation via SPF/DKIM/DMARC
+- Blocked clickjacking with XFO and CSP frame-ancestors
+- Rotated secrets and cleaned up old tokens
 
-* **Engineering Win:** Reduced operational costs by **70%**.
-* **Result:** Maintained 100% uptime during a 10x traffic spike on Black Friday without manual configuration.
-
-## 2. Global Consistency with Cosmos DB
-Global trading platforms like **TradeHouse** fail without low-latency data. Traditional relational databases struggle with multi-region synchronization. By implementing **Cosmos DB with Session Consistency**, we achieved:
-* **Sub-100ms latency** across three continents.
-* **99.99% availability** for P2P trading.
-* **Automatic conflict resolution** for concurrent global orders.
-
-## 3. The Container Revolution: Azure Container Apps
-We replaced 30-minute "manual" deployments with automated **Blue-Green deployments**. Using Azure Container Apps allowed us to abstract Kubernetes complexity while gaining instant rollbacks.
-* **Before:** 30-minute high-risk deployments with manual config.
-* **After:** Automated deployments in **under 5 minutes** with blue-green traffic shifting.
+It wasn’t the night we planned, but it’s the night the system needed.
 
 ---
 
-## The Bottom Line
-The AZ-204 path isn't just a certification; it is a blueprint for production-grade engineering. For backend developers in high-stakes sectors like Fintech, mastering these cloud-native patterns provides the reliability and scalability that modern markets demand.
+## Lessons That Will Outlive This Incident
 
-**Next Step:** Integrating these foundations with Azure's AI ecosystem for intelligent payment categorization.`,
+1. Private by default. Public images and repos are liabilities unless you’re certain they’re scrubbed.
+2. Secrets never belong in images. Inject at runtime. Verify with tools like Trivy and Docker history.
+3. Pipelines are part of the attack surface. Audit credentials, scopes, and artifact exposure.
+4. Email auth isn’t optional. SPF + DKIM + DMARC save your reputation and your users.
+5. Defense in depth. CSP, X-Frame-Options, and proper headers are cheap insurance.
+6. Practice rotation. Make secret rotation boring and frequent.
+7. Monitor the boring stuff. Logs and DNS changes often give the earliest signals.
+
+---
+
+## A Quick Hardening Checklist (Copy/Paste)
+
+- [ ] Container registry: private access, scoped tokens
+- [ ] CI secrets: masked, rotated, least privilege
+- [ ] No secrets in images: verify with \`docker history\`, scanning tools
+- [ ] SPF/DKIM/DMARC: enforced and monitored
+- [ ] Security headers: X-Frame-Options DENY, CSP frame-ancestors 'none'
+- [ ] CSP baseline against XSS, script-src nonces/hashes where possible
+- [ ] Incident runbook: who to call, what to rotate, where to look
+
+Because sometimes the best lessons come from the mistakes you didn’t know you were making — until a hacker shows you.
+`,
 };
 
+// Export all blog posts as an array
 export default [securityIncidentPost];
