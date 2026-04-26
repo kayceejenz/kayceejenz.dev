@@ -15,7 +15,7 @@ export default {
 		ctas: [
 			{
 				label: 'Download Résumé',
-				href: '/files/Jenz_Resume.pdf',
+				href: '/files/Precious_Okolo_CV.pdf',
 			},
 			{ label: 'Discuss a Project', href: '#contact' },
 		],
