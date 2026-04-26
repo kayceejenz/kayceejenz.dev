@@ -5,7 +5,7 @@ export default {
 		description:
 			'AI Engineer with 5+ years of backend systems experience. Building LLM-powered applications, RAG pipelines, and the production infrastructure behind them. MSc Artificial Intelligence, University of Salford.',
 		url: 'https://kayceejenz.dev',
-		resume: '/files/Jenz_Resume.pdf',
+		resume: '/files/Precious_Okolo_CV.pdf',
 	},
 	hero: {
 		name: 'Precious Okolo',
