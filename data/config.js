@@ -221,8 +221,6 @@ export default {
 		},
 	],
 	contact: {
-		email: 'kayceejenz@gmail.com',
-		location: 'United Kingdom',
 		location: 'United Kingdom',
 		links: {
 			linkedin: 'https://linkedin.com/in/kayceejenz/',
