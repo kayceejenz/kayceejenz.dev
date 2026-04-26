@@ -1,20 +1,17 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import {
-	BrainCircuit, // New icon for AI
+	BrainCircuit,
 	Server,
 	Coins,
 	Cloud,
 	Database,
-	Code,
 } from 'lucide-react';
 import { useState } from 'react';
 import config from '../../data/config.js';
 
 export function Skills() {
 	const { skills } = config;
-	// Start with 'ai' as the default active tab to signal your new focus
 	const [activeTab, setActiveTab] = useState('ai_ml');
 
 	const skillCategories = [

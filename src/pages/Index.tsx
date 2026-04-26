@@ -49,22 +49,26 @@ export default function Index() {
 		return () => window.removeEventListener('scroll', handleScroll);
 	}, []);
 
-	const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+	const scrollToTop = () =>
+		window.scrollTo({ top: 0, behavior: 'smooth' });
 
 	return (
 		<div className='min-h-screen relative'>
 			<MatrixBackground />
 
 			{/* Navigation */}
-			<nav className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-				scrolled
-					? 'bg-background/95 backdrop-blur-md shadow-sm border-b border-border'
-					: 'bg-background/80 backdrop-blur-sm border-b border-border/50'
-			}`}>
+			<nav
+				className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+					scrolled
+						? 'bg-background/95 backdrop-blur-md shadow-sm border-b border-border'
+						: 'bg-background/80 backdrop-blur-sm border-b border-border/50'
+				}`}>
 				<div className='max-w-6xl mx-auto px-6'>
 					<div className='flex justify-between items-center h-16'>
 						{/* Brand */}
-						<a href='#' className='flex flex-col leading-tight group'>
+						<a
+							href='#'
+							className='flex flex-col leading-tight group'>
 							<span className='text-base font-bold text-foreground group-hover:text-primary transition-colors'>
 								Precious Okolo
 							</span>
@@ -77,7 +81,9 @@ export default function Index() {
 						<div className='hidden md:flex items-center gap-1'>
 							{navItems.map(item => (
 								<a
-									key={item}
+									key={
+										item
+									}
 									href={`#${item}`}
 									className='px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground rounded-md hover:bg-muted transition-all duration-150 capitalize'>
 									{item}
@@ -90,7 +96,12 @@ export default function Index() {
 							<ThemeToggle />
 							<button
 								className='md:hidden p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors'
-								onClick={() => setMobileMenuOpen(prev => !prev)}
+								onClick={() =>
+									setMobileMenuOpen(
+										prev =>
+											!prev,
+									)
+								}
 								aria-label='Toggle menu'>
 								{mobileMenuOpen ? (
 									<X className='h-5 w-5' />
@@ -106,9 +117,15 @@ export default function Index() {
 						<div className='md:hidden border-t border-border py-3 pb-4'>
 							{navItems.map(item => (
 								<a
-									key={item}
+									key={
+										item
+									}
 									href={`#${item}`}
-									onClick={() => setMobileMenuOpen(false)}
+									onClick={() =>
+										setMobileMenuOpen(
+											false,
+										)
+									}
 									className='block px-2 py-2.5 text-sm text-muted-foreground hover:text-foreground capitalize transition-colors'>
 									{item}
 								</a>
@@ -135,20 +152,39 @@ export default function Index() {
 			<footer className='bg-card/50 backdrop-blur border-t border-border text-foreground py-14 px-6'>
 				<div className='max-w-6xl mx-auto'>
 					<div className='grid md:grid-cols-3 gap-10 pb-10 border-b border-border'>
-
 						{/* Brand column */}
 						<div className='space-y-4'>
 							<div>
-								<h3 className='text-lg font-bold text-foreground'>Precious Okolo</h3>
-								<p className='text-sm text-primary font-medium mt-0.5'>AI Engineer</p>
+								<h3 className='text-lg font-bold text-foreground'>
+									Precious
+									Okolo
+								</h3>
+								<p className='text-sm text-primary font-medium mt-0.5'>
+									AI
+									Engineer
+								</p>
 							</div>
 							<p className='text-sm text-muted-foreground leading-relaxed'>
-								Building LLM systems, RAG pipelines, and the production infrastructure behind them.
-								Currently pursuing an MSc in Artificial Intelligence at the University of Salford.
+								Building LLM
+								systems, RAG
+								pipelines, and
+								the production
+								infrastructure
+								behind them.
+								Currently
+								pursuing an MSc
+								in Artificial
+								Intelligence at
+								the University
+								of Salford.
 							</p>
 							<div className='flex items-center gap-2'>
 								<div className='w-2 h-2 bg-primary rounded-full animate-pulse'></div>
-								<span className='text-sm text-primary font-medium'>Open to AI-focused roles</span>
+								<span className='text-sm text-primary font-medium'>
+									Open to
+									AI-focused
+									roles
+								</span>
 							</div>
 						</div>
 
@@ -158,12 +194,24 @@ export default function Index() {
 								Quick Links
 							</h4>
 							<div className='space-y-2.5'>
-								{['About', 'Skills', 'Experience', 'Certifications', 'Projects', 'Blog', 'Contact'].map(item => (
+								{[
+									'About',
+									'Skills',
+									'Experience',
+									'Certifications',
+									'Projects',
+									'Blog',
+									'Contact',
+								].map(item => (
 									<a
-										key={item}
+										key={
+											item
+										}
 										href={`#${item.toLowerCase()}`}
 										className='block text-sm text-muted-foreground hover:text-foreground transition-colors'>
-										{item}
+										{
+											item
+										}
 									</a>
 								))}
 							</div>
@@ -178,25 +226,36 @@ export default function Index() {
 								<div className='flex items-center gap-3'>
 									<Code2 className='h-4 w-4 text-primary flex-shrink-0' />
 									<span className='text-sm text-muted-foreground'>
-										5+ years production engineering
+										5+
+										years
+										production
+										engineering
 									</span>
 								</div>
 								<div className='flex items-center gap-3'>
 									<BrainCircuit className='h-4 w-4 text-primary flex-shrink-0' />
 									<span className='text-sm text-muted-foreground'>
-										MSc AI, University of Salford
+										MSc
+										AI,
+										University
+										of
+										Salford
 									</span>
 								</div>
 								<div className='flex items-center gap-3'>
 									<Award className='h-4 w-4 text-primary flex-shrink-0' />
 									<span className='text-sm text-muted-foreground'>
-										28 professional certifications
+										28
+										professional
+										certifications
 									</span>
 								</div>
 								<div className='flex items-center gap-3'>
 									<Calendar className='h-4 w-4 text-primary flex-shrink-0' />
 									<span className='text-sm text-muted-foreground'>
-										Last updated {new Date().getFullYear()}
+										Last
+										updated{' '}
+										{new Date().getFullYear()}
 									</span>
 								</div>
 							</div>
@@ -206,8 +265,12 @@ export default function Index() {
 					{/* Bottom bar */}
 					<div className='flex flex-col sm:flex-row justify-between items-center gap-4 pt-8'>
 						<p className='text-sm text-muted-foreground'>
-							© {new Date().getFullYear()} Precious Okolo &nbsp;·&nbsp; Built with{' '}
-							<Heart className='inline h-3 w-3 text-red-500 mx-0.5' /> and lots of ☕
+							©{' '}
+							{new Date().getFullYear()}{' '}
+							Precious Okolo
+							&nbsp;·&nbsp; Built with{' '}
+							<Heart className='inline h-3 w-3 text-red-500 mx-0.5' />{' '}
+							and lots of ☕
 						</p>
 						<div className='flex items-center gap-4'>
 							<a

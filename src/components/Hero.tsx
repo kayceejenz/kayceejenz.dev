@@ -96,13 +96,15 @@ export function Hero() {
 					<Button
 						asChild
 						size='lg'
-						className='bg-primary hover:bg-primary/90 text-primary-foreground hover-glow'>
+						className='bg-primary hover:bg-primary/90 text-primary-foreground font-mono hover-glow group'>
 						<a
 							href={hero.ctas[0].href}
 							target='_blank'
 							rel='noopener noreferrer'>
-							<Terminal className='mr-2 h-4 w-4' />
-							Download Resume
+							<Terminal className='mr-2 h-4 w-4 group-hover:animate-pulse' />
+							{
+								'> download_resume --pdf'
+							}
 						</a>
 					</Button>
 
