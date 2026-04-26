@@ -280,7 +280,7 @@ export default {
 	],
 	certifications: [
 		{
-			name: 'Microsoft Azure Developer (AZ-204): Complete Learning Path 🏆',
+			name: 'Microsoft Azure Developer (AZ-204): Complete Learning Path',
 			issuer: 'Microsoft Learn',
 			date: 'Dec 2024',
 			credentialId: 'AZ-204-COMPLETE-2024',
