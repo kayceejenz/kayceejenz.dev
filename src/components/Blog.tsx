@@ -4,14 +4,11 @@ import { Button } from '@/components/ui/button';
 import {
 	Calendar,
 	Clock,
-	Tag,
 	ExternalLink,
 	Volume2,
 	VolumeX,
 	Pause,
 	Play,
-	ChevronDown,
-	ChevronUp,
 	ArrowLeft,
 } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
@@ -21,60 +18,39 @@ import blogPosts from '../../data/blog.js';
 const highlightCode = (code: string, language: string) => {
 	const keywords = {
 		javascript: [
-			'const',
-			'let',
-			'var',
-			'function',
-			'async',
-			'await',
-			'return',
-			'if',
-			'else',
-			'for',
-			'while',
-			'class',
-			'import',
-			'export',
-			'from',
-			'default',
-			'new',
-			'try',
-			'catch',
+			'const', 'let', 'var', 'function', 'async', 'await', 'return',
+			'if', 'else', 'for', 'while', 'class', 'import', 'export',
+			'from', 'default', 'new', 'try', 'catch', 'throw', 'typeof',
+			'instanceof', 'true', 'false', 'null', 'undefined',
+		],
+		typescript: [
+			'const', 'let', 'var', 'function', 'async', 'await', 'return',
+			'if', 'else', 'for', 'while', 'class', 'import', 'export',
+			'from', 'default', 'new', 'try', 'catch', 'throw', 'typeof',
+			'instanceof', 'interface', 'type', 'enum', 'extends', 'implements',
+			'public', 'private', 'protected', 'readonly', 'static', 'abstract',
+			'string', 'number', 'boolean', 'void', 'any', 'never', 'unknown',
+			'true', 'false', 'null', 'undefined', 'Promise', 'Record',
+		],
+		sql: [
+			'SELECT', 'FROM', 'WHERE', 'INSERT', 'INTO', 'VALUES', 'UPDATE',
+			'SET', 'DELETE', 'CREATE', 'TABLE', 'ALTER', 'DROP', 'INDEX',
+			'PRIMARY', 'KEY', 'FOREIGN', 'REFERENCES', 'NOT', 'NULL', 'DEFAULT',
+			'UNIQUE', 'ON', 'CASCADE', 'JOIN', 'LEFT', 'RIGHT', 'INNER', 'AND',
+			'OR', 'IN', 'IS', 'ORDER', 'BY', 'GROUP', 'HAVING', 'LIMIT',
+			'OFFSET', 'BEGIN', 'COMMIT', 'ROLLBACK', 'CHECK', 'CONSTRAINT',
+			'TIMESTAMPTZ', 'UUID', 'TEXT', 'BOOLEAN', 'DATE', 'SERIAL',
+			'RETURNS', 'LANGUAGE', 'AS', 'WITH',
 		],
 		python: [
-			'def',
-			'class',
-			'import',
-			'from',
-			'if',
-			'else',
-			'elif',
-			'for',
-			'while',
-			'return',
-			'try',
-			'except',
-			'with',
-			'as',
-			'and',
-			'or',
-			'not',
-			'in',
-			'is',
-			'True',
-			'False',
-			'None',
+			'def', 'class', 'import', 'from', 'if', 'else', 'elif', 'for',
+			'while', 'return', 'try', 'except', 'with', 'as', 'and', 'or',
+			'not', 'in', 'is', 'True', 'False', 'None', 'lambda', 'yield',
+			'raise', 'pass', 'break', 'continue',
 		],
 		yaml: [
-			'apiVersion',
-			'kind',
-			'metadata',
-			'spec',
-			'containers',
-			'image',
-			'name',
-			'env',
-			'value',
+			'apiVersion', 'kind', 'metadata', 'spec', 'containers',
+			'image', 'name', 'env', 'value',
 		],
 		json: ['true', 'false', 'null'],
 	};
@@ -116,6 +92,7 @@ const highlightCode = (code: string, language: string) => {
 	// Highlight comments
 	if (
 		language === 'javascript' ||
+		language === 'typescript' ||
 		language === 'java' ||
 		language === 'cpp'
 	) {
@@ -145,7 +122,9 @@ const highlightCode = (code: string, language: string) => {
 
 // Advanced markdown renderer with proper code highlighting (inspired by ray.so)
 const renderMarkdown = (content: string) => {
-	// First handle code blocks before other processing
+	// Step 1: Extract code blocks into a stash and replace with placeholders.
+	// This prevents later regex passes from corrupting code block contents.
+	const codeBlockStash: string[] = [];
 	let processedContent = content.replace(
 		/```(\w+)?\n([\s\S]*?)```/g,
 		(match, lang, code) => {
@@ -159,8 +138,7 @@ const renderMarkdown = (content: string) => {
 							.replace(/</g, '&lt;')
 							.replace(/>/g, '&gt;');
 
-			// Create ray.so style code block with language header
-			return `<div class="code-block-container mb-6 rounded-lg overflow-hidden border border-primary/20 bg-card/30 not-prose">
+			const block = `<div class="code-block-container mb-6 rounded-lg overflow-hidden border border-primary/20 bg-card/30 not-prose">
 			<div class="code-header px-4 py-2 bg-primary/10 border-b border-primary/20 flex items-center justify-between">
 				<div class="flex items-center gap-2">
 					<div class="flex gap-1">
@@ -170,27 +148,33 @@ const renderMarkdown = (content: string) => {
 					</div>
 					<span class="font-mono text-xs text-muted-foreground ml-2">${language}</span>
 				</div>
-				<button class="text-xs font-mono text-muted-foreground hover:text-foreground transition-colors copy-btn" data-code="${cleanCode.replace(
-					/"/g,
-					'&quot;'
-				)}">
-					copy
-				</button>
+				<button class="text-xs font-mono text-muted-foreground hover:text-foreground transition-colors copy-btn" data-code="${cleanCode.replace(/"/g, '&quot;')}">copy</button>
 			</div>
 			<div class="code-content relative">
 				<pre class="p-4 overflow-x-auto bg-card/50 text-sm"><code class="font-mono leading-relaxed language-${language}">${highlightedCode}</code></pre>
 			</div>
 		</div>`;
+
+			const idx = codeBlockStash.length;
+			codeBlockStash.push(block);
+			// Surround placeholder with blank lines so it becomes its own paragraph
+			return `\n\nCODE_BLOCK_PLACEHOLDER_${idx}\n\n`;
 		}
 	);
 
-	// Handle inline code
+	// Step 2: Inline code
 	processedContent = processedContent.replace(
 		/`([^`]+)`/g,
 		'<code class="inline-code bg-primary/20 text-primary px-1.5 py-0.5 rounded text-sm font-mono border border-primary/30 not-prose">$1</code>'
 	);
 
-	// Handle headers with proper typography
+	// Step 3: Horizontal rules
+	processedContent = processedContent.replace(
+		/^---$/gm,
+		'<hr class="border-border my-8" />'
+	);
+
+	// Step 4: Headers
 	processedContent = processedContent.replace(
 		/^### (.*$)/gm,
 		'<h3 class="text-lg font-bold text-foreground mt-8 mb-4 border-b border-primary/20 pb-2">$1</h3>'
@@ -204,7 +188,7 @@ const renderMarkdown = (content: string) => {
 		'<h1 class="text-2xl font-bold text-foreground mt-8 mb-8 border-b-2 border-primary/40 pb-4">$1</h1>'
 	);
 
-	// Handle bold and italic text
+	// Step 5: Bold and italic
 	processedContent = processedContent.replace(
 		/\*\*(.*?)\*\*/g,
 		'<strong class="font-bold text-foreground">$1</strong>'
@@ -214,44 +198,70 @@ const renderMarkdown = (content: string) => {
 		'<em class="italic text-foreground/90">$1</em>'
 	);
 
-	// Handle lists with proper indentation
+	// Step 6: Checklist items — must come before the generic bullet rule
 	processedContent = processedContent.replace(
-		/^(\d+)\. (.*$)/gm,
-		'<li class="ml-6 mb-2 text-muted-foreground list-decimal marker:text-primary">$2</li>'
+		/^- \[x\] (.*$)/gim,
+		'<li class="checklist-item ml-4 mb-2 flex items-start gap-2 text-muted-foreground list-none"><span class="text-primary font-bold mt-0.5 shrink-0">✓</span><span class="line-through opacity-60">$1</span></li>'
 	);
 	processedContent = processedContent.replace(
-		/^- (.*$)/gm,
-		'<li class="ml-6 mb-2 text-muted-foreground relative before:content-[\'•\'] before:text-primary before:font-bold before:absolute before:-left-4">$1</li>'
+		/^- \[ \] (.*$)/gim,
+		'<li class="checklist-item ml-4 mb-2 flex items-start gap-2 text-muted-foreground list-none"><span class="text-muted-foreground/40 mt-0.5 shrink-0">○</span>$1</li>'
 	);
 
-	// Handle blockquotes
+	// Step 7: Numbered list items (tagged so we can wrap them later)
+	processedContent = processedContent.replace(
+		/^(\d+)\. (.*$)/gm,
+		'<li class="ol-item ml-6 mb-2 text-muted-foreground list-decimal marker:text-primary">$2</li>'
+	);
+
+	// Step 8: Bullet list items
+	processedContent = processedContent.replace(
+		/^- (.*$)/gm,
+		'<li class="ul-item ml-6 mb-2 text-muted-foreground list-disc marker:text-primary">$1</li>'
+	);
+
+	// Step 9: Blockquotes
 	processedContent = processedContent.replace(
 		/^> (.*$)/gm,
 		'<blockquote class="border-l-4 border-primary/50 pl-4 py-2 my-4 bg-primary/5 italic text-muted-foreground rounded-r">$1</blockquote>'
 	);
 
-	// Split into paragraphs and handle properly
+	// Step 10: Wrap consecutive list items in proper container elements.
+	// Match runs of adjacent <li> items (same type) and wrap them.
+	processedContent = processedContent.replace(
+		/((?:<li class="ol-item[^"]*"[^>]*>[\s\S]*?<\/li>\n?)+)/g,
+		'<ol class="my-4 pl-4 space-y-1 list-decimal">$1</ol>'
+	);
+	processedContent = processedContent.replace(
+		/((?:<li class="ul-item[^"]*"[^>]*>[\s\S]*?<\/li>\n?)+)/g,
+		'<ul class="my-4 pl-4 space-y-1 list-disc">$1</ul>'
+	);
+	processedContent = processedContent.replace(
+		/((?:<li class="checklist-item[^"]*"[^>]*>[\s\S]*?<\/li>\n?)+)/g,
+		'<ul class="my-4 pl-2 space-y-2 list-none">$1</ul>'
+	);
+
+	// Step 11: Split on blank lines and build final HTML.
+	// Any chunk that already starts with '<' is already processed HTML — return as-is.
+	// Placeholders are replaced with their stashed code blocks.
 	const paragraphs = processedContent.split('\n\n').filter(p => p.trim());
 
 	return paragraphs
 		.map(paragraph => {
 			const trimmed = paragraph.trim();
 
-			// Skip processing if already contains HTML tags
-			if (
-				trimmed.includes(
-					'<div class="code-block-container">'
-				) ||
-				trimmed.includes('<h1>') ||
-				trimmed.includes('<h2>') ||
-				trimmed.includes('<h3>') ||
-				trimmed.includes('<li>') ||
-				trimmed.includes('<blockquote>')
-			) {
+			// Restore code blocks from stash
+			const placeholderMatch = trimmed.match(/^CODE_BLOCK_PLACEHOLDER_(\d+)$/);
+			if (placeholderMatch) {
+				return codeBlockStash[parseInt(placeholderMatch[1], 10)];
+			}
+
+			// Already-processed HTML — return untouched
+			if (trimmed.startsWith('<')) {
 				return trimmed;
 			}
 
-			// Regular paragraphs
+			// Plain text — wrap in paragraph
 			if (trimmed) {
 				return `<p class="mb-4 leading-relaxed text-muted-foreground">${trimmed}</p>`;
 			}
@@ -261,78 +271,6 @@ const renderMarkdown = (content: string) => {
 		.join('\n');
 };
 
-// Simple markdown renderer
-function MarkdownRenderer({ content }) {
-	const renderMarkdown = text => {
-		// Headers
-		text = text.replace(
-			/^### (.*$)/gim,
-			'<h3 class="text-lg font-bold text-foreground mt-4 mb-2 font-mono">$1</h3>'
-		);
-		text = text.replace(
-			/^## (.*$)/gim,
-			'<h2 class="text-xl font-bold text-foreground mt-6 mb-3 font-mono">$1</h2>'
-		);
-		text = text.replace(
-			/^# (.*$)/gim,
-			'<h1 class="text-2xl font-bold text-foreground mt-8 mb-4 font-mono">$1</h1>'
-		);
-
-		// Bold
-		text = text.replace(
-			/\*\*(.*?)\*\*/g,
-			'<strong class="text-primary font-semibold">$1</strong>'
-		);
-
-		// Italic
-		text = text.replace(
-			/\*(.*?)\*/g,
-			'<em class="text-muted-foreground italic">$1</em>'
-		);
-
-		// Inline code
-		text = text.replace(
-			/`(.*?)`/g,
-			'<code class="bg-primary/10 text-primary px-1.5 py-0.5 rounded text-sm font-mono">$1</code>'
-		);
-
-		// Code blocks
-		text = text.replace(
-			/```(.*?)\n([\s\S]*?)```/g,
-			'<pre class="bg-card/50 border border-primary/20 rounded p-4 overflow-x-auto my-4"><code class="text-sm font-mono text-foreground">$2</code></pre>'
-		);
-
-		// Links
-		text = text.replace(
-			/\[([^\]]+)\]\(([^)]+)\)/g,
-			'<a href="$2" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">$1</a>'
-		);
-
-		// Line breaks
-		text = text.replace(
-			/\n\n/g,
-			'</p><p class="mb-3 text-muted-foreground leading-relaxed">'
-		);
-		text = text.replace(/\n/g, '<br/>');
-
-		// Unordered lists
-		text = text.replace(
-			/^\- (.*$)/gim,
-			'<li class="ml-4 text-muted-foreground">• $1</li>'
-		);
-
-		return `<p class="mb-3 text-muted-foreground leading-relaxed">${text}</p>`;
-	};
-
-	return (
-		<div
-			className='prose prose-sm max-w-none'
-			dangerouslySetInnerHTML={{
-				__html: renderMarkdown(content),
-			}}
-		/>
-	);
-}
 
 export function Blog() {
 	const [selectedPost, setSelectedPost] = useState(null);

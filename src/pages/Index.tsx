@@ -23,15 +23,12 @@ import {
 import { useEffect, useState } from 'react';
 import Certifications from '@/components/Certification';
 import Education from '@/components/Education';
-import { Blog } from '@/components/Blog';
-
 const navItems = [
 	'about',
 	'skills',
 	'experience',
 	'certifications',
 	'projects',
-	'blog',
 	'contact',
 ];
 
@@ -144,7 +141,6 @@ export default function Index() {
 				<Education />
 				<Certifications />
 				<Projects />
-				<Blog />
 				<Contact />
 			</main>
 
@@ -200,7 +196,6 @@ export default function Index() {
 									'Experience',
 									'Certifications',
 									'Projects',
-									'Blog',
 									'Contact',
 								].map(item => (
 									<a
