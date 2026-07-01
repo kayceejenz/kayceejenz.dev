@@ -125,9 +125,11 @@ export function Projects() {
 									<CardTitle className='text-lg font-semibold text-foreground leading-tight'>
 										{project.name}
 									</CardTitle>
-									<span className='text-xs text-green-500 font-medium bg-green-500/10 px-2 py-0.5 rounded-full border border-green-500/20 whitespace-nowrap flex-shrink-0'>
-										Live
-									</span>
+									{project.link && project.link !== '#' && (
+										<span className='text-xs text-green-500 font-medium bg-green-500/10 px-2 py-0.5 rounded-full border border-green-500/20 whitespace-nowrap flex-shrink-0'>
+											Live
+										</span>
+									)}
 								</div>
 								<div className='flex items-center gap-1.5 text-xs text-muted-foreground'>
 									<Calendar className='h-3 w-3' />

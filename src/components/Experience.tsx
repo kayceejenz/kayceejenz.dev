@@ -40,7 +40,7 @@ export function Experience() {
 										<div className='flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3'>
 											<div>
 												<CardTitle className='text-xl font-semibold text-foreground leading-tight'>
-													{job.title}
+													{job.positions ? job.positions[0].title : job.title}
 												</CardTitle>
 												<div className='flex items-center gap-2 mt-1.5'>
 													<Building className='h-4 w-4 text-primary flex-shrink-0' />
@@ -56,39 +56,96 @@ export function Experience() {
 										<div className='flex items-center gap-2 text-sm text-muted-foreground mt-1'>
 											<MapPin className='h-3.5 w-3.5 flex-shrink-0' />
 											<span>{job.location}</span>
+											{job.employment && (
+												<span className='text-xs text-muted-foreground/70'>· {job.employment}</span>
+											)}
 										</div>
 									</CardHeader>
 
-									<CardContent className='space-y-5 pt-0'>
-										{/* Bullet points */}
-										<ul className='space-y-2.5'>
-											{job.bullets.map((bullet, bulletIndex) => (
-												<li
-													key={bulletIndex}
-													className='flex items-start gap-3 text-sm text-muted-foreground leading-relaxed'>
-													<div className='w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0'></div>
-													{bullet}
-												</li>
-											))}
-										</ul>
+									{job.positions ? (
+										<CardContent className='space-y-6 pt-0'>
+											{job.positions.map((pos, posIndex) => (
+												<div
+													key={posIndex}
+													className={
+														posIndex > 0
+															? 'space-y-3 pt-5 border-t border-border/60'
+															: 'space-y-3'
+													}>
+													<div className='flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2'>
+														<h4 className='text-base font-semibold text-foreground'>
+															{pos.title}
+														</h4>
+														<Badge
+															variant='outline'
+															className='font-mono text-[11px] whitespace-nowrap self-start border-primary/20 text-muted-foreground'>
+															{pos.period}
+														</Badge>
+													</div>
+													<div className='flex items-center gap-2 text-xs text-muted-foreground'>
+														<MapPin className='h-3 w-3 flex-shrink-0' />
+														<span>{pos.location}</span>
+														{pos.employment && (
+															<span className='text-muted-foreground/70'>· {pos.employment}</span>
+														)}
+													</div>
 
-										{/* Tech Stack */}
-										<div>
-											<p className='text-xs font-medium text-foreground mb-2 uppercase tracking-wide'>
-												Tech Stack
-											</p>
-											<div className='flex flex-wrap gap-2'>
-												{job.tech.map((tech, techIndex) => (
-													<Badge
-														key={techIndex}
-														variant='outline'
-														className='border-primary/30 text-primary hover:border-primary font-mono text-xs transition-colors'>
-														{tech}
-													</Badge>
+													<ul className='space-y-2.5'>
+														{pos.bullets.map((bullet, bulletIndex) => (
+															<li
+																key={bulletIndex}
+																className='flex items-start gap-3 text-sm text-muted-foreground leading-relaxed'>
+																<div className='w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0'></div>
+																{bullet}
+															</li>
+														))}
+													</ul>
+
+													<div className='flex flex-wrap gap-2'>
+														{pos.tech.map((tech, techIndex) => (
+															<Badge
+																key={techIndex}
+																variant='outline'
+																className='border-primary/30 text-primary hover:border-primary font-mono text-xs transition-colors'>
+																{tech}
+															</Badge>
+														))}
+													</div>
+												</div>
+											))}
+										</CardContent>
+									) : (
+										<CardContent className='space-y-5 pt-0'>
+											{/* Bullet points */}
+											<ul className='space-y-2.5'>
+												{job.bullets.map((bullet, bulletIndex) => (
+													<li
+														key={bulletIndex}
+														className='flex items-start gap-3 text-sm text-muted-foreground leading-relaxed'>
+														<div className='w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0'></div>
+														{bullet}
+													</li>
 												))}
+											</ul>
+
+											{/* Tech Stack */}
+											<div>
+												<p className='text-xs font-medium text-foreground mb-2 uppercase tracking-wide'>
+													Tech Stack
+												</p>
+												<div className='flex flex-wrap gap-2'>
+													{job.tech.map((tech, techIndex) => (
+														<Badge
+															key={techIndex}
+															variant='outline'
+															className='border-primary/30 text-primary hover:border-primary font-mono text-xs transition-colors'>
+															{tech}
+														</Badge>
+													))}
+												</div>
 											</div>
-										</div>
-									</CardContent>
+										</CardContent>
+									)}
 								</Card>
 							</div>
 						))}

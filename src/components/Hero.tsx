@@ -1,7 +1,8 @@
 import { Button } from '@/components/ui/button';
-import { Mail, Terminal } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import config from '../../data/config.js';
+import { MatrixBackground } from '@/components/MatrixBackground';
 
 export function Hero() {
 	const { hero } = config;
@@ -9,7 +10,7 @@ export function Hero() {
 	const [currentIndex, setCurrentIndex] = useState(0);
 
 	const fullText =
-		'AI Engineer building LLM systems, RAG pipelines, and the production infrastructure that makes them scale.';
+		'Backend Engineer building LLM systems, RAG pipelines, and the production infrastructure that makes them scale.';
 
 	useEffect(() => {
 		if (currentIndex < fullText.length) {
@@ -31,6 +32,7 @@ export function Hero() {
 
 	return (
 		<section className='min-h-screen flex items-center justify-center gradient-bg relative overflow-hidden px-6'>
+			<MatrixBackground mode='section' opacity={0.08} />
 			<div className='max-w-4xl mx-auto text-center space-y-8 relative z-10'>
 				<div className='space-y-6'>
 					<h1 className='text-5xl md:text-7xl font-bold bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent'>
@@ -94,25 +96,9 @@ export function Hero() {
 
 				<div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
 					<Button
-						asChild
-						size='lg'
-						className='bg-primary hover:bg-primary/90 text-primary-foreground font-mono hover-glow group'>
-						<a
-							href={hero.ctas[0].href}
-							target='_blank'
-							rel='noopener noreferrer'>
-							<Terminal className='mr-2 h-4 w-4 group-hover:animate-pulse' />
-							{
-								'> download_resume --pdf'
-							}
-						</a>
-					</Button>
-
-					<Button
-						variant='outline'
 						size='lg'
 						onClick={scrollToContact}
-						className='border-primary/40 text-foreground hover:border-primary hover-glow'>
+						className='bg-primary hover:bg-primary/90 text-primary-foreground font-mono hover-glow group'>
 						<Mail className='mr-2 h-4 w-4' />
 						Get in Touch
 					</Button>

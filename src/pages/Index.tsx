@@ -23,6 +23,7 @@ import {
 import { useEffect, useState } from 'react';
 import Certifications from '@/components/Certification';
 import Education from '@/components/Education';
+import config from '../../data/config.js';
 const navItems = [
 	'about',
 	'skills',
@@ -70,7 +71,7 @@ export default function Index() {
 								Precious Okolo
 							</span>
 							<span className='text-xs text-primary font-medium tracking-wide'>
-								AI Engineer
+								Backend Engineer, AI/ML Specialist
 							</span>
 						</a>
 
@@ -156,30 +157,28 @@ export default function Index() {
 									Okolo
 								</h3>
 								<p className='text-sm text-primary font-medium mt-0.5'>
-									AI
-									Engineer
+									Backend Engineer, AI/ML Specialist
 								</p>
 							</div>
 							<p className='text-sm text-muted-foreground leading-relaxed'>
-								Building LLM
-								systems, RAG
-								pipelines, and
-								the production
-								infrastructure
-								behind them.
-								Currently
-								pursuing an MSc
-								in Artificial
-								Intelligence at
-								the University
-								of Salford.
+								5+ years building
+								production backend
+								systems, now applying
+								that foundation to LLM
+								applications, RAG
+								pipelines, and the
+								infrastructure that
+								runs them. Currently
+								pursuing an MSc in
+								Artificial Intelligence
+								at the University of
+								Salford.
 							</p>
 							<div className='flex items-center gap-2'>
 								<div className='w-2 h-2 bg-primary rounded-full animate-pulse'></div>
 								<span className='text-sm text-primary font-medium'>
-									Open to
-									AI-focused
-									roles
+									Open to Backend /
+									AI-ML roles
 								</span>
 							</div>
 						</div>
@@ -240,7 +239,7 @@ export default function Index() {
 								<div className='flex items-center gap-3'>
 									<Award className='h-4 w-4 text-primary flex-shrink-0' />
 									<span className='text-sm text-muted-foreground'>
-										28
+										{config.certifications.length}{' '}
 										professional
 										certifications
 									</span>

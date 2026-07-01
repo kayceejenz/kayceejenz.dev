@@ -28,7 +28,7 @@ export function About() {
 					</h2>
 					<div className='w-16 h-0.5 bg-primary/60 mx-auto rounded-full mb-6'></div>
 					<p className='text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed'>
-						AI Engineer with 5+ years of production backend experience, building LLM systems, RAG pipelines, and the infrastructure behind them.
+						Backend Engineer with 5+ years of production experience, now specializing in AI/ML: LLM systems, RAG pipelines, and the infrastructure behind them.
 					</p>
 				</div>
 
