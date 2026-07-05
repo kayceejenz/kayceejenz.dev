@@ -5,6 +5,7 @@ import { About } from '@/components/About';
 import { Skills } from '@/components/Skills';
 import { Experience } from '@/components/Experience';
 import { Projects } from '@/components/Projects';
+import { Blog } from '@/components/Blog';
 import { Contact } from '@/components/Contact';
 import { Button } from '@/components/ui/button';
 import {
@@ -30,6 +31,7 @@ const navItems = [
 	'experience',
 	'certifications',
 	'projects',
+	'blog',
 	'contact',
 ];
 
@@ -142,6 +144,7 @@ export default function Index() {
 				<Education />
 				<Certifications />
 				<Projects />
+				<Blog />
 				<Contact />
 			</main>
 
@@ -195,6 +198,7 @@ export default function Index() {
 									'Experience',
 									'Certifications',
 									'Projects',
+									'Blog',
 									'Contact',
 								].map(item => (
 									<a

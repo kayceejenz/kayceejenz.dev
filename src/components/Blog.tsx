@@ -14,9 +14,19 @@ import {
 import { useState, useEffect, useRef } from 'react';
 import blogPosts from '../../data/blog.js';
 
-// Simple syntax highlighter for common languages
+// Simple syntax highlighter for common languages.
+//
+// This runs as a single tokenizing pass over the code instead of a chain of
+// sequential .replace() calls. That matters: a chain of replaces mutates the
+// same string over and over, so an earlier replacement (e.g. wrapping the
+// keyword `async` in `<span class="text-purple-400 ...">`) can inject text
+// (the word "class", as part of the HTML attribute) that a *later* pass
+// (e.g. the `class` keyword rule) then matches and wraps again, corrupting
+// the markup. A single combined regex avoids that entirely, because
+// String.replace(global regex, fn) finds all matches against the original
+// string up front, before any replacement text is spliced in.
 const highlightCode = (code: string, language: string) => {
-	const keywords = {
+	const keywords: Record<string, string[]> = {
 		javascript: [
 			'const', 'let', 'var', 'function', 'async', 'await', 'return',
 			'if', 'else', 'for', 'while', 'class', 'import', 'export',
@@ -55,69 +65,60 @@ const highlightCode = (code: string, language: string) => {
 		json: ['true', 'false', 'null'],
 	};
 
-	const languageKeywords = keywords[language] || [];
-	let highlighted = code;
+	const keywordSet = new Set(keywords[language] || []);
 
-	// Escape HTML first
-	highlighted = highlighted
+	// Escape HTML first so every token below is matched against safe text.
+	const escaped = code
 		.replace(/&/g, '&amp;')
 		.replace(/</g, '&lt;')
 		.replace(/>/g, '&gt;');
 
-	// Highlight strings
-	highlighted = highlighted.replace(
-		/"([^"\\]|\\.)*"/g,
-		'<span class="text-green-400">$&</span>'
-	);
-	highlighted = highlighted.replace(
-		/'([^'\\]|\\.)*'/g,
-		'<span class="text-green-400">$&</span>'
-	);
-
-	// Highlight numbers
-	highlighted = highlighted.replace(
-		/\b\d+(\.\d+)?\b/g,
-		'<span class="text-blue-400">$&</span>'
-	);
-
-	// Highlight keywords
-	languageKeywords.forEach(keyword => {
-		const regex = new RegExp(`\\b${keyword}\\b`, 'g');
-		highlighted = highlighted.replace(
-			regex,
-			`<span class="text-purple-400 font-semibold">${keyword}</span>`
-		);
-	});
-
-	// Highlight comments
-	if (
+	const hasCStyleComments =
 		language === 'javascript' ||
 		language === 'typescript' ||
 		language === 'java' ||
-		language === 'cpp'
-	) {
-		highlighted = highlighted.replace(
-			/\/\/.*$/gm,
-			'<span class="text-gray-500 italic">$&</span>'
-		);
-		highlighted = highlighted.replace(
-			/\/\*[\s\S]*?\*\//g,
-			'<span class="text-gray-500 italic">$&</span>'
-		);
-	} else if (language === 'python') {
-		highlighted = highlighted.replace(
-			/#.*$/gm,
-			'<span class="text-gray-500 italic">$&</span>'
-		);
-	}
+		language === 'cpp';
 
-	// Highlight function calls
-	highlighted = highlighted.replace(
-		/(\w+)(\()/g,
-		'<span class="text-yellow-400">$1</span>$2'
+	const commentPattern = hasCStyleComments
+		? '\\/\\/.*|\\/\\*[\\s\\S]*?\\*\\/'
+		: language === 'python'
+		? '#.*'
+		: '(?!)'; // matches nothing for languages with no comment syntax here
+
+	const stringPattern = `"(?:[^"\\\\]|\\\\.)*"|'(?:[^'\\\\]|\\\\.)*'`;
+	const numberPattern = '\\b\\d+(?:\\.\\d+)?\\b';
+	const identifierPattern = '\\b[A-Za-z_]\\w*\\b';
+
+	const tokenRegex = new RegExp(
+		`(${commentPattern})|(${stringPattern})|(${numberPattern})|(${identifierPattern})`,
+		'g'
 	);
 
-	return highlighted;
+	return escaped.replace(
+		tokenRegex,
+		(match, comment, str, num, ident, offset: number, full: string) => {
+			if (comment !== undefined) {
+				return `<span class="text-gray-500 italic">${comment}</span>`;
+			}
+			if (str !== undefined) {
+				return `<span class="text-green-400">${str}</span>`;
+			}
+			if (num !== undefined) {
+				return `<span class="text-blue-400">${num}</span>`;
+			}
+			if (ident !== undefined) {
+				if (keywordSet.has(ident)) {
+					return `<span class="text-purple-400 font-semibold">${ident}</span>`;
+				}
+				// Function call: an identifier immediately followed by "(".
+				if (full[offset + match.length] === '(') {
+					return `<span class="text-yellow-400">${ident}</span>`;
+				}
+				return ident;
+			}
+			return match;
+		}
+	);
 };
 
 // Advanced markdown renderer with proper code highlighting (inspired by ray.so)
@@ -148,7 +149,7 @@ const renderMarkdown = (content: string) => {
 					</div>
 					<span class="font-mono text-xs text-muted-foreground ml-2">${language}</span>
 				</div>
-				<button class="text-xs font-mono text-muted-foreground hover:text-foreground transition-colors copy-btn" data-code="${cleanCode.replace(/"/g, '&quot;')}">copy</button>
+				<button class="text-xs font-mono text-muted-foreground hover:text-foreground transition-colors copy-btn" data-code="${cleanCode.replace(/&/g, '&amp;').replace(/"/g, '&quot;')}">copy</button>
 			</div>
 			<div class="code-content relative">
 				<pre class="p-4 overflow-x-auto bg-card/50 text-sm"><code class="font-mono leading-relaxed language-${language}">${highlightedCode}</code></pre>

@@ -8,6 +8,7 @@ import {
 	Calendar,
 	Filter,
 	X,
+	BookOpen,
 } from 'lucide-react';
 import config from '../../data/config.js';
 
@@ -161,7 +162,19 @@ export function Projects() {
 								</div>
 
 								{/* Action Buttons */}
-								<div className='flex gap-2 pt-1'>
+								<div className='flex flex-wrap gap-2 pt-1'>
+									{project.caseStudy && (
+										<Button
+											variant='outline'
+											size='sm'
+											asChild
+											className='flex-1 border-primary/30 hover:border-primary'>
+											<a href={project.caseStudy}>
+												<BookOpen className='mr-2 h-3 w-3' />
+												Read Case Study
+											</a>
+										</Button>
+									)}
 									{project.link && project.link !== '#' && (
 										<Button
 											variant='outline'
