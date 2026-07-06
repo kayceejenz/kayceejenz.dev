@@ -83,7 +83,7 @@ export default {
 			period: 'Mar 2023 – Present',
 			bullets: [
 				'Co-founded Flipeet Labs and architected a Web3 fintech ecosystem from the ground up alongside full-time engineering work, leading the migration of core services to a containerized AWS infrastructure using Docker and GitHub Actions and achieving 99.9% uptime across mission-critical payment services.',
-				'Engineered Flipeet Pay, a stablecoin on/off-ramp platform with token bridging logic and automated utility payment systems (airtime and gift cards), processing $20k+ in live transactions with real-time audit trails.',
+				'Engineered Flipeet Pay, a stablecoin on/off-ramp platform with token bridging logic and automated utility payment systems (airtime and gift cards), processing $50k+ in live transactions with real-time audit trails.',
 				'Led development of a crypto-fiat crowdfunding engine integrating global payment gateways (Paystack, Flutterwave) and decentralized protocols (Solana Pay) for USDC and SOL settlement.',
 				'Directed technical strategy for NFT marketplaces, implementing IPFS for decentralized storage and multi-chain asset synchronization across Solana and EVM networks.',
 				'Built event-driven systems for real-time transaction synchronization using NestJS and TypeScript, managing multi-chain asset data across MongoDB and PostgreSQL.',
@@ -118,7 +118,12 @@ export default {
 						'Led the translation of complex functional specifications into high-performance C# microservices, ensuring architectural alignment with long-term scalability goals.',
 						'Spearheaded technical leadership through structured code reviews, architectural workshops, and developer mentoring, driving a culture of clean code and robust unit testing within the .NET ecosystem.',
 					],
-					tech: ['C#', 'ASP.NET Core', 'MSSQL', 'System Architecture'],
+					tech: [
+						'C#',
+						'ASP.NET Core',
+						'MSSQL',
+						'System Architecture',
+					],
 				},
 				{
 					title: 'Software Engineer II',
@@ -130,7 +135,11 @@ export default {
 						'Modernized core application modules by migrating legacy logic to ASP.NET Core, improving system throughput and resource utilization across flagship products.',
 						'Collaborated on product requirement reviews, providing technical feasibility assessments for large-scale data-driven features.',
 					],
-					tech: ['ASP.NET Core', '.NET Framework', 'API Development'],
+					tech: [
+						'ASP.NET Core',
+						'.NET Framework',
+						'API Development',
+					],
 				},
 				{
 					title: 'Software Engineer I',
@@ -141,7 +150,11 @@ export default {
 						"Refactored legacy C# codebases across the company's flagship enterprise web applications, improving maintainability, performance, and long-term scalability.",
 						'Implemented core backend modules using ASP.NET MVC, focusing on secure, scalable server-side logic and efficient database interaction patterns.',
 					],
-					tech: ['C#', 'ASP.NET MVC', 'ASP.NET Web API'],
+					tech: [
+						'C#',
+						'ASP.NET MVC',
+						'ASP.NET Web API',
+					],
 				},
 				{
 					title: 'Software Engineer Mentee Internship',
@@ -152,7 +165,13 @@ export default {
 						'Built a full School Management Portal from scratch using ASP.NET MVC and SQL, delivering a production-ready MVP within 6 months while managing the entire software development lifecycle solo.',
 						'Engineered end-to-end features including admissions, student records, automated results processing, an integrated LMS with online classes, event management, and bulk email notifications, serving 5,000+ students.',
 					],
-					tech: ['ASP.NET MVC', 'C#', 'Bootstrap', 'JavaScript', 'SQL'],
+					tech: [
+						'ASP.NET MVC',
+						'C#',
+						'Bootstrap',
+						'JavaScript',
+						'SQL',
+					],
 				},
 			],
 		},
