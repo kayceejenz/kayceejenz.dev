@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { Mail } from 'lucide-react';
+import { Mail, Download } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import config from '../../data/config.js';
 import { MatrixBackground } from '@/components/MatrixBackground';
@@ -96,9 +96,23 @@ export function Hero() {
 
 				<div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
 					<Button
+						asChild
+						size='lg'
+						className='bg-primary hover:bg-primary/90 text-primary-foreground font-mono hover-glow group'>
+						<a
+							href={hero.ctas[0].href}
+							target='_blank'
+							rel='noopener noreferrer'>
+							<Download className='mr-2 h-4 w-4 group-hover:animate-bounce' />
+							Download Résumé
+						</a>
+					</Button>
+
+					<Button
+						variant='outline'
 						size='lg'
 						onClick={scrollToContact}
-						className='bg-primary hover:bg-primary/90 text-primary-foreground font-mono hover-glow group'>
+						className='border-primary/40 text-foreground hover:border-primary hover-glow'>
 						<Mail className='mr-2 h-4 w-4' />
 						Get in Touch
 					</Button>

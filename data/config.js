@@ -24,7 +24,7 @@ export default {
 		summary: 'A backend engineer with 5+ years building production systems at scale, now specializing in AI/ML. Currently pursuing an MSc in Artificial Intelligence at the University of Salford, focused on NLP, deep learning, and RAG architectures. That combination is my edge: I can architect an AI pipeline and build the production infrastructure behind it, from LLM orchestration and vector search to the distributed systems that run it at scale.',
 		highlights: [
 			'LLM and RAG Engineering: Built an intelligent finance engine on a full RAG architecture, including an embedding pipeline, vector retrieval via MongoDB Atlas Vector Search, and LLM synthesis through OpenRouter. Currently applying NLP and deep learning research through my MSc at the University of Salford.',
-			'Architectural Leadership: As Co-Founder & CTO of Flipeet, my own fintech venture built alongside full-time engineering work, I designed and scaled the platform from the ground up, with containerized AWS infrastructure, CI/CD automation, and high-integrity transaction pipelines processing $20k+ in live volume.',
+			'Architectural Leadership: As Co-Founder & CTO of Flipeet, my own fintech venture built alongside full-time engineering work, I designed and scaled the platform from the ground up, with containerized AWS infrastructure, CI/CD automation, and high-integrity transaction pipelines processing $50k+ in live volume.',
 			'Algorithmic Execution: Engineered autonomous Python trading bots and real-time financial data pipelines integrated with Binance, Bybit, and Coinbase APIs, processing millions of data points for portfolio management.',
 			'Enterprise Scaling: Modernized legacy .NET systems for 20+ clinics, and built a student lifecycle management portal and LMS used by 10+ EdTech institutions serving 200,000+ students, reducing technical debt by 30% and improving throughput by 40%.',
 		],
@@ -53,6 +53,7 @@ export default {
 		distributed_systems: [
 			'C# (.NET Core)',
 			'Node.js (NestJS/TS)',
+			'Python (FastAPI)',
 			'Microservices',
 			'RabbitMQ',
 			'Redis',
@@ -83,7 +84,7 @@ export default {
 			period: 'Mar 2023 – Present',
 			bullets: [
 				'Co-founded Flipeet Labs and architected a Web3 fintech ecosystem from the ground up alongside full-time engineering work, leading the migration of core services to a containerized AWS infrastructure using Docker and GitHub Actions and achieving 99.9% uptime across mission-critical payment services.',
-				'Engineered Flipeet Pay, a stablecoin on/off-ramp platform with token bridging logic and automated utility payment systems (airtime and gift cards), processing $50k+ in live transactions with real-time audit trails.',
+				'Engineered Flipeet Pay, a stablecoin on/off-ramp platform with token bridging logic and automated utility payment systems (airtime and gift cards), processing $50k+ in live transactions across Solana, BSC, Base, and Polygon with real-time audit trails.',
 				'Led development of a crypto-fiat crowdfunding engine integrating global payment gateways (Paystack, Flutterwave) and decentralized protocols (Solana Pay) for USDC and SOL settlement.',
 				'Directed technical strategy for NFT marketplaces, implementing IPFS for decentralized storage and multi-chain asset synchronization across Solana and EVM networks.',
 				'Built event-driven systems for real-time transaction synchronization using NestJS and TypeScript, managing multi-chain asset data across MongoDB and PostgreSQL.',
@@ -94,6 +95,8 @@ export default {
 				'NestJS',
 				'TypeScript',
 				'Solana',
+				'BSC',
+				'Polygon',
 				'AWS',
 				'Docker',
 				'Solidity',
@@ -182,7 +185,7 @@ export default {
 			location: 'Remote',
 			period: 'Aug 2023 – Nov 2025',
 			bullets: [
-				'Architected and deployed a multi-product distributed ecosystem spanning 6+ platforms across Media and Fintech, supporting 50k+ users at 99.9% uptime using NestJS and Node.js.',
+				'Architected and deployed a multi-product distributed ecosystem spanning 6+ platforms across Media and Fintech using NestJS, PostgreSQL, MongoDB, RabbitMQ, and Redis, supporting 50k+ users at 99.9% uptime.',
 				'Engineered core algorithmic logic for an autonomous trading bot in Python, implementing automated trade execution and real-time market analysis integrated with Binance, Bybit, and Coinbase APIs.',
 				'Built real-time features including location-based match logic and high-concurrency chat systems via Socket.IO, optimizing message delivery and search latency by 40% through custom caching strategies.',
 				'Developed crypto payment rails for BTC, USDC, and Solana, processing over 50M+ NGN in transactions with automated audit trails and real-time fraud detection.',
@@ -192,6 +195,8 @@ export default {
 			tech: [
 				'Python',
 				'NestJS',
+				'PostgreSQL',
+				'Redis',
 				'Socket.IO',
 				'RabbitMQ',
 				'MongoDB',
@@ -245,7 +250,9 @@ export default {
 				'USDC',
 				'Solana',
 				'Stellar',
+				'BSC',
 				'Base',
+				'Polygon',
 				'PostgreSQL',
 				'Docker',
 				'AWS',
@@ -270,7 +277,7 @@ export default {
 		},
 		{
 			name: 'Syncboard Solutions',
-			period: '2022',
+			period: '2025',
 			description:
 				'Syncboard Solutions is a laboratory management platform designed to streamline operations across diagnostics and billing. It supports payment collection, discounts, waivers, installment plans, specimen tracking, and automated test result computation and reporting enabling labs to deliver accurate results efficiently while improving the patient experience',
 			stack: ['C#', 'ASP.NET Core', 'MSSQL', 'JavaScript'],
