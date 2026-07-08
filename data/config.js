@@ -116,7 +116,7 @@ export default {
 					period: 'Apr 2024 – Present',
 					bullets: [
 						'Architected mission-critical backend services using ASP.NET Core, optimizing data processing pipelines to support high-concurrency client environments across 20+ clinics and educational institutions.',
-						'Maintained an EdTech student lifecycle management portal and LMS used by 10+ colleges and higher institutions, serving 200,000+ students.',
+						'Maintained an EdTech student lifecycle management portal and LMS used by 10+ colleges and higher institutions, serving 4.85M+ students.',
 						'Engineered scalable MSSQL database schemas with advanced indexing and query optimization, reducing data retrieval latency by 31%.',
 						'Led the translation of complex functional specifications into high-performance C# microservices, ensuring architectural alignment with long-term scalability goals.',
 						'Spearheaded technical leadership through structured code reviews, architectural workshops, and developer mentoring, driving a culture of clean code and robust unit testing within the .NET ecosystem.',
