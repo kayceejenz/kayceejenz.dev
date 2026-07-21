@@ -95,7 +95,7 @@ export function Hero() {
 				</div>
 
 				<div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
-					<Button
+					{/* <Button
 						asChild
 						size='lg'
 						className='bg-primary hover:bg-primary/90 text-primary-foreground font-mono hover-glow group'>
@@ -106,7 +106,7 @@ export function Hero() {
 							<Download className='mr-2 h-4 w-4 group-hover:animate-bounce' />
 							Download Résumé
 						</a>
-					</Button>
+					</Button> */}
 
 					<Button
 						variant='outline'
