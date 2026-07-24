@@ -1,11 +1,7 @@
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { MatrixBackground } from '@/components/MatrixBackground';
 import { Hero } from '@/components/Hero';
-import { About } from '@/components/About';
-import { Skills } from '@/components/Skills';
-import { Experience } from '@/components/Experience';
 import { Projects } from '@/components/Projects';
-import { Blog } from '@/components/Blog';
 import { Contact } from '@/components/Contact';
 import { Button } from '@/components/ui/button';
 import {
@@ -14,26 +10,11 @@ import {
 	Github,
 	Linkedin,
 	Heart,
-	Code2,
-	Award,
-	Calendar,
-	BrainCircuit,
-	Menu,
-	X,
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import Certifications from '@/components/Certification';
-import Education from '@/components/Education';
 import config from '../../data/config.js';
-const navItems = [
-	'about',
-	'skills',
-	'experience',
-	'certifications',
-	'projects',
-	'blog',
-	'contact',
-];
+
+const navItems = ['projects', 'contact'];
 
 export default function Index() {
 	const [showScrollTop, setShowScrollTop] = useState(false);
@@ -67,13 +48,13 @@ export default function Index() {
 					<div className='flex justify-between items-center h-16'>
 						{/* Brand */}
 						<a
-							href='#'
+							href='/'
 							className='flex flex-col leading-tight group'>
 							<span className='text-base font-bold text-foreground group-hover:text-primary transition-colors'>
 								Precious Okolo
 							</span>
 							<span className='text-xs text-primary font-medium tracking-wide'>
-								Backend Engineer, AI/ML Specialist
+								Software Engineer
 							</span>
 						</a>
 
@@ -81,9 +62,7 @@ export default function Index() {
 						<div className='hidden md:flex items-center gap-1'>
 							{navItems.map(item => (
 								<a
-									key={
-										item
-									}
+									key={item}
 									href={`#${item}`}
 									className='px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground rounded-md hover:bg-muted transition-all duration-150 capitalize'>
 									{item}
@@ -104,9 +83,49 @@ export default function Index() {
 								}
 								aria-label='Toggle menu'>
 								{mobileMenuOpen ? (
-									<X className='h-5 w-5' />
+									<svg
+										xmlns='http://www.w3.org/2000/svg'
+										width='20'
+										height='20'
+										viewBox='0 0 24 24'
+										fill='none'
+										stroke='currentColor'
+										strokeWidth='2'
+										strokeLinecap='round'
+										strokeLinejoin='round'>
+										<path d='M18 6 6 18' />
+										<path d='m6 6 12 12' />
+									</svg>
 								) : (
-									<Menu className='h-5 w-5' />
+									<svg
+										xmlns='http://www.w3.org/2000/svg'
+										width='20'
+										height='20'
+										viewBox='0 0 24 24'
+										fill='none'
+										stroke='currentColor'
+										strokeWidth='2'
+										strokeLinecap='round'
+										strokeLinejoin='round'>
+										<line
+											x1='4'
+											x2='20'
+											y1='12'
+											y2='12'
+										/>
+										<line
+											x1='4'
+											x2='20'
+											y1='6'
+											y2='6'
+										/>
+										<line
+											x1='4'
+											x2='20'
+											y1='18'
+											y2='18'
+										/>
+									</svg>
 								)}
 							</button>
 						</div>
@@ -138,13 +157,7 @@ export default function Index() {
 			{/* Main Content */}
 			<main className='pt-16'>
 				<Hero />
-				<About />
-				<Skills />
-				<Experience />
-				<Education />
-				<Certifications />
 				<Projects />
-				<Blog />
 				<Contact />
 			</main>
 
@@ -160,22 +173,15 @@ export default function Index() {
 									Okolo
 								</h3>
 								<p className='text-sm text-primary font-medium mt-0.5'>
-									Backend Engineer, AI/ML Specialist
+									Software Engineer
 								</p>
 							</div>
 							<p className='text-sm text-muted-foreground leading-relaxed'>
-								5+ years building
-								production backend
-								systems, now applying
-								that foundation to LLM
-								applications, RAG
-								pipelines, and the
-								infrastructure that
-								runs them. Currently
-								pursuing an MSc in
-								Artificial Intelligence
-								at the University of
-								Salford.
+								Software engineer with 5+
+								years of production
+								experience. I build
+								reliable backend systems
+								and solve hard problems.
 							</p>
 							<div className='flex items-center gap-2'>
 								<div className='w-2 h-2 bg-primary rounded-full animate-pulse'></div>
@@ -193,12 +199,7 @@ export default function Index() {
 							</h4>
 							<div className='space-y-2.5'>
 								{[
-									'About',
-									'Skills',
-									'Experience',
-									'Certifications',
 									'Projects',
-									'Blog',
 									'Contact',
 								].map(item => (
 									<a
@@ -212,52 +213,23 @@ export default function Index() {
 										}
 									</a>
 								))}
+								<a
+									href='https://linkedin.com/in/kayceejenz/'
+									target='_blank'
+									rel='noopener noreferrer'
+									className='block text-sm text-muted-foreground hover:text-foreground transition-colors'>
+									LinkedIn
+								</a>
+								<a
+									href='https://github.com/kayceejenz'
+									target='_blank'
+									rel='noopener noreferrer'
+									className='block text-sm text-muted-foreground hover:text-foreground transition-colors'>
+									GitHub
+								</a>
 							</div>
 						</div>
 
-						{/* At a glance */}
-						<div>
-							<h4 className='text-xs font-semibold text-foreground uppercase tracking-widest mb-5'>
-								At a Glance
-							</h4>
-							<div className='space-y-3.5'>
-								<div className='flex items-center gap-3'>
-									<Code2 className='h-4 w-4 text-primary flex-shrink-0' />
-									<span className='text-sm text-muted-foreground'>
-										5+
-										years
-										production
-										engineering
-									</span>
-								</div>
-								<div className='flex items-center gap-3'>
-									<BrainCircuit className='h-4 w-4 text-primary flex-shrink-0' />
-									<span className='text-sm text-muted-foreground'>
-										MSc
-										AI,
-										University
-										of
-										Salford
-									</span>
-								</div>
-								<div className='flex items-center gap-3'>
-									<Award className='h-4 w-4 text-primary flex-shrink-0' />
-									<span className='text-sm text-muted-foreground'>
-										{config.certifications.length}{' '}
-										professional
-										certifications
-									</span>
-								</div>
-								<div className='flex items-center gap-3'>
-									<Calendar className='h-4 w-4 text-primary flex-shrink-0' />
-									<span className='text-sm text-muted-foreground'>
-										Last
-										updated{' '}
-										{new Date().getFullYear()}
-									</span>
-								</div>
-							</div>
-						</div>
 					</div>
 
 					{/* Bottom bar */}

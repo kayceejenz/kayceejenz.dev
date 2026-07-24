@@ -1,240 +1,126 @@
-import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import {
-	ExternalLink,
-	Github,
 	Calendar,
-	Filter,
-	X,
-	BookOpen,
+	Users,
+	ArrowRight,
 } from 'lucide-react';
 import config from '../../data/config.js';
 
+const statusConfig: Record<string, { label: string; className: string }> = {
+	production: {
+		label: 'Production',
+		className: 'bg-green-500/10 text-green-500 border-green-500/20',
+	},
+	prototype: {
+		label: 'Prototype',
+		className: 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20',
+	},
+	experiment: {
+		label: 'Experiment',
+		className: 'bg-blue-500/10 text-blue-500 border-blue-500/20',
+	},
+	archived: {
+		label: 'Archived',
+		className: 'bg-muted text-muted-foreground border-border',
+	},
+};
+
 export function Projects() {
 	const { projects } = config;
-	const [selectedFilter, setSelectedFilter] = useState('all');
-
-	const allTechnologies = [...new Set(projects.flatMap(p => p.stack))];
-	const categories = ['all', 'ai', 'backend', 'fintech'];
-
-	const filteredProjects = projects.filter(project => {
-		if (selectedFilter === 'all') return true;
-		if (selectedFilter === 'ai')
-			return project.stack.some(tech =>
-				[
-					'AI',
-					'Machine Learning',
-					'Python',
-					'TensorFlow',
-					'OpenRouter API',
-					'RAG Pipeline',
-					'Embeddings',
-					'Supabase Vector',
-					'FastAPI',
-					'LangChain',
-					'LlamaIndex',
-				].includes(tech)
-			);
-		if (selectedFilter === 'fintech')
-			return (
-				project.name.toLowerCase().includes('pay') ||
-				project.description.toLowerCase().includes('payment') ||
-				project.description.toLowerCase().includes('financial') ||
-				project.description.toLowerCase().includes('trading')
-			);
-		if (selectedFilter === 'backend')
-			return project.stack.some(tech =>
-				[
-					'Node.js',
-					'NestJS',
-					'Python',
-					'Express',
-					'FastAPI',
-					'MongoDB',
-					'PostgreSQL',
-					'ASP.NET Core',
-					'C#',
-				].includes(tech)
-			);
-		return true;
-	});
-
-	const filterLabels: Record<string, string> = {
-		all: 'All Projects',
-		ai: 'AI & ML',
-		backend: 'Backend',
-		fintech: 'Fintech',
-	};
 
 	return (
 		<section id='projects' className='py-20 px-6 bg-muted/30'>
 			<div className='max-w-6xl mx-auto'>
 				<div className='text-center mb-16'>
 					<h2 className='text-4xl md:text-5xl font-bold text-foreground mb-4'>
-						Project Portfolio
+						Projects
 					</h2>
 					<div className='w-16 h-0.5 bg-primary/60 mx-auto rounded-full'></div>
 					<p className='text-lg text-muted-foreground mt-6 max-w-2xl mx-auto'>
-						AI systems and production applications built to scale.
-					</p>
-
-					{/* Filter Controls */}
-					<div className='mt-8 flex flex-wrap justify-center gap-2'>
-						{categories.map(category => (
-							<Button
-								key={category}
-								variant={selectedFilter === category ? 'default' : 'outline'}
-								size='sm'
-								onClick={() => setSelectedFilter(category)}
-								className={`transition-all duration-300 ${
-									selectedFilter === category
-										? 'neon-glow'
-										: 'border-primary/30 hover:border-primary'
-								}`}>
-								{selectedFilter === category && (
-									<Filter className='h-3 w-3 mr-2' />
-								)}
-								{filterLabels[category]}
-							</Button>
-						))}
-						{selectedFilter !== 'all' && (
-							<Button
-								variant='ghost'
-								size='sm'
-								onClick={() => setSelectedFilter('all')}
-								className='text-muted-foreground hover:text-foreground'>
-								<X className='h-3 w-3 mr-1' />
-								Clear
-							</Button>
-						)}
-					</div>
-
-					<p className='mt-4 text-sm text-muted-foreground'>
-						Showing {filteredProjects.length} of {projects.length} projects
+						Problems I chose to tackle, systems I built, and the decisions
+						that shaped them.
 					</p>
 				</div>
 
 				<div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
-					{filteredProjects.map((project, index) => (
-						<Card
-							key={index}
-							className='bg-card/50 backdrop-blur border-border hover-glow group hover:-translate-y-2 transition-all duration-300 flex flex-col'>
-							<CardHeader className='pb-3'>
-								<div className='flex items-start justify-between gap-2 mb-1'>
-									<CardTitle className='text-lg font-semibold text-foreground leading-tight'>
-										{project.name}
-									</CardTitle>
-									{project.link && project.link !== '#' && (
-										<span className='text-xs text-green-500 font-medium bg-green-500/10 px-2 py-0.5 rounded-full border border-green-500/20 whitespace-nowrap flex-shrink-0'>
-											Live
-										</span>
-									)}
-								</div>
-								<div className='flex items-center gap-1.5 text-xs text-muted-foreground'>
-									<Calendar className='h-3 w-3' />
-									{project.period}
-								</div>
-							</CardHeader>
-
-							<CardContent className='space-y-4 flex-1 flex flex-col pt-0'>
-								{/* Description */}
-								<p className='text-sm text-muted-foreground leading-relaxed flex-1'>
-									{project.description}
-								</p>
-
-								{/* Tech Stack */}
-								<div>
-									<p className='text-xs font-medium text-foreground mb-2 uppercase tracking-wide'>
-										Tech Stack
-									</p>
-									<div className='flex flex-wrap gap-1.5'>
-										{project.stack.map((tech, techIndex) => (
+					{projects.map((project, index) => {
+						const status = statusConfig[project.status] || statusConfig.production;
+						return (
+							<Link
+								key={index}
+								to={`/projects/${project.slug}`}
+								className='block group'>
+								<Card className='bg-card/50 backdrop-blur border-border hover-glow hover:-translate-y-2 transition-all duration-300 flex flex-col h-full'>
+									<CardHeader className='pb-3'>
+										<div className='flex items-start justify-between gap-2 mb-1'>
+											<CardTitle className='text-lg font-semibold text-foreground leading-tight group-hover:text-primary transition-colors'>
+												{project.name}
+											</CardTitle>
 											<Badge
-												key={techIndex}
 												variant='outline'
-												className='bg-primary/10 text-primary border-primary/30 hover:border-primary font-mono text-xs transition-colors'>
-												{tech}
+												className={`text-xs shrink-0 ${status.className}`}>
+												{status.label}
 											</Badge>
-										))}
-									</div>
-								</div>
+										</div>
+										<div className='flex items-center gap-3 text-xs text-muted-foreground'>
+											<div className='flex items-center gap-1'>
+												<Calendar className='h-3 w-3' />
+												{project.period}
+											</div>
+											<div className='flex items-center gap-1'>
+												<Users className='h-3 w-3' />
+												{project.teamSize === 1
+													? 'Solo'
+													: `${project.teamSize} people`}
+											</div>
+										</div>
+									</CardHeader>
 
-								{/* Action Buttons */}
-								<div className='flex flex-wrap gap-2 pt-1'>
-									{project.caseStudy && (
-										<Button
-											variant='outline'
-											size='sm'
-											asChild
-											className='flex-1 border-primary/30 hover:border-primary'>
-											<a href={project.caseStudy}>
-												<BookOpen className='mr-2 h-3 w-3' />
-												Read Case Study
-											</a>
-										</Button>
-									)}
-									{project.link && project.link !== '#' && (
-										<Button
-											variant='outline'
-											size='sm'
-											asChild
-											className='flex-1 border-primary/30 hover:border-primary'>
-											<a
-												href={project.link}
-												target='_blank'
-												rel='noopener noreferrer'>
-												<ExternalLink className='mr-2 h-3 w-3' />
-												Live Demo
-											</a>
-										</Button>
-									)}
-									{project.github && project.github !== '#' && (
-										<Button
-											variant='outline'
-											size='sm'
-											asChild
-											className='flex-1 border-primary/30 hover:border-primary'>
-											<a
-												href={project.github}
-												target='_blank'
-												rel='noopener noreferrer'>
-												<Github className='mr-2 h-3 w-3' />
-												Source Code
-											</a>
-										</Button>
-									)}
-								</div>
-							</CardContent>
-						</Card>
-					))}
-				</div>
+									<CardContent className='space-y-4 flex-1 flex flex-col pt-0'>
+										<p className='text-sm text-muted-foreground leading-relaxed flex-1'>
+											{project.tagline}
+										</p>
 
-				{/* Most Used Technologies */}
-				<div className='mt-16 text-center'>
-					<h3 className='text-lg font-semibold text-foreground mb-6'>
-						Most Used Technologies
-					</h3>
-					<div className='flex flex-wrap justify-center gap-3 max-w-4xl mx-auto'>
-						{allTechnologies.slice(0, 15).map((tech, index) => {
-							const usage = projects.filter(p => p.stack.includes(tech)).length;
-							return (
-								<Badge
-									key={index}
-									variant='outline'
-									className={`font-mono transition-all duration-300 hover:scale-105 ${
-										usage >= 3
-											? 'border-yellow-500/50 text-yellow-500 hover:border-yellow-500'
-											: usage >= 2
-											? 'border-green-500/50 text-green-500 hover:border-green-500'
-											: 'border-primary/30 text-primary hover:border-primary'
-									}`}>
-									{tech} ({usage})
-								</Badge>
-							);
-						})}
-					</div>
+										{/* Tech Stack */}
+										<div className='flex flex-wrap gap-1.5'>
+											{project.stack.slice(0, 5).map((tech, techIndex) => (
+												<Badge
+													key={techIndex}
+													variant='outline'
+													className='bg-primary/10 text-primary border-primary/30 hover:border-primary font-mono text-xs transition-colors'>
+													{tech}
+												</Badge>
+											))}
+											{project.stack.length > 5 && (
+												<Badge
+													variant='outline'
+													className='bg-muted/50 text-muted-foreground border-border font-mono text-xs'>
+													+{project.stack.length - 5}
+												</Badge>
+											)}
+										</div>
+
+										{/* Action row */}
+										<div className='flex items-center justify-between pt-1'>
+											<div className='flex items-center gap-2'>
+												{project.link && project.link !== '#' && (
+													<span className='text-xs text-green-500 font-medium bg-green-500/10 px-2 py-0.5 rounded-full border border-green-500/20'>
+														Live
+													</span>
+												)}
+											</div>
+											<span className='text-xs text-primary flex items-center gap-1 group-hover:gap-2 transition-all'>
+												View Details
+												<ArrowRight className='h-3 w-3' />
+											</span>
+										</div>
+									</CardContent>
+								</Card>
+							</Link>
+						);
+					})}
 				</div>
 			</div>
 		</section>

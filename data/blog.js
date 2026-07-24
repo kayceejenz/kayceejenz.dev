@@ -306,4 +306,4 @@ What's left isn't especially clever. It's the steady application of the same dis
 };
 
 // Export all blog posts as an array
-export default [];
+export default [flipeetPayCaseStudy];

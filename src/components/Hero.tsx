@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { Mail, Download } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import config from '../../data/config.js';
 import { MatrixBackground } from '@/components/MatrixBackground';
@@ -9,8 +9,7 @@ export function Hero() {
 	const [displayText, setDisplayText] = useState('');
 	const [currentIndex, setCurrentIndex] = useState(0);
 
-	const fullText =
-		'Backend Engineer building LLM systems, RAG pipelines, and the production infrastructure that makes them scale.';
+	const fullText = hero.headline;
 
 	useEffect(() => {
 		if (currentIndex < fullText.length) {
@@ -19,10 +18,16 @@ export function Hero() {
 					prev => prev + fullText[currentIndex],
 				);
 				setCurrentIndex(prev => prev + 1);
-			}, 100);
+			}, 50);
 			return () => clearTimeout(timeout);
 		}
 	}, [currentIndex, fullText]);
+
+	const scrollToProjects = () => {
+		document.getElementById('projects')?.scrollIntoView({
+			behavior: 'smooth',
+		});
+	};
 
 	const scrollToContact = () => {
 		document.getElementById('contact')?.scrollIntoView({
@@ -39,10 +44,6 @@ export function Hero() {
 						{hero.name}
 					</h1>
 
-					<p className='text-xl md:text-2xl font-medium text-primary tracking-wide'>
-						{hero.headline.split(' | ')[0]}
-					</p>
-
 					<div className='terminal-window max-w-2xl mx-auto'>
 						<div className='terminal-header'>
 							<div className='terminal-dot red'></div>
@@ -58,25 +59,17 @@ export function Hero() {
 								= {'{'}
 							</div>
 							<div className='ml-4 text-muted-foreground'>
-								specializes:{' '}
+								focus:{' '}
 								<span className='text-foreground'>
-									["
-									{
-										hero.headline.split(
-											' | ',
-										)[1]
-									}
-									"]
+									"Software Engineering"
 								</span>
 								,
 							</div>
 							<div className='ml-4 text-muted-foreground'>
-								description:{' '}
+								mission:{' '}
 								<span className='text-primary'>
 									"
-									{
-										displayText
-									}
+									{displayText}
 									<span className='animate-pulse'>
 										|
 									</span>
@@ -95,18 +88,12 @@ export function Hero() {
 				</div>
 
 				<div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
-					{/* <Button
-						asChild
+					<Button
 						size='lg'
-						className='bg-primary hover:bg-primary/90 text-primary-foreground font-mono hover-glow group'>
-						<a
-							href={hero.ctas[0].href}
-							target='_blank'
-							rel='noopener noreferrer'>
-							<Download className='mr-2 h-4 w-4 group-hover:animate-bounce' />
-							Download Résumé
-						</a>
-					</Button> */}
+						onClick={scrollToProjects}
+						className='bg-primary hover:bg-primary/90 text-primary-foreground font-mono hover-glow'>
+						View Projects
+					</Button>
 
 					<Button
 						variant='outline'

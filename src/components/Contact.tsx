@@ -8,17 +8,13 @@ import {
 	MapPin,
 	Send,
 	CheckCircle,
-	BrainCircuit,
-	Server,
-	Database,
-	Layers,
 } from 'lucide-react';
 import {
 	FaHackerrank,
 	FaGithub,
-	FaTwitter,
 	FaLinkedinIn,
 } from 'react-icons/fa';
+import { SiLeetcode } from 'react-icons/si';
 import config from '../../data/config.js';
 
 export function Contact() {
@@ -69,19 +65,14 @@ export function Contact() {
 			handle: '/kayceejenz',
 		},
 		{
-			name: 'X (Twitter)',
-			url: contact.links.twitter,
-			icon: FaTwitter,
+			name: 'LeetCode',
+			url: contact.links.leetcode,
+			icon: SiLeetcode,
 			handle: '@kayceejenz',
 		},
 	];
 
-	const specializations = [
-		{ icon: BrainCircuit, label: 'AI & LLM Systems' },
-		{ icon: Database, label: 'RAG Pipelines' },
-		{ icon: Server, label: 'Backend APIs' },
-		{ icon: Layers, label: 'Fintech Infra' },
-	];
+	const specializations: { icon: typeof BrainCircuit; label: string }[] = [];
 
 	return (
 		<section id='contact' className='py-20 px-6 bg-background'>
@@ -94,7 +85,7 @@ export function Contact() {
 					<p className='text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed'>
 						Open to new opportunities,
 						collaborations, and interesting
-						AI engineering challenges.
+						projects.
 					</p>
 
 					{/* Specialization pills */}
