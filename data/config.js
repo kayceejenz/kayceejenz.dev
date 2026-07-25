@@ -232,10 +232,71 @@ export default {
 					cost: 'Per-message cost adds up at scale. Worth it for the reach.',
 				},
 			],
-			lessons: [
+		lessons: [
 				'Building for the actual user base (low-bandwidth, mobile-first, SMS-reliant) means making different technical choices than building for a Silicon Valley audience.',
 				'The best project to learn software engineering is one real users depend on daily.',
 				'Shipping a complete MVP with a small team taught more about prioritization and scope management than any course could.',
+			],
+		},
+		{
+			slug: 'webhook-system',
+			name: 'WebHook Delivery Service',
+			period: '2025',
+			status: 'experiment',
+			category: 'backend',
+			tagline: 'Reliable webhook delivery with retries, HMAC signatures, and dead letter management',
+			description:
+				'A reliable webhook delivery system that allows you to register HTTP endpoints, subscribe them to event types, and automatically delivers events with built-in retry logic, HMAC signature verification, and dead letter management.',
+			stack: [
+				'C#',
+				'.NET 8',
+				'ASP.NET Core',
+				'PostgreSQL',
+				'Redis',
+				'Docker',
+				'Blazor',
+			],
+			link: '#',
+			github: 'https://github.com/kayceejenz/WebHookSystem',
+			role: 'Solo Developer',
+			teamSize: 1,
+			impact: [
+				{ metric: 'Exponential', label: 'Backoff retry strategy with configurable delays' },
+				{ metric: 'HMAC-SHA256', label: 'Signature verification for secure delivery' },
+				{ metric: '30-day', label: 'Dead letter retention with replay capability' },
+			],
+			problem:
+				'When something happens in a system (an order is placed, a payment fails, a user signs up), you need to notify other services. But HTTP endpoints fail, networks hiccup, and services go down. Without reliable delivery, events get lost silently and downstream systems drift out of sync.',
+			approach:
+				'Built a complete webhook delivery pipeline: register HTTP endpoints, subscribe them to event types, and the system automatically delivers events with exponential backoff retries, HMAC signature verification for security, and a dead letter queue for failed deliveries. The system includes a Blazor dashboard for monitoring delivery health and managing dead letters.',
+			architecture:
+				'Three-process architecture: API (REST endpoints for subscription and event management), Worker (background service processing deliveries and retries), and Dashboard (Blazor UI for monitoring). PostgreSQL stores subscriptions, events, and delivery records. Redis handles caching and pub/sub for real-time updates.',
+			tradeoffs: [
+				{
+					decision: 'Exponential backoff over fixed-interval retries',
+					what: 'Use exponential backoff with configurable base delay and max delay for retry timing',
+					why: 'Fixed intervals hammer failing endpoints during outages. Exponential backoff reduces load on struggling services while still attempting recovery.',
+					cost: 'More complex retry logic. Delay configuration requires tuning per use case.',
+				},
+				{
+					decision: 'Dead letter queue with retention',
+					what: 'Store failed deliveries for 30 days instead of discarding immediately',
+					why: 'Immediate discard loses data permanently. Retention allows replay after the downstream service recovers, preventing data loss.',
+					cost: 'Storage grows over time. Requires cleanup policy. Adds complexity to the delivery lifecycle.',
+				},
+				{
+					decision: 'HMAC signatures for verification',
+					what: 'Sign each delivery with HMAC-SHA256 using the subscription secret',
+					why: 'Without verification, anyone can forge webhook calls. Signatures let receivers verify the payload actually came from the trusted source.',
+					cost: 'Each side must manage secrets securely. Signature verification adds processing overhead on both sender and receiver.',
+				},
+			],
+			lessons: [
+				'Webhook delivery is fundamentally a distributed systems problem: retries, idempotency, and dead letters are not optional features, they are survival requirements.',
+				'HMAC signatures are simple to implement but the details matter: timing-safe comparison, replay protection via timestamp validation, and secret rotation are all critical.',
+				'Exponential backoff needs a ceiling. Without maxDelay, a service outage can cause retry storms that make the original problem worse.',
+				'Dead letter queues are an insurance policy: the cost of storage is cheap compared to the cost of lost events in production.',
+				'Idempotency keys prevent duplicate processing, but the window matters. 24 hours works for most systems, but high-throughput systems may need shorter or longer windows.',
 			],
 		},
 	],
