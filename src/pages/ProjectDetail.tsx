@@ -1,4 +1,5 @@
 import { useParams, useNavigate, Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -81,8 +82,23 @@ export default function ProjectDetail() {
 		}
 	};
 
+	const pageTitle = `${project.name} — ${project.tagline} | Precious Okolo`;
+	const pageDesc = project.description.slice(0, 160);
+	const pageUrl = `https://kayceejenz.dev/projects/${project.slug}`;
+
 	return (
-		<div className='min-h-screen bg-background animate-fade-in'>
+		<>
+			<Helmet>
+				<title>{pageTitle}</title>
+				<meta name='description' content={pageDesc} />
+				<meta property='og:title' content={`${project.name} — ${project.tagline}`} />
+				<meta property='og:description' content={pageDesc} />
+				<meta property='og:url' content={pageUrl} />
+				<meta name='twitter:title' content={`${project.name} — ${project.tagline}`} />
+				<meta name='twitter:description' content={pageDesc} />
+				<link rel='canonical' href={pageUrl} />
+			</Helmet>
+			<div className='min-h-screen bg-background animate-fade-in'>
 			{/* Top nav bar */}
 			<nav role='navigation' aria-label='Project navigation' className='sticky top-0 z-40 bg-background/95 backdrop-blur-md border-b border-border'>
 				<div className='max-w-4xl mx-auto px-6 h-14 flex items-center justify-between'>
@@ -325,5 +341,6 @@ export default function ProjectDetail() {
 				)}
 			</article>
 		</div>
+		</>
 	);
 }
