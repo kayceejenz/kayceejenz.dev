@@ -184,7 +184,7 @@ export default function Index() {
 								and solve hard problems.
 							</p>
 							<div className='flex items-center gap-2'>
-								<div className='w-2 h-2 bg-primary rounded-full animate-pulse'></div>
+								<div className='w-1 h-1 bg-primary/60 rounded-full'></div>
 								<span className='text-sm text-primary font-medium'>
 									Open to Backend /
 									AI-ML roles

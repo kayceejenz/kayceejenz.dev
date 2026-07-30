@@ -9,7 +9,7 @@ export default {
 	},
 	hero: {
 		name: 'Precious Okolo',
-		headline: 'Software Engineer building systems that scale',
+		headline: 'Solving problems that move businesses and their customers forward',
 		subheadline:
 			'Backend systems, APIs, and architecture built to work in production, not just in demos.',
 		ctas: [

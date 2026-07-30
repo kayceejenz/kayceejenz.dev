@@ -2,26 +2,37 @@ import { Button } from '@/components/ui/button';
 import { Mail } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import config from '../../data/config.js';
-import { MatrixBackground } from '@/components/MatrixBackground';
+
+const fields = [
+	{ key: 'role', value: '"Software Engineer"', color: 'text-primary' },
+	{ key: 'location', value: '"United Kingdom"', color: 'text-foreground' },
+	{ key: 'focus', value: '"Backend Systems & Distributed Platforms"', color: 'text-primary' },
+];
 
 export function Hero() {
 	const { hero } = config;
 	const [displayText, setDisplayText] = useState('');
 	const [currentIndex, setCurrentIndex] = useState(0);
+	const [showCursor, setShowCursor] = useState(true);
 
 	const fullText = hero.headline;
 
 	useEffect(() => {
 		if (currentIndex < fullText.length) {
 			const timeout = setTimeout(() => {
-				setDisplayText(
-					prev => prev + fullText[currentIndex],
-				);
+				setDisplayText(prev => prev + fullText[currentIndex]);
 				setCurrentIndex(prev => prev + 1);
-			}, 50);
+			}, 30);
 			return () => clearTimeout(timeout);
 		}
 	}, [currentIndex, fullText]);
+
+	useEffect(() => {
+		const interval = setInterval(() => {
+			setShowCursor(prev => !prev);
+		}, 530);
+		return () => clearInterval(interval);
+	}, []);
 
 	const scrollToProjects = () => {
 		document.getElementById('projects')?.scrollIntoView({
@@ -37,57 +48,57 @@ export function Hero() {
 
 	return (
 		<section className='min-h-screen flex items-center justify-center gradient-bg relative overflow-hidden px-6'>
-			<MatrixBackground mode='section' opacity={0.08} />
-			<div className='max-w-4xl mx-auto text-center space-y-8 relative z-10'>
-				<div className='space-y-6'>
-					<h1 className='text-5xl md:text-7xl font-bold bg-gradient-to-r from-foreground via-primary to-foreground bg-clip-text text-transparent'>
+			<div className='max-w-3xl mx-auto text-center space-y-10 relative z-10'>
+				<div className='space-y-10'>
+					<h1 className='text-5xl md:text-7xl font-bold bg-gradient-to-r from-primary via-foreground to-primary bg-clip-text text-transparent'>
 						{hero.name}
 					</h1>
 
-					<div className='terminal-window max-w-2xl mx-auto'>
+					<div className='terminal-window max-w-xl mx-auto text-left'>
 						<div className='terminal-header'>
-							<div className='terminal-dot red'></div>
-							<div className='terminal-dot yellow'></div>
-							<div className='terminal-dot green'></div>
+							<div className='flex gap-1.5'>
+								<div className='w-2.5 h-2.5 rounded-full bg-foreground/20' />
+								<div className='w-2.5 h-2.5 rounded-full bg-foreground/15' />
+								<div className='w-2.5 h-2.5 rounded-full bg-foreground/10' />
+							</div>
 							<span className='font-mono text-xs text-muted-foreground ml-2'>
-								kayceejenz.dev
+								profile.ts
 							</span>
 						</div>
-						<div className='p-6 font-mono text-left'>
-							<div className='text-primary'>
-								const developer
-								= {'{'}
+						<div className='p-4 md:p-6 font-mono text-sm leading-relaxed space-y-1'>
+							<div>
+								<span className='text-primary'>const</span>{' '}
+								<span className='text-foreground'>developer</span>{' '}
+								<span className='text-muted-foreground'>= {'{'}</span>
 							</div>
-							<div className='ml-4 text-muted-foreground'>
-								focus:{' '}
-								<span className='text-foreground'>
-									"Software Engineering"
-								</span>
-								,
-							</div>
-							<div className='ml-4 text-muted-foreground'>
-								mission:{' '}
-								<span className='text-primary'>
-									"
-									{displayText}
-									<span className='animate-pulse'>
-										|
+							{fields.map((field, i) => (
+								<div key={i} className='ml-5 flex'>
+									<span className='text-muted-foreground shrink-0'>
+										{field.key}:{' '}
 									</span>
-									"
+									<span className={field.color}>
+										{field.value}
+										<span className='text-muted-foreground'>,</span>
+									</span>
+								</div>
+							))}
+							<div className='ml-5 flex'>
+								<span className='text-muted-foreground shrink-0'>
+									mission:{' '}
+								</span>
+								<span className='text-primary break-words'>
+									"{displayText}
+									<span className={showCursor ? 'opacity-100' : 'opacity-0'}>█</span>"
 								</span>
 							</div>
-							<div className='text-primary'>
-								{'}'}
+							<div>
+								<span className='text-muted-foreground'>{'};'}</span>
 							</div>
 						</div>
 					</div>
-
-					<p className='text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed'>
-						{hero.subheadline}
-					</p>
 				</div>
 
-				<div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
+				<div className='flex flex-col sm:flex-row gap-4 justify-center'>
 					<Button
 						size='lg'
 						onClick={scrollToProjects}
@@ -99,7 +110,7 @@ export function Hero() {
 						variant='outline'
 						size='lg'
 						onClick={scrollToContact}
-						className='border-primary/40 text-foreground hover:border-primary hover-glow'>
+						className='border-primary/40 text-foreground hover:border-primary hover:bg-primary/5 hover-glow'>
 						<Mail className='mr-2 h-4 w-4' />
 						Get in Touch
 					</Button>
