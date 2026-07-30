@@ -1,5 +1,4 @@
 import { ThemeToggle } from '@/components/ThemeToggle';
-import { MatrixBackground } from '@/components/MatrixBackground';
 import { Hero } from '@/components/Hero';
 import { Projects } from '@/components/Projects';
 import { Contact } from '@/components/Contact';
@@ -9,10 +8,8 @@ import {
 	Mail,
 	Github,
 	Linkedin,
-	Heart,
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import config from '../../data/config.js';
 
 const navItems = ['projects', 'contact'];
 
@@ -35,10 +32,12 @@ export default function Index() {
 
 	return (
 		<div className='min-h-screen relative'>
-			<MatrixBackground />
+
 
 			{/* Navigation */}
 			<nav
+				role='navigation'
+				aria-label='Main navigation'
 				className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
 					scrolled
 						? 'bg-background/95 backdrop-blur-md shadow-sm border-b border-border'
@@ -64,7 +63,7 @@ export default function Index() {
 								<a
 									key={item}
 									href={`#${item}`}
-									className='px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground rounded-md hover:bg-muted transition-all duration-150 capitalize'>
+									className='px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground rounded-md hover:bg-muted transition-all duration-150 capitalize focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background'>
 									{item}
 								</a>
 							))}
@@ -74,14 +73,14 @@ export default function Index() {
 						<div className='flex items-center gap-2'>
 							<ThemeToggle />
 							<button
-								className='md:hidden p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors'
+								className='md:hidden p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background'
 								onClick={() =>
 									setMobileMenuOpen(
 										prev =>
 											!prev,
 									)
 								}
-								aria-label='Toggle menu'>
+								aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}>
 								{mobileMenuOpen ? (
 									<svg
 										xmlns='http://www.w3.org/2000/svg'
@@ -155,9 +154,11 @@ export default function Index() {
 			</nav>
 
 			{/* Main Content */}
-			<main className='pt-16'>
+			<main className='pt-16 animate-fade-in'>
 				<Hero />
+				<div className='h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent' />
 				<Projects />
+				<div className='h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent' />
 				<Contact />
 			</main>
 
@@ -238,9 +239,6 @@ export default function Index() {
 							©{' '}
 							{new Date().getFullYear()}{' '}
 							Precious Okolo
-							&nbsp;·&nbsp; Built with{' '}
-							<Heart className='inline h-3 w-3 text-red-500 mx-0.5' />{' '}
-							and lots of ☕
 						</p>
 						<div className='flex items-center gap-4'>
 							<a
@@ -272,10 +270,10 @@ export default function Index() {
 
 			{/* Scroll to Top */}
 			{showScrollTop && (
-				<Button
+					<Button
 					onClick={scrollToTop}
 					size='icon'
-					className='fixed bottom-6 right-6 z-50 w-10 h-10 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover-glow'
+					className='fixed bottom-6 right-6 z-50 w-10 h-10 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover-glow focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2'
 					aria-label='Scroll to top'>
 					<ArrowUp className='h-4 w-4' />
 				</Button>

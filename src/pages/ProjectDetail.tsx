@@ -82,9 +82,9 @@ export default function ProjectDetail() {
 	};
 
 	return (
-		<div className='min-h-screen bg-background'>
+		<div className='min-h-screen bg-background animate-fade-in'>
 			{/* Top nav bar */}
-			<nav className='sticky top-0 z-40 bg-background/95 backdrop-blur-md border-b border-border'>
+			<nav role='navigation' aria-label='Project navigation' className='sticky top-0 z-40 bg-background/95 backdrop-blur-md border-b border-border'>
 				<div className='max-w-4xl mx-auto px-6 h-14 flex items-center justify-between'>
 					<Button
 						variant='ghost'
@@ -121,7 +121,7 @@ export default function ProjectDetail() {
 				</div>
 			</nav>
 
-			<article className='max-w-4xl mx-auto px-6 py-12'>
+			<article className='max-w-4xl mx-auto px-6 py-12' aria-label={`${project.name} project details`}>
 				{/* Header */}
 				<header className='mb-12'>
 					<div className='flex flex-wrap items-center gap-3 mb-4'>

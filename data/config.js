@@ -45,15 +45,25 @@ export default {
 			role: 'Co-Founder & CTO',
 			teamSize: 5,
 			impact: [
-				{ metric: '$50k+', label: 'Live transaction volume processed' },
-				{ metric: '99.9%', label: 'Uptime across payment services' },
-				{ metric: '4', label: 'Blockchain networks supported' },
-				{ metric: '35%', label: 'Reduction in deployment lead time' },
+				{
+					metric: '$50k+',
+					label: 'Live transaction volume processed',
+				},
+				{
+					metric: '99.9%',
+					label: 'Uptime across payment services',
+				},
+				{
+					metric: '4',
+					label: 'Blockchain networks supported',
+				},
+				{
+					metric: '35%',
+					label: 'Reduction in deployment lead time',
+				},
 			],
-			problem:
-				'Holding stablecoins is easy. Spending them is hard. Users sit on USDC and USDT with no straightforward way to offramp to their bank, pay for everyday services, or send value to external wallets without leaving the ecosystem. The gap between holding crypto and actually using it in daily life is the real friction.',
-			approach:
-				'Flipeet Pay is two products sharing one backend: a consumer stablecoin wallet with on/off-ramp to Nigerian banks, and a merchant payment layer that other businesses can build on top of the same rails. Individual users hold USDC and USDT, convert to and from NGN, pay utility bills, buy airtime, and send money denominated in stablecoin but settled wherever the recipient needs it. The merchant layer exposes most of that as a white-label API, with virtual account provisioning, webhook delivery, and API key management.',
+			problem: 'Holding stablecoins is easy. Spending them is hard. Users sit on USDC and USDT with no straightforward way to offramp to their bank, pay for everyday services, or send value to external wallets without leaving the ecosystem. The gap between holding crypto and actually using it in daily life is the real friction.',
+			approach: 'Flipeet Pay is two products sharing one backend: a consumer stablecoin wallet with on/off-ramp to Nigerian banks, and a merchant payment layer that other businesses can build on top of the same rails. Individual users hold USDC and USDT, convert to and from NGN, pay utility bills, buy airtime, and send money denominated in stablecoin but settled wherever the recipient needs it. The merchant layer exposes most of that as a white-label API, with virtual account provisioning, webhook delivery, and API key management.',
 			tradeoffs: [
 				{
 					decision: 'Multi-provider ramp abstraction',
@@ -104,14 +114,21 @@ export default {
 			role: 'Solo Developer',
 			teamSize: 1,
 			impact: [
-				{ metric: '7', label: 'Microservices with distinct responsibilities' },
-				{ metric: '5', label: 'Communication patterns demonstrated' },
-				{ metric: 'Full', label: 'Observability stack (tracing, metrics, logging)' },
+				{
+					metric: '7',
+					label: 'Microservices with distinct responsibilities',
+				},
+				{
+					metric: '5',
+					label: 'Communication patterns demonstrated',
+				},
+				{
+					metric: 'Full',
+					label: 'Observability stack (tracing, metrics, logging)',
+				},
 			],
-			problem:
-				'Microservice architecture is widely discussed but rarely implemented end-to-end in a single codebase. Understanding how CQRS, Event Sourcing, Saga orchestration, gRPC, and event-driven messaging actually interact requires building the whole system, not just reading about the patterns in isolation.',
-			approach:
-				'Built seven cooperating services: ApiGateway (Polly resilience, correlation IDs), CatalogService (REST + gRPC + Redis cache), OrderService (CQRS + Event Sourcing + Saga orchestrator), InventoryService (event-driven consumer), PaymentService (saga participant), NotificationService (pure event consumer), and Shared.Contracts (event definitions). Each service demonstrates a different architectural pattern while the system as a whole shows how they compose.',
+			problem: 'Microservice architecture is widely discussed but rarely implemented end-to-end in a single codebase. Understanding how CQRS, Event Sourcing, Saga orchestration, gRPC, and event-driven messaging actually interact requires building the whole system, not just reading about the patterns in isolation.',
+			approach: 'Built seven cooperating services: ApiGateway (Polly resilience, correlation IDs), CatalogService (REST + gRPC + Redis cache), OrderService (CQRS + Event Sourcing + Saga orchestrator), InventoryService (event-driven consumer), PaymentService (saga participant), NotificationService (pure event consumer), and Shared.Contracts (event definitions). Each service demonstrates a different architectural pattern while the system as a whole shows how they compose.',
 			architecture:
 				'![E-Commerce Microservice Architecture](https://raw.githubusercontent.com/kayceejenz/Ecommerce_MircoService_Demo/master/resources/overview-architecture.png)\n\nSeven services wired together with multiple communication protocols. The ApiGateway routes requests with Polly resilience policies. The OrderService drives the core workflow through CQRS and Event Sourcing, with a MassTransit Saga orchestrating the full order lifecycle across InventoryService, PaymentService, and NotificationService. RabbitMQ handles event-driven messaging, gRPC handles internal binary communication, and Redis provides caching for the CatalogService.',
 			tradeoffs: [
@@ -164,14 +181,21 @@ export default {
 			role: 'Lead Engineer',
 			teamSize: 2,
 			impact: [
-				{ metric: '5', label: 'Clients using the platform' },
-				{ metric: 'Automated', label: 'Test result computation' },
-				{ metric: 'Multi-tenant', label: 'Architecture supporting isolated data' },
+				{
+					metric: '5',
+					label: 'Clients using the platform',
+				},
+				{
+					metric: 'Automated',
+					label: 'Test result computation',
+				},
+				{
+					metric: 'Multi-tenant',
+					label: 'Architecture supporting isolated data',
+				},
 			],
-			problem:
-				'Laboratories juggle multiple disconnected systems: one for specimen tracking, another for billing, spreadsheets for test results, and manual processes for payment plans. This creates data silos, transcription errors, and slow turnaround times for patients waiting on results.',
-			approach:
-				'Built an integrated platform that unifies specimen tracking, test result computation, billing with flexible payment options (discounts, waivers, installments), and automated reporting. The system handles the full lab workflow from specimen collection to result delivery.',
+			problem: 'Laboratories juggle multiple disconnected systems: one for specimen tracking, another for billing, spreadsheets for test results, and manual processes for payment plans. This creates data silos, transcription errors, and slow turnaround times for patients waiting on results.',
+			approach: 'Built an integrated platform that unifies specimen tracking, test result computation, billing with flexible payment options (discounts, waivers, installments), and automated reporting. The system handles the full lab workflow from specimen collection to result delivery.',
 			architecture:
 				'ASP.NET Core MVC with a modular service layer. Each domain (specimen, billing, results, reporting) has its own service and repository, communicating through typed interfaces. MSSQL handles all persistence with stored procedures for complex result computation.',
 			tradeoffs: [
@@ -189,7 +213,7 @@ export default {
 				},
 			],
 			lessons: [
-				'Domain-specific computation (like lab results) often lives naturally in the database layer, and that\'s okay.',
+				"Domain-specific computation (like lab results) often lives naturally in the database layer, and that's okay.",
 				'Payment flexibility (discounts, waivers, installments) is a core business requirement, not a nice-to-have. Design the billing model to accommodate all payment types from day one.',
 				'Integrated systems eliminate entire categories of data inconsistency errors that plague disconnected tools.',
 			],
@@ -209,13 +233,14 @@ export default {
 			role: 'Lead Developer',
 			teamSize: 3,
 			impact: [
-				{ metric: '5', label: 'Schools using the platform' },
+				{
+					metric: '5',
+					label: 'Schools using the platform',
+				},
 				{ metric: '500k+', label: 'Students served' },
 			],
-			problem:
-				'Schools in the target market relied on paper-based records, manual result processing, and disconnected communication channels. Administrators spent hours on tasks that should take minutes, and students had no centralized access to learning materials or academic progress.',
-			approach:
-				'Built the entire platform solo from scratch: admissions workflow, student records management, automated result processing, integrated LMS with online classes, event management, fee payments, and SMS notifications. Delivered a production-ready MVP within 6 months.',
+			problem: 'Schools in the target market relied on paper-based records, manual result processing, and disconnected communication channels. Administrators spent hours on tasks that should take minutes, and students had no centralized access to learning materials or academic progress.',
+			approach: 'Built the entire platform solo from scratch: admissions workflow, student records management, automated result processing, integrated LMS with online classes, event management, fee payments, and SMS notifications. Delivered a production-ready MVP within 6 months.',
 			architecture:
 				'Standard ASP.NET MVC pattern: Controllers, Views (Bootstrap), Services, and MSSQL database. Monolithic deployment with clear module separation for each school function (admissions, academics, finance, communication).',
 			tradeoffs: [
@@ -232,7 +257,7 @@ export default {
 					cost: 'Per-message cost adds up at scale. Worth it for the reach.',
 				},
 			],
-		lessons: [
+			lessons: [
 				'Building for the actual user base (low-bandwidth, mobile-first, SMS-reliant) means making different technical choices than building for a Silicon Valley audience.',
 				'The best project to learn software engineering is one real users depend on daily.',
 				'Shipping a complete MVP with a small team taught more about prioritization and scope management than any course could.',
@@ -261,14 +286,21 @@ export default {
 			role: 'Solo Developer',
 			teamSize: 1,
 			impact: [
-				{ metric: 'Exponential', label: 'Backoff retry strategy with configurable delays' },
-				{ metric: 'HMAC-SHA256', label: 'Signature verification for secure delivery' },
-				{ metric: '30-day', label: 'Dead letter retention with replay capability' },
+				{
+					metric: 'Exponential',
+					label: 'Backoff retry strategy with configurable delays',
+				},
+				{
+					metric: 'HMAC-SHA256',
+					label: 'Signature verification for secure delivery',
+				},
+				{
+					metric: '30-day',
+					label: 'Dead letter retention with replay capability',
+				},
 			],
-			problem:
-				'When something happens in a system (an order is placed, a payment fails, a user signs up), you need to notify other services. But HTTP endpoints fail, networks hiccup, and services go down. Without reliable delivery, events get lost silently and downstream systems drift out of sync.',
-			approach:
-				'Built a complete webhook delivery pipeline: register HTTP endpoints, subscribe them to event types, and the system automatically delivers events with exponential backoff retries, HMAC signature verification for security, and a dead letter queue for failed deliveries. The system includes a Blazor dashboard for monitoring delivery health and managing dead letters.',
+			problem: 'When something happens in a system (an order is placed, a payment fails, a user signs up), you need to notify other services. But HTTP endpoints fail, networks hiccup, and services go down. Without reliable delivery, events get lost silently and downstream systems drift out of sync.',
+			approach: 'Built a complete webhook delivery pipeline: register HTTP endpoints, subscribe them to event types, and the system automatically delivers events with exponential backoff retries, HMAC signature verification for security, and a dead letter queue for failed deliveries. The system includes a Blazor dashboard for monitoring delivery health and managing dead letters.',
 			architecture:
 				'Three-process architecture: API (REST endpoints for subscription and event management), Worker (background service processing deliveries and retries), and Dashboard (Blazor UI for monitoring). PostgreSQL stores subscriptions, events, and delivery records. Redis handles caching and pub/sub for real-time updates.',
 			tradeoffs: [
@@ -326,15 +358,25 @@ export default {
 			role: 'Solo Developer',
 			teamSize: 1,
 			impact: [
-				{ metric: '7', label: 'Microservices with distinct responsibilities' },
-				{ metric: '236', label: 'Automated tests across all services' },
-				{ metric: '6', label: 'PostgreSQL databases (database-per-service)' },
-				{ metric: '8', label: 'Architecture decisions documented' },
+				{
+					metric: '7',
+					label: 'Microservices with distinct responsibilities',
+				},
+				{
+					metric: '236',
+					label: 'Automated tests across all services',
+				},
+				{
+					metric: '6',
+					label: 'PostgreSQL databases (database-per-service)',
+				},
+				{
+					metric: '8',
+					label: 'Architecture decisions documented',
+				},
 			],
-			problem:
-				'Building a payments system that handles idempotency, eventual consistency, saga orchestration, and resilience against external failure is the hardest class of distributed systems problems in fintech. Most demo projects skip the hard parts: atomic outbox publishing, compensating transactions, CQRS read models, and idempotency at every layer. The challenge was building all of these patterns into a single coherent system that actually runs.',
-			approach:
-				'Started with a monorepo of 7 .NET 8 services: ApiGateway (YARP reverse proxy with centralized auth, rate limiting, idempotency enforcement), LedgerService (double-entry accounting), WalletService (wallet CRUD, top-up via external funding, peer-to-peer transfers), PaymentService (merchant authorize/capture/release saga), FundingService (simulated flaky card processor with configurable 30% failure rate), StatementService (CQRS read model for transaction history), and NotificationService (purely event-driven fan-out consumer). All wired together with MassTransit, RabbitMQ, outbox pattern, and Jaeger distributed tracing. 236 tests prove idempotency, concurrent safety, and saga compensation.',
+			problem: 'Building a payments system that handles idempotency, eventual consistency, saga orchestration, and resilience against external failure is the hardest class of distributed systems problems in fintech. Most demo projects skip the hard parts: atomic outbox publishing, compensating transactions, CQRS read models, and idempotency at every layer. The challenge was building all of these patterns into a single coherent system that actually runs.',
+			approach: 'Started with a monorepo of 7 .NET 8 services: ApiGateway (YARP reverse proxy with centralized auth, rate limiting, idempotency enforcement), LedgerService (double-entry accounting), WalletService (wallet CRUD, top-up via external funding, peer-to-peer transfers), PaymentService (merchant authorize/capture/release saga), FundingService (simulated flaky card processor with configurable 30% failure rate), StatementService (CQRS read model for transaction history), and NotificationService (purely event-driven fan-out consumer). All wired together with MassTransit, RabbitMQ, outbox pattern, and Jaeger distributed tracing. 236 tests prove idempotency, concurrent safety, and saga compensation.',
 			architecture:
 				'![PayFlow Architecture](https://raw.githubusercontent.com/kayceejenz/PayFlow/master/docs/screenshots/architecture.png)\n\nSeven services composed via ApiGateway (YARP reverse proxy). Mutating requests write to an `outbox_messages` table in the same EF transaction as business data via OutboxRelayService background worker that publishes pending messages to RabbitMQ. LedgerService consumes commands and publishes events that fan out to PaymentService (saga advancement), StatementService (CQRS read model), and NotificationService (fan-out demo). FundingService simulates external card processing with a configurable 30% failure rate to force Polly retry and circuit breaker patterns in WalletService. Every service has its own PostgreSQL database (database-per-service pattern). Jaeger collects distributed traces via OTLP for end-to-end visibility.',
 			tradeoffs: [

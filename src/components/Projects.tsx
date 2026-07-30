@@ -5,6 +5,11 @@ import { Badge } from '@/components/ui/badge';
 import { Calendar, Users, ArrowRight } from 'lucide-react';
 import config from '../../data/config.js';
 
+const categoryColors: Record<string, string> = {
+	fintech: 'bg-gradient-to-r from-emerald-400/60 via-green-500/30 to-primary/10',
+	backend: 'bg-gradient-to-r from-primary/40 via-primary/20 to-transparent',
+};
+
 const statusConfig: Record<string, { label: string; className: string }> = {
 	production: {
 		label: 'Production',
@@ -72,12 +77,14 @@ export function Projects() {
 				<div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6'>
 					{projects.map((project, index) => {
 						const status = statusConfig[project.status] || statusConfig.production;
+						const categoryGradient = categoryColors[project.category] || categoryColors.backend;
 						return (
 							<AnimatedCard key={index}>
 								<Link
 									to={`/projects/${project.slug}`}
 									className='block group'>
-									<Card className='bg-card/50 backdrop-blur border-border hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1 transition-all duration-300 flex flex-col h-full'>
+									<Card className='bg-card/50 backdrop-blur border-border hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-1 transition-all duration-300 flex flex-col h-full overflow-hidden'>
+										<div className={`h-1.5 w-full ${categoryGradient}`} />
 										<CardHeader className='pb-3'>
 											<div className='flex items-start justify-between gap-2 mb-1'>
 												<CardTitle className='text-lg font-semibold text-foreground leading-tight group-hover:text-primary transition-colors'>

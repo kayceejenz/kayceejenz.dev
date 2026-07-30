@@ -102,7 +102,7 @@ export function Hero() {
 					<Button
 						size='lg'
 						onClick={scrollToProjects}
-						className='bg-primary hover:bg-primary/90 text-primary-foreground font-mono hover-glow'>
+						className='bg-primary text-primary-foreground font-mono hover-glow hover:shadow-[0_0_24px_hsl(var(--primary)/0.3)] focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2'>
 						View Projects
 					</Button>
 
@@ -110,7 +110,7 @@ export function Hero() {
 						variant='outline'
 						size='lg'
 						onClick={scrollToContact}
-						className='border-primary/40 text-foreground hover:border-primary hover:bg-primary/5 hover-glow'>
+						className='border-primary/40 text-foreground hover:border-primary hover:bg-primary/5 hover-glow hover:shadow-[0_0_20px_hsl(var(--primary)/0.15)] focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2'>
 						<Mail className='mr-2 h-4 w-4' />
 						Get in Touch
 					</Button>
