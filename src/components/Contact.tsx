@@ -69,18 +69,17 @@ export function Contact() {
 	return (
 		<section id='contact' className='py-20 px-6 bg-background'>
 			<div className='max-w-6xl mx-auto'>
-				<div className='text-center mb-16'>
-					<h2 className='text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-foreground to-primary bg-clip-text text-transparent'>
+				<div className='mb-10 border-b border-border pb-8'>
+					<h2 className='text-3xl md:text-4xl font-semibold tracking-tight text-foreground'>
 						Get in Touch
 					</h2>
-					<div className='w-16 h-0.5 bg-primary/60 mx-auto rounded-full mt-4 mb-8' />
 				</div>
 
 				<div className='grid lg:grid-cols-2 gap-10 items-start'>
 					{/* Left column */}
 					<div className='space-y-6'>
 						{/* Social links */}
-						<Card className='bg-card/50 backdrop-blur border-border hover-glow'>
+						<Card className='bg-card border-border shadow-sm'>
 							<CardHeader className='pb-4'>
 								<CardTitle className='text-lg font-semibold text-foreground'>
 									Connect
@@ -95,16 +94,16 @@ export function Contact() {
 											href={social.url}
 											target='_blank'
 											rel='noopener noreferrer'
-											className='flex items-center justify-between p-3 rounded-lg border border-border hover:border-primary/40 hover:bg-card transition-all duration-200 group'>
+											className='flex items-center justify-between p-3 rounded-sm border border-border hover:border-primary/40 hover:bg-card transition-all duration-200 group'>
 											<div className='flex items-center gap-3'>
-												<div className='p-2 bg-primary/10 rounded-lg border border-primary/20'>
+												<div className='p-2 bg-primary/10 rounded-sm border border-primary/20'>
 													<IconComponent className='h-4 w-4 text-primary' />
 												</div>
 												<div>
 													<p className='text-sm font-medium text-foreground'>
 														{social.name}
 													</p>
-													<p className='text-xs text-muted-foreground font-mono'>
+													<p className='text-xs text-muted-foreground '>
 														{social.handle}
 													</p>
 												</div>
@@ -120,10 +119,10 @@ export function Contact() {
 					</div>
 
 					{/* Right column — form */}
-					<Card className='bg-card/50 backdrop-blur border-border hover-glow'>
+					<Card className='bg-card border-border shadow-sm'>
 						<CardHeader className='pb-4'>
 							<CardTitle className='text-lg font-semibold text-foreground'>
-								{submitted ? 'Message Sent' : 'Send a Message'}
+								{submitted ? 'Email draft ready' : 'Send a Message'}
 							</CardTitle>
 							<p className='text-sm text-muted-foreground'>
 								{submitted
@@ -154,11 +153,11 @@ export function Contact() {
 								<form onSubmit={handleSubmit} className='space-y-5'>
 									<div className='grid md:grid-cols-2 gap-4'>
 										<div className='space-y-1.5'>
-											<label className='text-sm font-medium text-foreground'>
-												Name <span className='text-primary'>*</span>
+											<label htmlFor='contact-name' className='text-sm font-medium text-foreground'>Name <span className='text-primary'>*</span>
 											</label>
 											<Input
-												name='name'
+												id='contact-name'
+ name='name'
 												placeholder='Your full name'
 												value={formData.name}
 												onChange={handleInputChange}
@@ -168,11 +167,11 @@ export function Contact() {
 										</div>
 
 										<div className='space-y-1.5'>
-											<label className='text-sm font-medium text-foreground'>
-												Email <span className='text-primary'>*</span>
+											<label htmlFor='contact-email' className='text-sm font-medium text-foreground'>Email <span className='text-primary'>*</span>
 											</label>
 											<Input
-												name='email'
+												id='contact-email'
+ name='email'
 												type='email'
 												placeholder='your@email.com'
 												value={formData.email}
@@ -185,15 +184,15 @@ export function Contact() {
 
 									<div className='space-y-1.5'>
 										<div className='flex items-center justify-between'>
-											<label className='text-sm font-medium text-foreground'>
-												Message <span className='text-primary'>*</span>
+											<label htmlFor='contact-message' className='text-sm font-medium text-foreground'>Message <span className='text-primary'>*</span>
 											</label>
 											<span className='text-xs text-muted-foreground'>
 												{formData.message.length} chars
 											</span>
 										</div>
 										<Textarea
-											name='message'
+											id='contact-message'
+ name='message'
 											placeholder='Tell me about your project, what you need, and any relevant timeline or context...'
 											value={formData.message}
 											onChange={handleInputChange}
@@ -205,7 +204,7 @@ export function Contact() {
 
 									<Button
 										type='submit'
-										className='w-full bg-primary text-primary-foreground hover-glow hover:shadow-[0_0_24px_hsl(var(--primary)/0.3)] focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2'>
+										className='w-full bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2'>
 										<Send className='mr-2 h-4 w-4' />
 										Send Message
 									</Button>

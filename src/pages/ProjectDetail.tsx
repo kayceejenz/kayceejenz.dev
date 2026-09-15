@@ -13,6 +13,7 @@ import {
 	CheckCircle,
 	BookOpen,
 } from 'lucide-react';
+import { ThemeToggle } from '@/components/ThemeToggle';
 import { useEffect } from 'react';
 import config from '../../data/config.js';
 import { renderMarkdown } from '@/lib/markdown';
@@ -20,11 +21,11 @@ import { renderMarkdown } from '@/lib/markdown';
 const statusConfig: Record<string, { label: string; className: string }> = {
 	production: {
 		label: 'Production',
-		className: 'bg-green-500/10 text-green-500 border-green-500/30',
+		className: 'bg-green-500/10 text-primary border-green-500/30',
 	},
 	prototype: {
 		label: 'Prototype',
-		className: 'bg-yellow-500/10 text-yellow-500 border-yellow-500/30',
+		className: 'bg-yellow-500/10 text-primary border-primary',
 	},
 	experiment: {
 		label: 'Experiment',
@@ -35,6 +36,25 @@ const statusConfig: Record<string, { label: string; className: string }> = {
 		className: 'bg-muted text-muted-foreground border-border',
 	},
 };
+
+
+function getYouTubeEmbedUrl(url: string | null) {
+ if (!url) return null;
+ try {
+  const parsedUrl = new URL(url);
+  const host = parsedUrl.hostname.replace(/^www\./, '');
+  let videoId = '';
+  if (host === 'youtu.be') videoId = parsedUrl.pathname.slice(1).split('/')[0];
+  else if (host === 'youtube.com' || host === 'm.youtube.com') {
+   if (parsedUrl.pathname === '/watch') videoId = parsedUrl.searchParams.get('v') || '';
+   else {
+    const match = parsedUrl.pathname.match(/^\/(?:embed|shorts)\/([^/]+)/);
+    videoId = match?.[1] || '';
+   }
+  }
+  return /^[a-zA-Z0-9_-]{11}$/.test(videoId) ? `https://www.youtube-nocookie.com/embed/${videoId}` : null;
+ } catch { return null; }
+}
 
 export default function ProjectDetail() {
 	const { slug } = useParams<{ slug: string }>();
@@ -65,6 +85,17 @@ export default function ProjectDetail() {
 	}
 
 	const status = statusConfig[project.status] || statusConfig.production;
+ const demoVideoUrl = getYouTubeEmbedUrl(project.demoVideo);
+ const sections = [
+  { id: 'overview', label: 'Overview', visible: true },
+  { id: 'demo', label: 'Project demo', visible: !!demoVideoUrl },
+  { id: 'impact', label: 'Impact', visible: !!project.impact?.length },
+  { id: 'problem', label: 'Problem', visible: !!project.problem },
+  { id: 'approach', label: 'Approach', visible: !!project.approach },
+  { id: 'architecture', label: 'Architecture', visible: !!project.architecture },
+  { id: 'decisions', label: 'Decisions & trade-offs', visible: !!project.tradeoffs?.length },
+  { id: 'lessons', label: 'Lessons learned', visible: !!project.lessons?.length },
+ ].filter(section => section.visible);
 
 	// Handle copy button clicks for code blocks
 	const handleContentClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -98,10 +129,10 @@ export default function ProjectDetail() {
 				<meta name='twitter:description' content={pageDesc} />
 				<link rel='canonical' href={pageUrl} />
 			</Helmet>
-			<div className='min-h-screen bg-background animate-fade-in'>
+			<div className='min-h-screen bg-background'>
 			{/* Top nav bar */}
-			<nav role='navigation' aria-label='Project navigation' className='sticky top-0 z-40 bg-background/95 backdrop-blur-md border-b border-border'>
-				<div className='max-w-4xl mx-auto px-6 h-14 flex items-center justify-between'>
+			<nav role='navigation' aria-label='Project navigation' className='sticky top-0 z-40 bg-background border-b border-border'>
+				<div className='max-w-[1440px] mx-auto px-6 h-16 flex items-center justify-between'>
 					<Button
 						variant='ghost'
 						size='sm'
@@ -111,6 +142,7 @@ export default function ProjectDetail() {
 						All Projects
 					</Button>
 					<div className='flex items-center gap-2'>
+<ThemeToggle />
 						{project.link && project.link !== '#' && (
 							<Button variant='ghost' size='sm' asChild>
 								<a
@@ -137,13 +169,25 @@ export default function ProjectDetail() {
 				</div>
 			</nav>
 
-			<article className='max-w-4xl mx-auto px-6 py-12' aria-label={`${project.name} project details`}>
+			<div className='max-w-[1440px] mx-auto px-6 grid lg:grid-cols-[220px_minmax(0,1fr)] xl:grid-cols-[220px_minmax(0,1fr)_180px] gap-10'>
+ <aside className='hidden lg:block py-10'>
+  <nav aria-label='Project case studies' className='sticky top-24'>
+   <h2 className='text-sm font-semibold mb-4'>Project case studies</h2>
+   <ul className='space-y-1'>{config.projects.map(item => <li key={item.slug}><Link to={`/projects/${item.slug}`} aria-current={item.slug === slug ? 'page' : undefined} className={`block border-l-2 px-3 py-2 text-sm leading-snug ${item.slug === slug ? 'border-primary bg-accent text-primary font-semibold' : 'border-transparent text-muted-foreground hover:bg-muted hover:text-foreground'}`}>{item.name}</Link></li>)}</ul>
+  </nav>
+ </aside>
+ <article id='main-content' className='learn-article min-w-0 max-w-[800px] w-full py-10' aria-label={`${project.name} project details`}>
 				{/* Header */}
-				<header className='mb-12'>
+				<header id='overview' className='mb-10 border-b border-border pb-8'>
+ <p className='text-sm text-muted-foreground mb-6'><Link to='/#projects'>Projects</Link><span aria-hidden='true'> / </span>Case study</p>
+ <details className='xl:hidden border border-border bg-muted p-4 mb-6'>
+  <summary className='font-semibold cursor-pointer'>On this page</summary>
+  <ul className='mt-3 space-y-2'>{sections.map(section => <li key={section.id}><a href={`#${section.id}`}>{section.label}</a></li>)}</ul>
+ </details>
 					<div className='flex flex-wrap items-center gap-3 mb-4'>
 						<Badge
 							variant='outline'
-							className={status.className}>
+							className='rounded-sm bg-muted text-foreground border-border'>
 							{status.label}
 						</Badge>
 						<div className='flex items-center gap-1.5 text-sm text-muted-foreground'>
@@ -158,41 +202,57 @@ export default function ProjectDetail() {
 					</div>
 					</div>
 
-					<h1 className='text-4xl md:text-5xl font-bold text-foreground mb-3'>
+					<h1 className='text-3xl md:text-4xl font-semibold tracking-tight text-foreground mb-3'>
 						{project.name}
 					</h1>
-					<p className='text-xl text-primary font-medium mb-4'>
+					<p className='text-xl text-foreground font-normal mb-4'>
 						{project.tagline}
 					</p>
 					<p className='text-lg text-muted-foreground leading-relaxed max-w-3xl'>
 						{project.description}
 					</p>
 
-					<div className='flex flex-wrap gap-1.5 mt-6'>
+					<dl className='grid sm:grid-cols-3 gap-5 bg-muted border border-border p-5 mt-6 mb-6'>
+ <div><dt className='text-sm text-muted-foreground'>My contribution</dt><dd className='font-semibold mt-1'>{project.role}</dd></div>
+ <div><dt className='text-sm text-muted-foreground'>Project status</dt><dd className='font-semibold mt-1'>{status.label}</dd></div>
+ <div><dt className='text-sm text-muted-foreground'>Team</dt><dd className='font-semibold mt-1'>{project.teamSize === 1 ? 'Solo project' : `${project.teamSize} people`}</dd></div>
+ </dl>
+ <div className='flex flex-wrap gap-1.5 mt-6'>
 						{project.stack.map(tech => (
 							<Badge
 								key={tech}
 								variant='outline'
-								className='bg-primary/10 text-primary border-primary/30 font-mono text-xs'>
+								className='rounded-sm bg-muted text-foreground border-transparent text-xs font-normal'>
 								{tech}
 							</Badge>
 						))}
 					</div>
 				</header>
 
-				{/* Impact Metrics */}
+				{/* Embedded project demo */}
+ {demoVideoUrl && (
+  <section id='demo' className='mb-10'>
+   <h2 className='text-2xl font-semibold text-foreground tracking-tight mb-4'>Project Demo</h2>
+   <div className='aspect-video overflow-hidden rounded-sm border border-border bg-card'>
+    <iframe className='h-full w-full' src={demoVideoUrl} title={`${project.name} project demo`} loading='lazy'
+     allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+     referrerPolicy='strict-origin-when-cross-origin' allowFullScreen />
+   </div>
+  </section>
+ )}
+ {/* Impact Metrics */}
 				{project.impact && project.impact.length > 0 && (
-					<section className='mb-12'>
-						<h2 className='text-sm font-semibold text-foreground uppercase tracking-widest mb-4'>
+					<section id='impact' className='mb-10'>
+						<h2 className='text-2xl font-semibold text-foreground tracking-tight mb-4'>
 							Impact
 						</h2>
 						<div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
 							{project.impact.map((item, i) => (
 								<Card
 									key={i}
-									className='bg-card/50 border-primary/20'>
+									className='rounded-sm bg-muted border-border shadow-none'>
 									<CardContent className='p-4 text-center'>
-										<div className='text-2xl font-bold text-primary font-mono'>
+										<div className='text-2xl font-bold text-foreground'>
 											{item.metric}
 										</div>
 										<div className='text-xs text-muted-foreground mt-1'>
@@ -207,14 +267,14 @@ export default function ProjectDetail() {
 
 				{/* Problem Statement */}
 				{project.problem && (
-					<section className='mb-12'>
+					<section id='problem' className='mb-10'>
 						<div className='flex items-center gap-2 mb-4'>
-							<AlertTriangle className='h-4 w-4 text-yellow-500' />
-							<h2 className='text-sm font-semibold text-foreground uppercase tracking-widest'>
+							<AlertTriangle className='h-4 w-4 text-primary' />
+							<h2 className='text-2xl font-semibold text-foreground tracking-tight'>
 								Problem
 							</h2>
 						</div>
-						<div className='pl-4 border-l-2 border-yellow-500/30'>
+						<div className='pl-4 border-l-2 border-primary'>
 							<p className='text-muted-foreground leading-relaxed text-lg'>
 								{project.problem}
 							</p>
@@ -224,10 +284,10 @@ export default function ProjectDetail() {
 
 				{/* Approach */}
 				{project.approach && (
-					<section className='mb-12'>
+					<section id='approach' className='mb-10'>
 						<div className='flex items-center gap-2 mb-4'>
-							<CheckCircle className='h-4 w-4 text-green-500' />
-							<h2 className='text-sm font-semibold text-foreground uppercase tracking-widest'>
+							<CheckCircle className='h-4 w-4 text-primary' />
+							<h2 className='text-2xl font-semibold text-foreground tracking-tight'>
 								Approach
 							</h2>
 						</div>
@@ -239,10 +299,10 @@ export default function ProjectDetail() {
 
 				{/* Architecture */}
 				{project.architecture && (
-					<section className='mb-12'>
+					<section id='architecture' className='mb-10'>
 						<div className='flex items-center gap-2 mb-4'>
 							<BookOpen className='h-4 w-4 text-primary' />
-							<h2 className='text-sm font-semibold text-foreground uppercase tracking-widest'>
+							<h2 className='text-2xl font-semibold text-foreground tracking-tight'>
 								Architecture
 							</h2>
 						</div>
@@ -260,8 +320,8 @@ export default function ProjectDetail() {
 								[&_em]:text-foreground/90
 								[&_blockquote]:bg-primary/5
 								[&_blockquote]:border-primary/30
-								[&_li]:text-muted-foreground
-								[&_p]:text-muted-foreground
+								[&_li]:text-foreground
+								[&_p]:text-foreground
 								[&_p]:leading-8'
 							onClick={handleContentClick}
 							dangerouslySetInnerHTML={{
@@ -273,45 +333,24 @@ export default function ProjectDetail() {
 
 				{/* Tradeoffs */}
 				{project.tradeoffs && project.tradeoffs.length > 0 && (
-					<section className='mb-12'>
-						<h2 className='text-sm font-semibold text-foreground uppercase tracking-widest mb-6'>
+					<section id='decisions' className='mb-10'>
+						<h2 className='text-2xl font-semibold text-foreground tracking-tight mb-6'>
 							Key Decisions & Tradeoffs
 						</h2>
 						<div className='space-y-6'>
 							{project.tradeoffs.map((t, i) => (
 								<Card
 									key={i}
-									className='bg-card/50 border-border'>
+									className='rounded-sm bg-card border-border shadow-none'>
 									<CardContent className='p-6 space-y-3'>
 										<h3 className='font-semibold text-foreground'>
 											{t.decision}
 										</h3>
-										<div className='grid md:grid-cols-3 gap-4 text-sm'>
-											<div>
-												<span className='text-xs font-medium text-primary uppercase tracking-wide'>
-													What
-												</span>
-												<p className='text-muted-foreground mt-1'>
-													{t.what}
-												</p>
-											</div>
-											<div>
-												<span className='text-xs font-medium text-green-500 uppercase tracking-wide'>
-													Why
-												</span>
-												<p className='text-muted-foreground mt-1'>
-													{t.why}
-												</p>
-											</div>
-											<div>
-												<span className='text-xs font-medium text-yellow-500 uppercase tracking-wide'>
-													Cost
-												</span>
-												<p className='text-muted-foreground mt-1'>
-													{t.cost}
-												</p>
-											</div>
-										</div>
+										<dl className='space-y-4 text-base'>
+ <div className='grid sm:grid-cols-[100px_1fr] gap-1 sm:gap-5 border-t border-border pt-4'><dt className='font-semibold text-foreground'>Decision</dt><dd className='text-foreground'>{t.what}</dd></div>
+ <div className='grid sm:grid-cols-[100px_1fr] gap-1 sm:gap-5 border-t border-border pt-4'><dt className='font-semibold text-foreground'>Reason</dt><dd className='text-foreground'>{t.why}</dd></div>
+ <div className='grid sm:grid-cols-[100px_1fr] gap-1 sm:gap-5 border-t border-border pt-4'><dt className='font-semibold text-foreground'>Trade-off</dt><dd className='text-foreground'>{t.cost}</dd></div>
+ </dl>
 									</CardContent>
 								</Card>
 							))}
@@ -321,8 +360,8 @@ export default function ProjectDetail() {
 
 				{/* Lessons Learned */}
 				{project.lessons && project.lessons.length > 0 && (
-					<section className='mb-12'>
-						<h2 className='text-sm font-semibold text-foreground uppercase tracking-widest mb-6'>
+					<section id='lessons' className='mb-10'>
+						<h2 className='text-2xl font-semibold text-foreground tracking-tight mb-6'>
 							Lessons Learned
 						</h2>
 						<ol className='space-y-3'>
@@ -330,7 +369,7 @@ export default function ProjectDetail() {
 								<li
 									key={i}
 									className='flex items-start gap-3 text-muted-foreground'>
-									<span className='text-primary font-mono font-bold mt-0.5 shrink-0'>
+									<span className='text-foreground font-bold mt-0.5 shrink-0'>
 										{i + 1}.
 									</span>
 									<span>{lesson}</span>
@@ -340,6 +379,13 @@ export default function ProjectDetail() {
 					</section>
 				)}
 			</article>
+ <aside className='hidden xl:block py-10'>
+  <nav aria-label='On this page' className='sticky top-24 border-l border-border pl-5'>
+   <h2 className='text-sm font-semibold mb-3'>On this page</h2>
+   <ul className='space-y-3'>{sections.map(section => <li key={section.id}><a href={`#${section.id}`} className='text-sm text-muted-foreground hover:text-primary hover:underline'>{section.label}</a></li>)}</ul>
+  </nav>
+ </aside>
+ </div>
 		</div>
 		</>
 	);

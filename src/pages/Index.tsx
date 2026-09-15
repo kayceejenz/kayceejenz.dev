@@ -32,6 +32,7 @@ export default function Index() {
 
 	return (
 		<div className='min-h-screen relative'>
+<a href='#main-content' className='sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 bg-background text-primary p-3 border border-primary'>Skip to content</a>
 
 
 			{/* Navigation */}
@@ -40,8 +41,8 @@ export default function Index() {
 				aria-label='Main navigation'
 				className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
 					scrolled
-						? 'bg-background/95 backdrop-blur-md shadow-sm border-b border-border'
-						: 'bg-background/80 backdrop-blur-sm border-b border-border/50'
+						? 'bg-background border-b border-border'
+						: 'bg-background border-b border-border/50'
 				}`}>
 				<div className='max-w-6xl mx-auto px-6'>
 					<div className='flex justify-between items-center h-16'>
@@ -67,6 +68,9 @@ export default function Index() {
 									{item}
 								</a>
 							))}
+ <a href='https://linkedin.com/in/kayceejenz/' target='_blank' rel='noopener noreferrer'
+
+ className='px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground rounded-md hover:bg-muted transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background'>Experience</a>
 						</div>
 
 						{/* Right side controls */}
@@ -148,22 +152,25 @@ export default function Index() {
 									{item}
 								</a>
 							))}
+ <a href='https://linkedin.com/in/kayceejenz/' target='_blank' rel='noopener noreferrer'
+ onClick={() => setMobileMenuOpen(false)}
+ className='block px-2 py-2.5 text-sm text-muted-foreground hover:text-foreground transition-colors'>Experience on LinkedIn</a>
 						</div>
 					)}
 				</div>
 			</nav>
 
 			{/* Main Content */}
-			<main className='pt-16 animate-fade-in'>
+			<main id='main-content' className='pt-16 '>
 				<Hero />
-				<div className='h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent' />
+				<div className='h-px bg-border' />
 				<Projects />
-				<div className='h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent' />
+				<div className='h-px bg-border' />
 				<Contact />
 			</main>
 
 			{/* Footer */}
-			<footer className='bg-card/50 backdrop-blur border-t border-border text-foreground py-14 px-6'>
+			<footer className='bg-muted border-t border-border text-foreground py-14 px-6'>
 				<div className='max-w-6xl mx-auto'>
 					<div className='grid md:grid-cols-3 gap-10 pb-10 border-b border-border'>
 						{/* Brand column */}
@@ -178,17 +185,12 @@ export default function Index() {
 								</p>
 							</div>
 							<p className='text-sm text-muted-foreground leading-relaxed'>
-								Software engineer with 5+
-								years of production
-								experience. I build
-								reliable backend systems
-								and solve hard problems.
+								In-depth project case studies covering intelligent systems, backend architecture, and applied AI.
 							</p>
 							<div className='flex items-center gap-2'>
 								<div className='w-1 h-1 bg-primary/60 rounded-full'></div>
 								<span className='text-sm text-primary font-medium'>
-									Open to Backend /
-									AI-ML roles
+									Career history and experience on LinkedIn
 								</span>
 							</div>
 						</div>
@@ -273,7 +275,7 @@ export default function Index() {
 					<Button
 					onClick={scrollToTop}
 					size='icon'
-					className='fixed bottom-6 right-6 z-50 w-10 h-10 rounded-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover-glow focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2'
+					className='fixed bottom-6 right-6 z-50 w-10 h-10 rounded-sm bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg  focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2'
 					aria-label='Scroll to top'>
 					<ArrowUp className='h-4 w-4' />
 				</Button>
