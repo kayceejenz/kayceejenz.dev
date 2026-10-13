@@ -29,6 +29,19 @@ function AnimatedCard({ children }: { children: React.ReactNode }) {
 
 export function Projects() {
 	const { projects } = config;
+	const projectOrder = [
+		'flipeet-pay',
+		'agent-tool-experimentation-platform',
+		'rag-experimentation-platform',
+	];
+	const orderedProjects = [...projects].sort((a, b) => {
+		const aIndex = projectOrder.indexOf(a.slug);
+		const bIndex = projectOrder.indexOf(b.slug);
+		if (aIndex === -1 && bIndex === -1) return 0;
+		if (aIndex === -1) return 1;
+		if (bIndex === -1) return -1;
+		return aIndex - bIndex;
+	});
 
 	return (
 		<section id='projects' className='py-20 px-6 bg-muted/30'>
@@ -43,7 +56,7 @@ export function Projects() {
 				</div>
 
 				<div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6'>
-					{projects.map((project, index) => {
+					{orderedProjects.map((project, index) => {
 						const status = statusConfig[project.status] || statusConfig.production;
 						return (
 							<AnimatedCard key={index}>
