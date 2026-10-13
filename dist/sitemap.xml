@@ -11,6 +11,11 @@
 		<priority>0.8</priority>
 	</url>
 	<url>
+		<loc>https://kayceejenz.dev/projects/agent-tool-experimentation-platform</loc>
+		<changefreq>monthly</changefreq>
+		<priority>0.8</priority>
+	</url>
+	<url>
 		<loc>https://kayceejenz.dev/projects/payflow</loc>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>

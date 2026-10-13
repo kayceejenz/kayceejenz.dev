@@ -1,7 +1,7 @@
 // data/config.js
 export default {
 	site: {
-		title: 'Precious Okolo | Software Engineer — Backend, AI & ML',
+		title: 'Precious Okolo | Software Engineer: Backend, AI & ML',
 		description:
 			'Software engineer focused on backend systems, AI, and ML engineering. Explore detailed project case studies and engineering decisions.',
 		url: 'https://kayceejenz.dev',
@@ -347,6 +347,69 @@ export default {
 				'Building for the actual user base (low-bandwidth, mobile-first, SMS-reliant) means making different technical choices than building for a Silicon Valley audience.',
 				'The best project to learn software engineering is one real users depend on daily.',
 				'Shipping a complete MVP with a small team taught more about prioritization and scope management than any course could.',
+			],
+		},
+		{
+			slug: 'agent-tool-experimentation-platform',
+			name: 'Agent Tool Experiment Platform',
+			period: '2026',
+			status: 'experiment',
+			category: 'backend',
+			tagline: 'A controlled workspace for understanding why tool-using agents succeed or fail',
+			description:
+				'Agent demos are easy to build; understanding why an agent behaved a certain way is much harder. I built this platform to turn agent development from trial and error into a repeatable engineering workflow: test tools independently, preserve every configuration, run controlled experiments, and inspect the complete execution trace.',
+			stack: [
+				'Python',
+				'FastAPI',
+				'MCP',
+				'LangChain',
+				'Next.js',
+				'React',
+				'TypeScript',
+				'PostgreSQL',
+				'Pydantic',
+				'Playwright',
+			],
+			link: '#',
+			github: 'https://github.com/kayceejenz/agent-tool-experimentation-platform',
+			demoVideo: null,
+			role: 'Solo Developer',
+			teamSize: 1,
+			impact: [
+				{ metric: 'Reproducible', label: 'Every run retains its agent configuration' },
+				{ metric: 'Isolated', label: 'MCP tools can be validated before agent use' },
+				{ metric: 'Traceable', label: 'Reasoning, tool calls, outputs, and failures remain inspectable' },
+				{ metric: 'Durable', label: 'Agent work runs outside the request lifecycle' },
+			],
+			problem: 'My early agent experiments produced results, but they did not produce reliable explanations. When a run improved or suddenly failed, it was difficult to tell whether the cause was the prompt, the model, a changed tool schema, an execution limit, or the external service behind an MCP server. Tool failures and reasoning failures appeared in the same opaque loop. I needed an environment where each layer could be tested independently and every run could be reconstructed later.',
+			approach: 'I designed the workflow around a debugging funnel. First, connect an MCP server and inspect the tools and JSON schemas it exposes. Next, invoke a tool manually to prove the connector, inputs, and external dependency work without an agent in the loop. Then create an immutable agent version that binds a prompt, model configuration, selected tools, and execution limits. Finally, run experiments through a worker and inspect the resulting trace. This narrows a vague “the agent failed” report into a specific configuration, reasoning, schema, tool, or provider failure.',
+			architecture:
+				'### One workflow, three runtime boundaries\n\nThe monorepo separates the product into a **Next.js 16 client**, a **FastAPI control plane**, and a **Python execution worker**. The client is where experiments are configured and investigated. FastAPI owns authentication, MCP connections, discovered tool metadata, versioned agent definitions, experiments, and execution records in PostgreSQL. The worker performs the slow and failure-prone work of calling models and external tools outside the API request lifecycle.\n\n### From connector to trace\n\nWhen an MCP server is connected, the API discovers its tool names and JSON input schemas and stores that information as inspectable platform data. A developer can invoke any discovered tool directly before exposing it to an agent. An agent version then references a deliberate set of those tools alongside its prompt, model settings, and execution limits.\n\nFor a run, the worker loads that preserved configuration, invokes the language model through LangChain, dispatches requested MCP tool calls, and records the execution history. The resulting trace connects the final outcome to the exact agent version and the tool interactions that produced it.\n\n### Operational boundaries\n\nJWT authentication, Argon2 password hashing, and cryptographic server dependencies protect access and sensitive configuration. Database migrations run as an explicit operational command instead of occurring implicitly when the API starts. That keeps schema changes observable and separates deployment work from application startup.',
+			tradeoffs: [
+				{
+					decision: 'Version agent configurations instead of mutating them',
+					what: 'Treat prompts, selected MCP tools, model settings, and execution limits as a versioned configuration',
+					why: 'A successful result is only useful if I can reproduce it. Preserving the complete configuration makes runs comparable even after the agent evolves.',
+					cost: 'Every meaningful change creates another version, so the interface must make lineage and the preferred configuration easy to understand.',
+				},
+				{
+					decision: 'Separate execution worker from the API',
+					what: 'Run agent and tool execution in a dedicated worker process rather than inside request handlers',
+					why: 'Model calls and external tools have unpredictable latency and failure modes. Isolation keeps the control plane responsive and gives execution its own lifecycle.',
+					cost: 'Local development and deployment require another process, while progress and failures must be coordinated through durable database records.',
+				},
+				{
+					decision: 'Manual tool testing alongside agent runs',
+					what: 'Allow discovered MCP tools to be invoked directly with their schema before assigning them to an agent',
+					why: 'A direct invocation answers the first debugging question: does the tool work with this input at all? Only then does it make sense to evaluate agent reasoning.',
+					cost: 'The platform needs two related execution experiences and must display raw inputs and outputs without overwhelming the user.',
+				},
+			],
+			lessons: [
+				'The unit of reproducibility is the entire agent configuration, not the prompt alone. Models, tools, schemas, and limits all shape the result.',
+				'MCP discovery makes integrations observable. Tool names and schemas become data the platform can inspect, validate, and version around.',
+				'Debug from the outside in: prove the external tool works, then prove the agent selected it correctly, then assess the final answer.',
+				'A trace is product data, not merely a log. It should explain a run to someone who was not watching it happen.',
 			],
 		},
 		{

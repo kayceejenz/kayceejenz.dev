@@ -130,7 +130,7 @@ export default function ProjectDetail() {
 		}
 	};
 
-	const pageTitle = `${project.name} — ${project.tagline} | Precious Okolo`;
+	const pageTitle = `${project.name}: ${project.tagline} | Precious Okolo`;
 	const pageDesc = project.description.slice(0, 160);
 	const pageUrl = `https://kayceejenz.dev/projects/${project.slug}`;
 
@@ -139,10 +139,10 @@ export default function ProjectDetail() {
 			<Helmet>
 				<title>{pageTitle}</title>
 				<meta name='description' content={pageDesc} />
-				<meta property='og:title' content={`${project.name} — ${project.tagline}`} />
+				<meta property='og:title' content={`${project.name}: ${project.tagline}`} />
 				<meta property='og:description' content={pageDesc} />
 				<meta property='og:url' content={pageUrl} />
-				<meta name='twitter:title' content={`${project.name} — ${project.tagline}`} />
+				<meta name='twitter:title' content={`${project.name}: ${project.tagline}`} />
 				<meta name='twitter:description' content={pageDesc} />
 				<link rel='canonical' href={pageUrl} />
 			</Helmet>
