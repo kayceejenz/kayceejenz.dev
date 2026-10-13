@@ -14,7 +14,7 @@ import {
 	BookOpen,
 } from 'lucide-react';
 import { ThemeToggle } from '@/components/ThemeToggle';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import config from '../../data/config.js';
 import { renderMarkdown } from '@/lib/markdown';
 
@@ -60,9 +60,22 @@ export default function ProjectDetail() {
 	const { slug } = useParams<{ slug: string }>();
 	const navigate = useNavigate();
 	const project = config.projects.find(p => p.slug === slug);
+	const [activeSection, setActiveSection] = useState('overview');
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
+	}, [slug]);
+
+	useEffect(() => {
+		const observer = new IntersectionObserver(entries => {
+			const visible = entries.filter(entry => entry.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+			if (visible?.target.id) setActiveSection(visible.target.id);
+		}, { rootMargin: '-20% 0px -65% 0px', threshold: 0 });
+		['overview', 'demo', 'impact', 'problem', 'approach', 'architecture', 'decisions', 'lessons'].forEach(id => {
+			const element = document.getElementById(id);
+			if (element) observer.observe(element);
+		});
+		return () => observer.disconnect();
 	}, [slug]);
 
 	if (!project) {
@@ -96,6 +109,10 @@ export default function ProjectDetail() {
   { id: 'decisions', label: 'Decisions & trade-offs', visible: !!project.tradeoffs?.length },
   { id: 'lessons', label: 'Lessons learned', visible: !!project.lessons?.length },
  ].filter(section => section.visible);
+	const projectIndex = config.projects.findIndex(item => item.slug === project.slug);
+	const previousProject = projectIndex > 0 ? config.projects[projectIndex - 1] : null;
+	const nextProject = projectIndex < config.projects.length - 1 ? config.projects[projectIndex + 1] : null;
+
 
 	// Handle copy button clicks for code blocks
 	const handleContentClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -227,6 +244,11 @@ export default function ProjectDetail() {
 							</Badge>
 						))}
 					</div>
+					<div className='flex flex-wrap gap-3 mt-6'>
+						{project.github && project.github !== '#' && <Button asChild><a href={project.github} target='_blank' rel='noopener noreferrer'><Github className='mr-2 h-4 w-4' />View source</a></Button>}
+						{project.link && project.link !== '#' && <Button variant='outline' asChild><a href={project.link} target='_blank' rel='noopener noreferrer'><ExternalLink className='mr-2 h-4 w-4' />Visit live project</a></Button>}
+						{demoVideoUrl && <Button variant='outline' asChild><a href='#demo'>Watch demo</a></Button>}
+					</div>
 				</header>
 
 				{/* Embedded project demo */}
@@ -244,7 +266,7 @@ export default function ProjectDetail() {
 				{project.impact && project.impact.length > 0 && (
 					<section id='impact' className='mb-10'>
 						<h2 className='text-2xl font-semibold text-foreground tracking-tight mb-4'>
-							Impact
+							Impact & capabilities
 						</h2>
 						<div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
 							{project.impact.map((item, i) => (
@@ -378,11 +400,15 @@ export default function ProjectDetail() {
 						</ol>
 					</section>
 				)}
+				<nav aria-label='Adjacent projects' className='grid sm:grid-cols-2 gap-4 border-t border-border pt-8 mt-14'>
+					{previousProject ? <Link to={`/projects/${previousProject.slug}`} className='border border-border p-5 hover:border-primary hover:bg-muted'><span className='block text-xs uppercase tracking-wide text-muted-foreground mb-2'>Previous project</span><span className='font-semibold text-primary'>← {previousProject.name}</span></Link> : <span />}
+					{nextProject && <Link to={`/projects/${nextProject.slug}`} className='border border-border p-5 text-right hover:border-primary hover:bg-muted'><span className='block text-xs uppercase tracking-wide text-muted-foreground mb-2'>Next project</span><span className='font-semibold text-primary'>{nextProject.name} →</span></Link>}
+				</nav>
 			</article>
  <aside className='hidden xl:block py-10'>
   <nav aria-label='On this page' className='sticky top-24 border-l border-border pl-5'>
    <h2 className='text-sm font-semibold mb-3'>On this page</h2>
-   <ul className='space-y-3'>{sections.map(section => <li key={section.id}><a href={`#${section.id}`} className='text-sm text-muted-foreground hover:text-primary hover:underline'>{section.label}</a></li>)}</ul>
+   <ul className='space-y-1'>{sections.map(section => <li key={section.id}><a href={`#${section.id}`} aria-current={activeSection === section.id ? 'location' : undefined} className={`block border-l-2 -ml-[21px] pl-5 py-1.5 text-sm ${activeSection === section.id ? 'border-primary text-primary font-semibold' : 'border-transparent text-muted-foreground hover:text-primary'}`}>{section.label}</a></li>)}</ul>
   </nav>
  </aside>
  </div>

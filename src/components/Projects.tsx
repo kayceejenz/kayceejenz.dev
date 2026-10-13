@@ -52,6 +52,7 @@ export function Projects() {
 									className='block group h-full rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-4 focus-visible:ring-offset-background'>
 									<Card className='rounded-sm bg-card border-foreground/20 shadow-sm hover:border-primary hover:shadow-md transition-[border-color,box-shadow] duration-150 flex flex-col h-full min-h-[340px] overflow-hidden'>
 										<CardHeader className='pb-4'>
+											<p className='text-xs font-semibold uppercase tracking-wide text-muted-foreground'>{project.role}</p>
 											<div className='flex items-start justify-between gap-2 mb-1'>
 												<CardTitle className='text-xl font-semibold text-primary leading-snug group-hover:underline underline-offset-4'>
 													{project.name}
@@ -78,6 +79,7 @@ export function Projects() {
 											<p className='text-sm text-muted-foreground leading-relaxed flex-1'>
 												{project.tagline}
 											</p>
+											<p className='text-xs text-foreground'><span className='font-semibold'>Engineering focus:</span> {project.stack.slice(0, 3).join(' · ')}</p>
 
 											<div className='flex flex-wrap gap-1.5'>
 												{project.stack.slice(0, 5).map((tech, techIndex) => (
