@@ -1,6 +1,5 @@
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { Hero } from '@/components/Hero';
-import { Expertise } from '@/components/Expertise';
 import { Projects } from '@/components/Projects';
 import { Contact } from '@/components/Contact';
 import { Button } from '@/components/ui/button';
@@ -164,8 +163,6 @@ export default function Index() {
 			{/* Main Content */}
 			<main id='main-content' className='pt-16 '>
 				<Hero />
-				<Expertise />
-				<div className='h-px bg-border' />
 				<Projects />
 				<div className='h-px bg-border' />
 				<Contact />
@@ -187,12 +184,12 @@ export default function Index() {
 								</p>
 							</div>
 							<p className='text-sm text-muted-foreground leading-relaxed'>
-								In-depth project case studies covering intelligent systems, backend architecture, and applied AI.
+								Dependable backend systems and applied AI across enterprise software, education, and payments.
 							</p>
 							<div className='flex items-center gap-2'>
 								<div className='w-1 h-1 bg-primary/60 rounded-full'></div>
 								<span className='text-sm text-primary font-medium'>
-									Career history and experience on LinkedIn
+									Backend Engineering · Applied AI
 								</span>
 							</div>
 						</div>

@@ -1,15 +1,15 @@
 // data/config.js
 export default {
 	site: {
-		title: 'Precious Okolo | Software Engineer: Backend, AI & ML',
+		title: 'Precious Okolo | Software Engineer: Backend Engineering & Applied AI',
 		description:
-			'Software engineer focused on backend systems, AI, and ML engineering. Explore detailed project case studies and engineering decisions.',
+			'Software engineer with five years of experience building dependable backend systems, REST APIs, payment infrastructure, and applied AI applications.',
 		url: 'https://kayceejenz.dev',
 		resume: '/files/Precious_Okolo_CV.pdf',
 	},
 	hero: {
 		name: 'Precious Okolo',
-		headline: 'Building reliable backend systems and intelligent AI & ML applications.',
+		headline: 'Backend Engineering · Applied AI',
 		ctas: [
 			{ label: 'Explore Projects', href: '#projects' },
 			{ label: 'Experience on LinkedIn', href: 'https://linkedin.com/in/kayceejenz/' },
@@ -316,17 +316,18 @@ export default {
 			link: 'https://staging.schoolport.ng',
 			github: '#',
 			demoVideo: null,
-			role: 'Lead Developer',
+			role: 'Software Engineer Mentee',
 			teamSize: 3,
 			impact: [
 				{
 					metric: '5',
 					label: 'Schools using the platform',
 				},
-				{ metric: '500k+', label: 'Students served' },
+				{ metric: '400k+', label: 'Students supported by the platform' },
+				{ metric: '1m+', label: 'Examinations supported' },
 			],
 			problem: 'Schools in the target market relied on paper-based records, manual result processing, and disconnected communication channels. Administrators spent hours on tasks that should take minutes, and students had no centralized access to learning materials or academic progress.',
-			approach: 'Built the entire platform solo from scratch: admissions workflow, student records management, automated result processing, integrated LMS with online classes, event management, fee payments, and SMS notifications. Delivered a production-ready MVP within 6 months.',
+			approach: 'Delivered the initial MVP within six months under engineering supervision and regular product reviews. Implemented admissions, student records, fee payments, classrooms, attendance, academic results, learning features, and SMS notifications. The product later evolved into a flagship platform used by approximately five institutions.',
 			architecture:
 				'Standard ASP.NET MVC pattern: Controllers, Views (Bootstrap), Services, and MSSQL database. Monolithic deployment with clear module separation for each school function (admissions, academics, finance, communication).',
 			tradeoffs: [
@@ -357,7 +358,7 @@ export default {
 			category: 'backend',
 			tagline: 'A controlled workspace for understanding why tool-using agents succeed or fail',
 			description:
-				'Agent demos are easy to build; understanding why an agent behaved a certain way is much harder. I built this platform to turn agent development from trial and error into a repeatable engineering workflow: test tools independently, preserve every configuration, run controlled experiments, and inspect the complete execution trace.',
+				'Agent demos are easy to build; understanding why an agent behaved a certain way is much harder. I built this platform to test tools independently, preserve agent configurations, run evaluations, synthesise datasets, and analyse outputs in a sandboxed Python environment with downloadable charts and data.',
 			stack: [
 				'Python',
 				'FastAPI',
